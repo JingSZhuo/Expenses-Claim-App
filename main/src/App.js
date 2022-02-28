@@ -1,7 +1,10 @@
 import logo from './logo.svg';
 import './App.css';
+import firebase from './firebase-db';
 
 function App() {
+  const ref = firebase.firestore().collection("test");
+
   return (
     <div className="App">
       <header className="App-header">
