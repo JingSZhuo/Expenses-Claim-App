@@ -10,7 +10,7 @@ function App() {
 
   useEffect(
     () => 
-      onSnapshot(collection(db, "test"), (snapshot) => 
+      onSnapshot(collection(db, "Table1"), (snapshot) =>   //Connect to the collection
         setTest(snapshot.docs.map(doc => ({...doc.data(), id: doc.id})))
       ),
     []
