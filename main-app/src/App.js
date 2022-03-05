@@ -11,7 +11,7 @@ function App() {
   useEffect(
     () => 
       onSnapshot(collection(db, "Table1"), (snapshot) =>   //Connect to the collection
-        getTest(snapshot.docs.map(doc => ({...doc.data(), id: doc.id})))
+        getTest(snapshot.docs.map(doc => ({...doc.data(), i: doc.id})))
       ),
     []
   );
