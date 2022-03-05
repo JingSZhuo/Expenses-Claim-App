@@ -6,12 +6,12 @@ import { collection, onSnapshot } from "firebase/firestore";
 
 function App() {
 
-  const [test, setTest] = useState([]);
+  const [test, getTest] = useState([]);
 
   useEffect(
     () => 
       onSnapshot(collection(db, "Table1"), (snapshot) =>   //Connect to the collection
-        setTest(snapshot.docs.map(doc => ({...doc.data(), id: doc.id})))
+        getTest(snapshot.docs.map(doc => ({...doc.data(), id: doc.id})))
       ),
     []
   );
