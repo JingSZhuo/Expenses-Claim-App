@@ -1,61 +1,79 @@
 import { useEffect, useState } from "react";
 import db from "./firebase";
-import logo from './logo.svg';
+import { collection, onSnapshot, getFirestore, 
+  getDocs, doc, query, where, getDoc } from "firebase/firestore";
+import { BrowserRouter, Link, Navigate, Outlet, Route, Routes } from 'react-router-dom';
+
+//Images
+import logo from './images/logo.svg';
+//Pages
 import './App.css';
-import { collection, onSnapshot, getFirestore, getDocs } from "firebase/firestore";
+import Create1 from "./nextpage.js";
 
 
 function App() {
 
-  let books = []
-  const dbs = getFirestore()
-  const colRef = collection(dbs, 'Table1')
-  getDocs(colRef)           //Get all from collection
-  .then((snapshot) => {
-    snapshot.docs.forEach((doc) => {
-      books.push({...doc.data(), id: doc.id})
-    })
-    console.log(books)
-  })
-
+  // onSnapshot(doc(db, "User1", "Claim2"), (doc) => {
+  //     console.log("Current data:  ", doc.data());
+  // });
   
-  // const [test, getTest] = useState([]);
-  // useEffect(
-  //   () => 
-  //     onSnapshot(collection(db, "Table1"), (snapshot) =>   //Connect to the collection
-  //       getTest(snapshot.docs.map(doc => ({...doc.data(), i: doc.id})))
-  //     ),
-  //   []
-  // );
+  const [test, setTest] = useState([]);
+  const usersCollectionRef = collection(db, "User1")
+  //const specificQuery = query(usersCollectionRef, where("DATA3", "==", true))   //Useful for filtering
+
+  useEffect(() => {
+    const getTest = async () => {
+      const data_1 = await getDocs(usersCollectionRef);
+      setTest(data_1.docs.map((doc1) => ({...doc1.data(), id: doc1.id })));
+    };
+    getTest();
+  }, []);
+
 
   return (
-    
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React XD
-        </a>
-        <div></div>
-{/*         
-        <ul>
-          {test.map((testing) => (
-            <li key={testing.id}>
-                <a>{testing.F1}</a> 
-                <a>{testing.F2}</a>
-            </li>
-          ))}
-        </ul> */}
-      </header>
-    </div>
+      <div className="App">
+        <header className="App-header">
+          
+          <img src={logo} className="App-logo" alt="logo" />
+          <p>
+            Edit <code>src/App.js</code> and save to reload.
+          </p>
+          <a
+            className="App-link"
+            href="https://reactjs.org"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            Learn React XDD
+          </a>
+          <div>
+            {test.map((testing) => {
+                  return(
+                    <div>
+                      <a>Data: {testing.DATA1}</a>
+                    </div>
+                  );
+            })}
+          </div>
+          <form action="output()">
+            <input placeholder="Enter smth..."></input>
+            <br></br>
+            <button type="submit">Submit</button>
+          </form>
+          
+
+          <BrowserRouter>
+            <Routes>
+              <Route path="name1" element={<Create1 />} />
+            </Routes>
+
+            <div>
+            <Link to="name1" >nextpage</Link>
+            </div>
+          </BrowserRouter>
+        </header>
+      </div>
+
   );
 }
 

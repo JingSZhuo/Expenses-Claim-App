@@ -18,7 +18,7 @@ const firebaseConfig = {
 };
 
 // Initialize Firebase App
-export default initializeApp(firebaseConfig);
+initializeApp(firebaseConfig);
 
 // Initialize Services
-//export default getFirestore();
+export default getFirestore();
