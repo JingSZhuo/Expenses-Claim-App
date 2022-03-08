@@ -8,8 +8,6 @@ import { BrowserRouter, Link, Navigate, Outlet, Route, Routes } from 'react-rout
 import logo from './images/logo.svg';
 //Pages
 import './App.css';
-import Create1 from "./nextpage.js";
-
 
 function App() {
 
@@ -29,24 +27,10 @@ function App() {
     getTest();
   }, []);
 
-
   return (
       <div className="App">
-        <header className="App-header">
-          
-          <img src={logo} className="App-logo" alt="logo" />
-          <p>
-            Edit <code>src/App.js</code> and save to reload.
-          </p>
-          <a
-            className="App-link"
-            href="https://reactjs.org"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Learn React XDD
-          </a>
-          <div>
+        
+          {/* <div>
             {test.map((testing) => {
                   return(
                     <div>
@@ -54,24 +38,14 @@ function App() {
                     </div>
                   );
             })}
-          </div>
-          <form action="output()">
-            <input placeholder="Enter smth..."></input>
-            <br></br>
-            <button type="submit">Submit</button>
-          </form>
-          
+          </div> */}
 
-          <BrowserRouter>
-            <Routes>
-              <Route path="name1" element={<Create1 />} />
-            </Routes>
+            <nav>
+              <Link to="name1" >next page</Link>
+              <Link to="blog" >blog</Link>
+            </nav>
+            <Outlet/>
 
-            <div>
-            <Link to="name1" >nextpage</Link>
-            </div>
-          </BrowserRouter>
-        </header>
       </div>
 
   );
