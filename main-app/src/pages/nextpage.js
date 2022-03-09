@@ -1,4 +1,3 @@
-
 import { Link } from 'react-router-dom';
 
 function Create ()  {
@@ -7,7 +6,7 @@ function Create ()  {
             <div>
                 <h2>Add new content</h2>
                 <Link to="/" >Home</Link>
-                <Link to="/blog" >next page 2</Link>
+                <Link to="/LoginSignup" >Login and sign up</Link>
             </div>
             <h1>Hi</h1>
         </body>

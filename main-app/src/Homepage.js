@@ -2,12 +2,12 @@ import { useEffect, useState } from "react";
 import db from "./firebase";
 import { collection, onSnapshot, getFirestore, 
   getDocs, doc, query, where, getDoc } from "firebase/firestore";
-import { BrowserRouter, Link, Navigate, Outlet, Route, Routes } from 'react-router-dom';
+import { Link,  Outlet } from 'react-router-dom';
 
 //Images
-import logo from './images/logo.svg';
+
 //Pages
-import './App.css';
+import './main.css';
 
 function App() {
 
@@ -30,19 +30,19 @@ function App() {
   return (
       <div className="App">
         
-          {/* <div>
+          <div>
             {test.map((testing) => {
                   return(
                     <div>
-                      <a>Data: {testing.DATA1}</a>
+                      <a>Data: {testing.DATA2}</a>
                     </div>
                   );
             })}
-          </div> */}
+          </div>
 
             <nav>
               <Link to="name1" >next page</Link>
-              <Link to="blog" >blog</Link>
+              <Link to="LoginSignup" >Login and Sign-Up</Link>
             </nav>
             <Outlet/>
 
