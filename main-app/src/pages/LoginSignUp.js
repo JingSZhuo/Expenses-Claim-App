@@ -1,5 +1,4 @@
 
-import { async } from '@firebase/util';
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { createUserWithEmailAndPassword, onAuthStateChanged, signInWithEmailAndPassword, signOut } from 'firebase/auth';
@@ -74,6 +73,7 @@ function Login_Signup() {
 
             <Link to="/" >Home</Link>
             <Link to="/name1" >next page 2</Link>
+            <Link to="/claimPage" >view claims</Link>
         </>
     );
 }

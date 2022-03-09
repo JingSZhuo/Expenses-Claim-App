@@ -1,8 +1,7 @@
-import React, { useState } from 'react';
+import React, { } from 'react';
 import ReactDOM from 'react-dom';
 import App from './Homepage';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
-import { getAuth, onAuthStateChanged } from 'firebase/auth';
 
 //pages
 import Create1 from "./pages/nextpage.js";
@@ -10,22 +9,6 @@ import LS from "./pages/LoginSignUp.js";
 import Claim from "./pages/viewClaims.js"
 
 const rootElement = document.getElementById('root')
-
-
-function Status() {
-  const  [loginStatus, setLoginStatus] = useState(false)
-
-  const auth = getAuth();
-  onAuthStateChanged(auth, (user) => {
-    if (user) {
-      setLoginStatus(true); console.log("!!!")
-    } else {
-      setLoginStatus(false); console.log("???")
-    }
-  })
-  
-  return loginStatus
-}
 
 
 ReactDOM.render(
