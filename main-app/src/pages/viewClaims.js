@@ -1,21 +1,38 @@
 import { useEffect, useState, } from "react";
 import db from "../firebase";
 import { onAuthStateChanged, getAuth} from "firebase/auth";
-import { collection, getDoc ,getDocs, onSnapshot, doc } from "firebase/firestore";
+import { collection, getDoc ,getDocs, doc } from "firebase/firestore";
+    
+// async function CallData() {
+//   //Single Document
+//   const docRef = doc(db, "Employee", "User1")
+//   const docSnap = await getDoc(docRef)
+
+//   return docSnap.data()
+// }
 
 function StatusIn(){
 
+    // const [fetchData, fetchAllData] = useState([])
+    
+    async function CallData() {
 
-    //Single Document
-    const docRef = doc(db, "Employee", "User2")
+      //Single Document
+      const docRef = doc(db, "EMP", "xyz@gmail.com")
+      const docSnap = await getDoc(docRef) 
+    
+      console.log("Data: ",docSnap.data())
 
-    onSnapshot(docRef, (doc) => {
-      console.log(doc.data(), doc.id)   //shove into useState?? or var then use map?
-    })
-
+      //fetchAllData(docSnap.docs.map((doc2) => ({...doc2.data(), id: doc2.id})))
+    }
+    CallData()
+    
+    //...............................................................................
+    const auth2 = getAuth();
+    const user2 = auth2.currentUser;
 
     const [data, getData] = useState([])
-    const usersCollectionRef = collection(db, "Employee")
+    const usersCollectionRef = collection(db, user2.email)
 
     useEffect(() => {
       const getData1 = async () => {
@@ -28,16 +45,20 @@ function StatusIn(){
     return(
     <>
         <h2>Logged in!</h2>
+
         <div>
           {data.map((testing) => {
             return (
               <div>
                 <a>Data: {testing.Claim1}</a>
+                <a>, {testing.Amount}</a>
+                <a>, £{testing.VAT}</a>
               </div>
             );
           })}
         </div>
-      </>
+        <></>
+    </>
     )
 }
 
@@ -51,9 +72,9 @@ function Status() {
     const auth = getAuth();
     onAuthStateChanged(auth, (user) => {          //Check if user is logged in
       if (user) {
-        setLoginStatus(true); console.log("!!!")
+        setLoginStatus(true); 
       } else {
-        setLoginStatus(false); console.log("???")
+        setLoginStatus(false); 
       }
     })
     
@@ -63,10 +84,10 @@ function Status() {
 const viewClaim = () => {
 
     return (  
-        <body>
+        <div>
             <h1>Claims page</h1>
                 { Status() === true ?  <StatusIn/> : <StatusOut/>}
-        </body>
+        </div>
 
     );
 }
