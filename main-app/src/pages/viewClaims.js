@@ -21,7 +21,7 @@ function StatusIn(){
       const docRef = doc(db, "EMP", "xyz@gmail.com")
       const docSnap = await getDoc(docRef) 
     
-      console.log("Data: ",docSnap.data())
+      console.log("Data == ",docSnap.data())
 
       //fetchAllData(docSnap.docs.map((doc2) => ({...doc2.data(), id: doc2.id})))
     }
