@@ -1,7 +1,7 @@
 import { async } from "@firebase/util";
 import { getAuth } from "firebase/auth";
 import { collection, doc, setDoc } from "firebase/firestore";
-import db from "../firebase";
+import db, { auth } from "../firebase";
 import "../main.css";
 
 function page1() {
@@ -11,9 +11,10 @@ function page1() {
         const user = auth3.currentUser;
     
         const createCollection = collection(db, user.email)
-        await setDoc(doc(createCollection, "..somedata33"), {
-            claim1: "aaaaaaaaa",
-            amount: "123.45"
+        await setDoc(doc(createCollection), {
+            claim1: "aabb",
+            amount: "123",
+            id: Date.now()
         }) 
     }
 
