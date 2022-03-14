@@ -74,6 +74,7 @@ function Login_Signup() {
             <Link to="/" >Home</Link>
             <Link to="/name1" >next page 2</Link>
             <Link to="/claimPage" >view claims</Link>
+            <Link to="/addClaim" >Add claims</Link>
         </>
     );
 }

@@ -7,6 +7,7 @@ import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import Create1 from "./pages/nextpage.js";
 import LS from "./pages/LoginSignUp.js";
 import Claim from "./pages/viewClaims.js"
+import Page from "./pages/addClaim.js";
 
 const rootElement = document.getElementById('root')
 
@@ -18,6 +19,7 @@ ReactDOM.render(
               <Route path="name1" element={<Create1 />} />    //Seperate pages with new content
               <Route path="LoginSignup" element={ <LS /> } />
               <Route path='claimPage' element={ <Claim/> } />
+              <Route path='addClaim' element={ <Page/> } />
             </Routes>
   </BrowserRouter>,
   rootElement

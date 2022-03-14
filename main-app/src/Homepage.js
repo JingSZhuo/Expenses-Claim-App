@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import db from "./firebase";
-import { collection, onSnapshot, getFirestore, 
+import { collection, onSnapshot, 
   getDocs, doc, query, where, getDoc } from "firebase/firestore";
 import { Link,  Outlet } from 'react-router-dom';
 
@@ -11,9 +11,6 @@ import './main.css';
 
 function App() {
 
-  // onSnapshot(doc(db, "User1", "Claim2"), (doc) => {
-  //     console.log("Current data:  ", doc.data());
-  // });
   
   const [test, setTest] = useState([]);
   const usersCollectionRef = collection(db, "User1")
@@ -29,6 +26,8 @@ function App() {
 
   return (
       <div className="App">
+
+        <h1>Homepage</h1>
         
           <div>
             {test.map((testing) => {
