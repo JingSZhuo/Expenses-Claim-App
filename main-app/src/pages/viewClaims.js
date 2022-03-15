@@ -5,20 +5,6 @@ import { collection, getDoc ,getDocs, doc } from "firebase/firestore";
 import {Link} from "react-router-dom";
     
 function StatusIn(){
-
-    // const [fetchData, fetchAllData] = useState([])
-    
-    async function CallData() {
-
-      //Single Document
-      const docRef = doc(db, "EMP", "xyz@gmail.com")
-      const docSnap = await getDoc(docRef) 
-    
-      console.log("Data =!!!= ", docSnap.data())
-
-      //fetchAllData(docSnap.docs.map((doc2) => ({...doc2.data(), id: doc2.id})))
-    }
-    CallData()
     
     //...............................................................................
     const auth2 = getAuth();
@@ -37,7 +23,6 @@ function StatusIn(){
     
     return(
     <>
-        
         <nav className="navbar">
               <Link className='navbuttons' to="/addClaim" >Add Claim</Link>
               <Link className='navbuttons' to="/LoginSignup" >Login and Sign-Up</Link>
@@ -84,8 +69,8 @@ const viewClaim = () => {
 
     return (  
         <div>
-            <h1>Claims page</h1>
                 { Status() === true ?  <StatusIn/> : <StatusOut/>}
+                <h1>Claims page</h1>
         </div>
 
     );

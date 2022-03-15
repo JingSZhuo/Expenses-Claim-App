@@ -12,9 +12,9 @@ function page1() {
     
         const createCollection = collection(db, user.email)
         await setDoc(doc(createCollection), {
-            id: Date.now(),
-            claim: document.getElementById("title").value,
-            amount: "£" + "123",
+            ClaimId: Date.now(),
+            Claim: document.getElementById("title").value,
+            Amount: document.getElementById("amount").value,
 
         }) 
     }
@@ -31,8 +31,18 @@ function page1() {
             </nav>
         
             <h1>Add Claim</h1>
+
+            <form>
+                <h3>Claim title</h3>
                 <input id="title" placeholder="Enter some text... "></input>
+
+                <h3>Enter Amount</h3>
+                <input id="amount" placeholder="Enter some text... "></input>
+
+                <br></br>
+
                 <button onClick={page1}>Enter</button>
+            </form>
 
 
         </>

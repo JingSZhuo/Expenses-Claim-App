@@ -5,7 +5,7 @@ import { BrowserRouter, Route, Routes } from 'react-router-dom';
 
 //pages
 import Create1 from "./pages/nextpage.js";
-import LS from "./pages/LoginSignUp.js";
+import LoginSignup from "./pages/LoginSignUp.js";
 import Claim from "./pages/viewClaims.js"
 import AddClaim from "./pages/addClaim.js";
 
@@ -17,7 +17,7 @@ ReactDOM.render(
             <Routes>
               <Route path="/" element={<App/>} />             //to keep certain page components persistent throughout pages - nest inside App route
               <Route path="name1" element={<Create1 />} />    //Seperate pages with new content
-              <Route path="LoginSignup" element={ <LS /> } />
+              <Route path="LoginSignup" element={ <LoginSignup /> } />
               <Route path='claimPage' element={ <Claim/> } />
               <Route path='addClaim' element={ <AddClaim/> } />
             </Routes>

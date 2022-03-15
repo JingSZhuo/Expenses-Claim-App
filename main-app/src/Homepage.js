@@ -4,6 +4,7 @@ import { Link,  Outlet } from 'react-router-dom';
 
 //Pages
 import "./main.css"
+import "./reset.css"
 
 function App() {
 

@@ -47,8 +47,10 @@ function Login_Signup() {
 
         
             <nav className="navbar">
-              <Link className='navbuttons' to="/name1" >new page</Link>
-              <Link className='navbuttons' to="/claimPage" >view Claims</Link>
+                <Link className='navbuttons' to="/" >Home</Link>
+                <Link className='navbuttons' to="/name1" >new page</Link>
+                <Link className='navbuttons' to="/claimPage" >view Claims</Link>
+                <Link className='navbuttons' to="/addClaim" >Add claims</Link>
             </nav>
 
             <h1>New empty page</h1>
@@ -62,7 +64,14 @@ function Login_Signup() {
                 <button onClick={register}>Create user</button>
             </div>
             <div className='LS'>
-                <h3>Login</h3>
+                <h3>Employee Login</h3>
+                <input placeholder='Email...' onChange={(event) => {setLoginEmail(event.target.value)}}/>
+                <input placeholder='Password...' onChange={(event) => {setLoginrPassword(event.target.value)}}/>
+
+                <button onClick={login}>Login</button>
+            </div>
+            <div className='LS'>
+                <h3>Staff Login</h3>
                 <input placeholder='Email...' onChange={(event) => {setLoginEmail(event.target.value)}}/>
                 <input placeholder='Password...' onChange={(event) => {setLoginrPassword(event.target.value)}}/>
 
@@ -77,11 +86,6 @@ function Login_Signup() {
             <br/>
                 {user?.email}
             <br/>
-
-            <Link to="/" >Home</Link>
-            <Link to="/name1" >next page 2</Link>
-            <Link to="/claimPage" >view claims</Link>
-            <Link to="/addClaim" >Add claims</Link>
         </>
     );
 }
