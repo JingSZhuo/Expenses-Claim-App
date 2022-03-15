@@ -1,3 +1,5 @@
+/*General settings*/
+
 body {
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
@@ -11,18 +13,17 @@ body {
   margin: auto;
   max-width: 50%;
 }
-/*231*/
-/*1233333333*/
-/*new changes */
 
-/*some change*/
-/*MINOR CHANGES*/
+/*Navigation bar*/
 
-/*MORE CHANGESSSSSSSSS*/
+.navbar {
+  width: 100%;
+  padding: 1.5rem;
+  float: left;
+}
 
-/*codes in test Branch 2*/
-/*more codes 2...*/
-
-/**1231/
-/*Code*/
-/*Code22*/
+.navbuttons {
+  padding-left: 2rem;
+  display: block;
+  float: left;
+}

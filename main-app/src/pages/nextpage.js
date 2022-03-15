@@ -3,10 +3,13 @@ import { Link } from 'react-router-dom';
 function Create ()  {
     return ( 
         <body>
+
+            <nav className="navbar">
+                <Link  className='navbuttons' to="/" >Home</Link>
+                <Link  className='navbuttons' to="/LoginSignup" >Login and sign up</Link>
+            </nav>
             <div>
                 <h2>Add new content</h2>
-                <Link to="/" >Home</Link>
-                <Link to="/LoginSignup" >Login and sign up</Link>
             </div>
             <h1>Hi</h1>
         </body>

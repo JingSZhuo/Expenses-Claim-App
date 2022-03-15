@@ -2,15 +2,8 @@ import { useEffect, useState, } from "react";
 import db from "../firebase";
 import { onAuthStateChanged, getAuth} from "firebase/auth";
 import { collection, getDoc ,getDocs, doc } from "firebase/firestore";
+import {Link} from "react-router-dom";
     
-// async function CallData() {
-//   //Single Document
-//   const docRef = doc(db, "Employee", "User1")
-//   const docSnap = await getDoc(docRef)
-
-//   return docSnap.data()
-// }
-
 function StatusIn(){
 
     // const [fetchData, fetchAllData] = useState([])
@@ -44,15 +37,21 @@ function StatusIn(){
     
     return(
     <>
+        
+        <nav className="navbar">
+              <Link className='navbuttons' to="/addClaim" >Add Claim</Link>
+              <Link className='navbuttons' to="/LoginSignup" >Login and Sign-Up</Link>
+        </nav>
+
         <h2>Logged in!</h2>
 
         <div>
           {data.map((testing) => {
             return (
               <div>
-                <a>Data: {testing.Claim1}</a>
-                <a>, {testing.Amount}</a>
-                <a>, £{testing.VAT}</a>
+                <a>Data: {testing.id}</a>
+                <a>, {testing.claim}</a>
+                <a>, £{testing.amount}</a>
               </div>
             );
           })}

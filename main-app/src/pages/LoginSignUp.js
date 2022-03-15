@@ -44,13 +44,20 @@ function Login_Signup() {
 
      return (  
         <>
+
+        
+            <nav className="navbar">
+              <Link className='navbuttons' to="/name1" >new page</Link>
+              <Link className='navbuttons' to="/claimPage" >view Claims</Link>
+            </nav>
+
             <h1>New empty page</h1>
             <br></br>
 
             <div className='LS'>
                 <h3>Signup</h3>
-                <input placeholder='Email...' onChange={(event) => {setRegisterEmail(event.target.value)}}/>
-                <input placeholder='Password...' onChange={(event) => {setRegisterPassword(event.target.value)}}/>
+                <input type="email" placeholder='Email...' onChange={(event) => {setRegisterEmail(event.target.value)}} required/>
+                <input placeholder='Password...' onChange={(event) => {setRegisterPassword(event.target.value)}} required/>
 
                 <button onClick={register}>Create user</button>
             </div>
