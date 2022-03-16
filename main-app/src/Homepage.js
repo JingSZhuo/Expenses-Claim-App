@@ -1,48 +1,22 @@
-import { useEffect, useState } from "react";
-import db from "./firebase";
-import { collection, onSnapshot, 
-  getDocs, doc, query, where, getDoc } from "firebase/firestore";
 import { Link,  Outlet } from 'react-router-dom';
 
 //Images
 
 //Pages
-import './main.css';
+import "./main.css"
+import "./reset.css"
 
 function App() {
-
-  
-  const [test, setTest] = useState([]);
-  const usersCollectionRef = collection(db, "User1")
-  //const specificQuery = query(usersCollectionRef, where("DATA3", "==", true))   //Useful for filtering
-
-  useEffect(() => {
-    const getTest = async () => {
-      const data_1 = await getDocs(usersCollectionRef);
-      setTest(data_1.docs.map((doc1) => ({...doc1.data(), id: doc1.id })));
-    };
-    getTest();
-  }, []);
 
   return (
       <div className="App">
 
-        <h1>Homepage</h1>
-        
-          <div>
-            {test.map((testing) => {
-                  return(
-                    <div>
-                      <a>Data: {testing.DATA2}</a>
-                    </div>
-                  );
-            })}
-          </div>
-
-            <nav>
-              <Link to="name1" >next page</Link>
-              <Link to="LoginSignup" >Login and Sign-Up</Link>
+            <nav className="navbar">
+              <Link className='navbuttons' to="name1" >new page</Link>
+              <Link className='navbuttons' to="LoginSignup" >Login and Sign-Up</Link>
             </nav>
+
+        <h1>Homepage</h1>
             <Outlet/>
 
       </div>

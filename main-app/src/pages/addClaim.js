@@ -1,4 +1,4 @@
-import { async } from "@firebase/util";
+import {Link} from "react-router-dom";
 import { getAuth } from "firebase/auth";
 import { collection, doc, setDoc } from "firebase/firestore";
 import db, { auth } from "../firebase";
@@ -12,9 +12,10 @@ function page1() {
     
         const createCollection = collection(db, user.email)
         await setDoc(doc(createCollection), {
-            claim1: "aabb",
-            amount: "123",
-            id: Date.now()
+            ClaimId: Date.now(),
+            Claim: document.getElementById("title").value,
+            Amount: document.getElementById("amount").value,
+
         }) 
     }
 
@@ -22,10 +23,30 @@ function page1() {
    
 
     return( 
-        <><h1>Add Claim</h1>
-                <input placeholder="Enter some text... "></input>
-                <button onClick={page1}>Enter</button>
+
+        <>
+            <nav className="navbar">
+                <Link className='navbuttons' to="/name1">new page</Link>
+                <Link className='navbuttons' to="/LoginSignup">Login and Sign-Up</Link>
+            </nav>
+        
+            <h1>Add Claim</h1>
+
+            <form className="claimform">
+                <div className="formbox">
+                    <h3>Claim title</h3>
+                    <input id="title" type="text" placeholder="Enter claim title " required></input>
+
+                    <h3>Enter Amount</h3>
+                    <input id="amount" type="number" placeholder="Enter Amount " required></input>
+
+                    <br></br>
+
+                    <button onClick={page1}>Enter</button>
+                </div>
                 
+            </form>
+
 
         </>
     )

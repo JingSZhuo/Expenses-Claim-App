@@ -2,30 +2,9 @@ import { useEffect, useState, } from "react";
 import db from "../firebase";
 import { onAuthStateChanged, getAuth} from "firebase/auth";
 import { collection, getDoc ,getDocs, doc } from "firebase/firestore";
+import {Link} from "react-router-dom";
     
-// async function CallData() {
-//   //Single Document
-//   const docRef = doc(db, "Employee", "User1")
-//   const docSnap = await getDoc(docRef)
-
-//   return docSnap.data()
-// }
-
 function StatusIn(){
-
-    // const [fetchData, fetchAllData] = useState([])
-    
-    async function CallData() {
-
-      //Single Document
-      const docRef = doc(db, "EMP", "xyz@gmail.com")
-      const docSnap = await getDoc(docRef) 
-    
-      console.log("Data =!!!= ", docSnap.data())
-
-      //fetchAllData(docSnap.docs.map((doc2) => ({...doc2.data(), id: doc2.id})))
-    }
-    CallData()
     
     //...............................................................................
     const auth2 = getAuth();
@@ -44,15 +23,20 @@ function StatusIn(){
     
     return(
     <>
+        <nav className="navbar">
+              <Link className='navbuttons' to="/addClaim" >Add Claim</Link>
+              <Link className='navbuttons' to="/LoginSignup" >Login and Sign-Up</Link>
+        </nav>
+
         <h2>Logged in!</h2>
 
         <div>
           {data.map((testing) => {
             return (
               <div>
-                <a>Data: {testing.Claim1}</a>
-                <a>, {testing.Amount}</a>
-                <a>, £{testing.VAT}</a>
+                <a>Data: {testing.ClaimId}</a>
+                <a>, {testing.Claim}</a>
+                <a>, £{testing.Amount}</a>
               </div>
             );
           })}
@@ -85,8 +69,8 @@ const viewClaim = () => {
 
     return (  
         <div>
-            <h1>Claims page</h1>
                 { Status() === true ?  <StatusIn/> : <StatusOut/>}
+                <h1>Claims page</h1>
         </div>
 
     );
