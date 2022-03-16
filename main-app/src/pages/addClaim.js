@@ -32,16 +32,19 @@ function page1() {
         
             <h1>Add Claim</h1>
 
-            <form>
-                <h3>Claim title</h3>
-                <input id="title" placeholder="Enter some text... "></input>
+            <form className="claimform">
+                <div className="formbox">
+                    <h3>Claim title</h3>
+                    <input id="title" type="text" placeholder="Enter claim title " required></input>
 
-                <h3>Enter Amount</h3>
-                <input id="amount" placeholder="Enter some text... "></input>
+                    <h3>Enter Amount</h3>
+                    <input id="amount" type="number" placeholder="Enter Amount " required></input>
 
-                <br></br>
+                    <br></br>
 
-                <button onClick={page1}>Enter</button>
+                    <button onClick={page1}>Enter</button>
+                </div>
+                
             </form>
 
 

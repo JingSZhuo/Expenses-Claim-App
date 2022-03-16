@@ -34,7 +34,7 @@ function StatusIn(){
           {data.map((testing) => {
             return (
               <div>
-                <a>Data: {testing.id}</a>
+                <a>Data: {testing.ClaimId}</a>
                 <a>, {testing.claim}</a>
                 <a>, £{testing.amount}</a>
               </div>
