@@ -2,6 +2,7 @@
 import { initializeApp } from "firebase/app";
 import { getFirestore } from "firebase/firestore";
 import { getAuth } from "firebase/auth";
+import { getStorage } from "firebase/storage";
 
 
 // TODO: Add SDKs for Firebase products that you want to use
@@ -12,6 +13,7 @@ import { getAuth } from "firebase/auth";
 const firebaseConfig = {
   apiKey: "AIzaSyDB2gdWSQiVFqE_iiM9wCFlPfz_nsItwY4",
   authDomain: "expense-claim-app-619e1.firebaseapp.com",
+  databaseURL: "https://expense-claim-app-619e1-default-rtdb.europe-west1.firebasedatabase.app",
   projectId: "expense-claim-app-619e1",
   storageBucket: "expense-claim-app-619e1.appspot.com",
   messagingSenderId: "1038930557644",
@@ -22,7 +24,8 @@ const firebaseConfig = {
 // Initialize Firebase App
 const app = initializeApp(firebaseConfig);
 const auth = getAuth(app)
+const storage = getStorage(app);
 
 // Initialize Services
-export {auth}; 
+export {auth, storage}; 
 export default getFirestore();
