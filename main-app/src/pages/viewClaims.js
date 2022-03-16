@@ -35,8 +35,8 @@ function StatusIn(){
             return (
               <div>
                 <a>Data: {testing.ClaimId}</a>
-                <a>, {testing.claim}</a>
-                <a>, £{testing.amount}</a>
+                <a>, {testing.Claim}</a>
+                <a>, £{testing.Amount}</a>
               </div>
             );
           })}
