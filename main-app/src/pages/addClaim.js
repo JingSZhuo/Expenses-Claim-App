@@ -1,11 +1,12 @@
 import {Link} from "react-router-dom";
 import { getAuth } from "firebase/auth";
 import { collection, doc, setDoc } from "firebase/firestore";
-import db, { storage } from "../firebase";
+import db, { auth, storage } from "../firebase";
 import "../main.css";
-import { ref, uploadBytesResumable } from "firebase/storage";
+import { getDownloadURL, ref, uploadBytes } from "firebase/storage";
+import { useState } from "react";
 
-function page1() {
+function AddClaimPage() {
 
     async function addtoDB(){
         const auth3 = getAuth();
@@ -23,20 +24,6 @@ function page1() {
         document.getElementById("title").reset();
         document.getElementById("amount").reset();
         document.getElementById("evidence").reset();
-    }
-
-    const uploadFile = (e) => {
-        let file = e.target.files[0];
-
-        let fileRef = ref(storage, file.name);
-
-        const uplaodTask = uploadBytesResumable(fileRef, file);
-
-        uplaodTask.on('state_changed', (snapshot) => {
-            const progress = (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
-            console.log('upload is ' + progress + '% done');
-        })
-
     }
    
     return( 
@@ -63,11 +50,11 @@ function page1() {
 
                     <br></br>
 
-                    <input type="button" onClick={() =>  {addtoDB(); uploadFile() }} value={"upload"}></input>
+                    <input type="button" onClick={() =>  {addtoDB(); }} value={"upload"}></input>
                 </div>
             </form>
         </>
     )
 }
 
-export default page1;
+export default AddClaimPage;
