@@ -18,6 +18,7 @@ function Login_Signup() {
         console.log(currentUser)
     })
     
+    /*Register and Login Functions*/ 
 
     const register = async () => {
         try{
@@ -64,14 +65,7 @@ function Login_Signup() {
                 <button onClick={register}>Create user</button>
             </div>
             <div className='LS'>
-                <h3>Employee Login</h3>
-                <input placeholder='Email...' onChange={(event) => {setLoginEmail(event.target.value)}}/>
-                <input placeholder='Password...' onChange={(event) => {setLoginrPassword(event.target.value)}}/>
-
-                <button onClick={login}>Login</button>
-            </div>
-            <div className='LS'>
-                <h3>Staff Login</h3>
+                <h3>Employee/Staff Login</h3>
                 <input placeholder='Email...' onChange={(event) => {setLoginEmail(event.target.value)}}/>
                 <input placeholder='Password...' onChange={(event) => {setLoginrPassword(event.target.value)}}/>
 

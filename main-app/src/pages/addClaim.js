@@ -1,10 +1,12 @@
 import {Link} from "react-router-dom";
 import { getAuth } from "firebase/auth";
 import { collection, doc, setDoc } from "firebase/firestore";
-import db, { auth } from "../firebase";
+import db, { auth, storage } from "../firebase";
 import "../main.css";
+import { getDownloadURL, ref, uploadBytes } from "firebase/storage";
+import { useState } from "react";
 
-function page1() {
+function AddClaimPage() {
 
     async function addtoDB(){
         const auth3 = getAuth();
@@ -15,13 +17,15 @@ function page1() {
             ClaimId: Date.now(),
             Claim: document.getElementById("title").value,
             Amount: document.getElementById("amount").value,
-
         }) 
+
+
+        /*Reset input fields after submit */
+        document.getElementById("title").reset();
+        document.getElementById("amount").reset();
+        document.getElementById("evidence").reset();
     }
-
-    addtoDB()
    
-
     return( 
 
         <>
@@ -35,22 +39,22 @@ function page1() {
             <form className="claimform">
                 <div className="formbox">
                     <h3>Claim title</h3>
-                    <input id="title" type="text" placeholder="Enter claim title " required></input>
+                    <input id="title" type="text" placeholder="Enter claim title " ></input>
 
                     <h3>Enter Amount</h3>
-                    <input id="amount" type="number" placeholder="Enter Amount " required></input>
+                    <input id="amount" type="number" placeholder="Enter Amount " ></input>
+
+                    <br></br>
+                    <h3>Upload</h3>
+                    <input id="evidence" type="file" placeholder="No file uploaded" required></input>
 
                     <br></br>
 
-                    <button onClick={page1}>Enter</button>
+                    <input type="button" onClick={() =>  {addtoDB(); }} value={"upload"}></input>
                 </div>
-                
             </form>
-
-
         </>
     )
-
 }
 
-export default page1;
+export default AddClaimPage;
