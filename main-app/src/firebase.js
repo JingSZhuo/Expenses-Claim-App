@@ -24,7 +24,7 @@ const firebaseConfig = {
 // Initialize Firebase App
 const app = initializeApp(firebaseConfig);
 const auth = getAuth(app)
-const storage = getStorage(app);
+const storage = getStorage(app, "gs://expense-claim-app-619e1.appspot.com");
 
 // Initialize Services
 export {auth, storage}; 
