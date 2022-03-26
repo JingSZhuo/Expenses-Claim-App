@@ -3,12 +3,29 @@ import { getAuth } from "firebase/auth";
 import { collection, doc, setDoc } from "firebase/firestore";
 import db, { auth, storage } from "../firebase";
 import "../main.css";
-import { getDownloadURL, ref, uploadBytes } from "firebase/storage";
+import { getDownloadURL, getStorage, ref, uploadBytes, uploadBytesResumable } from "firebase/storage";
 import { useState } from "react";
 
 function AddClaimPage() {
 
+    const [image, setImage] = useState('');
+
+    function uploadImage() {
+        
+        if (image == null) {return;}
+
+        console.log("Check if this is :" + image)
+
+        const storage = getStorage();
+        const storageRef = ref(storage, `${image}` )
+
+        const uploadTask = uploadBytesResumable(storageRef)
+
+        uploadTask.on('state_changed', () => {})
+    }
+
     async function addtoDB(){
+
         const auth3 = getAuth();
         const user = auth3.currentUser;
     
@@ -46,11 +63,11 @@ function AddClaimPage() {
 
                     <br></br>
                     <h3>Upload</h3>
-                    <input id="evidence" type="file" placeholder="No file uploaded" required></input>
+                    <input id="evidence" type="file" placeholder="No file uploaded" onChange={(e) => { setImage(e.target.files[0]) }}></input>
 
                     <br></br>
 
-                    <input type="button" onClick={() =>  {addtoDB(); }} value={"upload"}></input>
+                    <input type="button" onClick={() =>  {addtoDB(); uploadImage() }} value={"upload"}></input>
                 </div>
             </form>
         </>
