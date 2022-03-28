@@ -49,7 +49,7 @@ function Login_Signup() {
         
             <nav className="navbar">
                 <Link className='navbuttons' to="/" >Home</Link>
-                <Link className='navbuttons' to="/name1" >new page</Link>
+                <Link className='navbuttons' to="/about" >About</Link>
                 <Link className='navbuttons' to="/claimPage" >view Claims</Link>
                 <Link className='navbuttons' to="/addClaim" >Add claims</Link>
             </nav>

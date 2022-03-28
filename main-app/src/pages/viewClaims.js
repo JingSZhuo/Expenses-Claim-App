@@ -24,8 +24,10 @@ function StatusIn(){
     return(
     <>
         <nav className="navbar">
-              <Link className='navbuttons' to="/addClaim" >Add Claim</Link>
-              <Link className='navbuttons' to="/LoginSignup" >Login and Sign-Up</Link>
+            <Link className='navbuttons' to="/" >Home</Link>
+            <Link className='navbuttons' to="/about" >About</Link>
+            <Link className='navbuttons' to="/addClaim" >Add Claim</Link>
+            <Link className='navbuttons' to="/LoginSignup" >Login and Sign-Up</Link>
         </nav>
 
         <h2>Logged in!</h2>
@@ -33,13 +35,18 @@ function StatusIn(){
         <div>
           {data.map((testing) => {
             //Implement function for ID for each claim?
+            function getID(ID) {
+              console.log(ID)
+              return ID ;
+            }
+
             return (
               <div>
                 <a>Data: {testing.ClaimId}</a>
                 <a>, {testing.Claim}</a>
                 <a>, £{testing.Amount}</a>
                 <a>, ID: {testing.id}</a>
-                //implement onclick function and pass its ID?? 
+                , <Link to="/editClaim" onClick={ getID(testing.id) } >Edit</Link>
               </div>
             );
           })}
