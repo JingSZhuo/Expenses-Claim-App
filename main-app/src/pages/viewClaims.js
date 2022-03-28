@@ -32,16 +32,18 @@ function StatusIn(){
 
         <div>
           {data.map((testing) => {
+            //Implement function for ID for each claim?
             return (
               <div>
                 <a>Data: {testing.ClaimId}</a>
                 <a>, {testing.Claim}</a>
                 <a>, £{testing.Amount}</a>
+                <a>, ID: {testing.id}</a>
+                //implement onclick function and pass its ID?? 
               </div>
             );
           })}
         </div>
-        <></>
     </>
     )
 }

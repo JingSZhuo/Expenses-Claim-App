@@ -3,25 +3,29 @@ import { getAuth } from "firebase/auth";
 import { collection, doc, setDoc } from "firebase/firestore";
 import db, { auth, storage } from "../firebase";
 import "../main.css";
-import { getDownloadURL, getStorage, ref, uploadBytes, uploadBytesResumable } from "firebase/storage";
+import { getDownloadURL, getStorage, ref, uploadBytes } from "firebase/storage";
 import { useState } from "react";
 
 function AddClaimPage() {
 
-    const [image, setImage] = useState('');
+    const [image, setImage] = useState(null);
+    const [imageName, setImageName] = useState(null)
+    const [imageType, setImageType] = useState(null)
 
-    function uploadImage() {
+    const uploadImage = () => {
+
+        const metadata = {
+            contentType: `${imageType}`,
+        }
         
-        if (image == null) {return;}
+        if (image == null) {return null;}
 
-        console.log("Check if this is :" + image)
+        console.log(image)
 
-        const storage = getStorage();
-        const storageRef = ref(storage, `${image}` )
+        const storage = getStorage();           //Access storage
+        const storageRef = ref(storage, "images/"+`${imageName}` )      //If storage file/directory doesnt exist..create one
 
-        const uploadTask = uploadBytesResumable(storageRef)
-
-        uploadTask.on('state_changed', () => {})
+        uploadBytes(storageRef, image, metadata)            //Upload file with metadata
     }
 
     async function addtoDB(){
@@ -63,11 +67,14 @@ function AddClaimPage() {
 
                     <br></br>
                     <h3>Upload</h3>
-                    <input id="evidence" type="file" placeholder="No file uploaded" onChange={(e) => { setImage(e.target.files[0]) }}></input>
-
+                    <input id="evidence" type="file" placeholder="No file uploaded" 
+                        onChange={(e) => { 
+                            setImage(e.target.files[0]); 
+                            setImageName(e.target.files[0].name); 
+                            setImageType(e.target.files[0].type) }}></input>
                     <br></br>
 
-                    <input type="button" onClick={() =>  {addtoDB(); uploadImage() }} value={"upload"}></input>
+                    <input type="button" onClick={() =>  { addtoDB(); uploadImage() }} value={"upload"}></input>
                 </div>
             </form>
         </>

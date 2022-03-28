@@ -78,7 +78,7 @@ function Login_Signup() {
                 <button onClick={logout}>Logout</button>
             </div>
             <br/>
-                {user?.email}
+                Logged in as:  {user?.email}
             <br/>
         </>
     );
