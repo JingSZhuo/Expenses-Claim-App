@@ -20,6 +20,11 @@ function StatusIn(){
       }
       getData1()
     }, [])
+
+    function getID(ID) {
+      console.log(ID)
+      return ID ;
+    }
     
     return(
     <>
@@ -35,10 +40,6 @@ function StatusIn(){
         <div>
           {data.map((testing) => {
             //Implement function for ID for each claim?
-            function getID(ID) {
-              console.log(ID)
-              return ID ;
-            }
 
             return (
               <div>
@@ -46,7 +47,7 @@ function StatusIn(){
                 <a>, {testing.Claim}</a>
                 <a>, £{testing.Amount}</a>
                 <a>, ID: {testing.id}</a>
-                , <Link to="/editClaim" onClick={ getID(testing.id) } >Edit</Link>
+                , <Link to="/editClaim" state={testing.id} >Edit </Link>
               </div>
             );
           })}

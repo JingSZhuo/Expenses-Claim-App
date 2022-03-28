@@ -8,7 +8,7 @@ import About from "./pages/aboutPage.js";
 import LoginSignup from "./pages/LoginSignUp.js";
 import Claim from "./pages/viewClaims.js"
 import AddClaim from "./pages/addClaim.js";
-import editClaim from "./pages/editClaim.js";
+import EditClaim from "./pages/editClaim.js";
 
 const rootElement = document.getElementById('root');
 
@@ -19,9 +19,9 @@ ReactDOM.render(
               <Route path="/" element={<App/>} />             //to keep certain page components persistent throughout pages - nest inside App route
               <Route path="about" element={<About/>} />    //Seperate pages with new content
               <Route path="LoginSignup" element={ <LoginSignup/> } />
-              <Route path='claimPage' element={ <Claim/> } />
+              <Route path='viewClaim' element={ <Claim/> } />
               <Route path='addClaim' element={ <AddClaim/> } />
-              <Route path='editClaim' element={ <editClaim/> } />
+              <Route path='editClaim' element={ <EditClaim/> } />
             </Routes>
   </BrowserRouter>,
   rootElement

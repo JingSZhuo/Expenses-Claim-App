@@ -53,7 +53,7 @@ function AddClaimPage() {
             <nav className="navbar">
                 <Link className='navbuttons' to="/" >Home</Link>
                 <Link className='navbuttons' to="/about" >About</Link>
-                <Link className='navbuttons' to="/claimPage" >View Claims</Link>
+                <Link className='navbuttons' to="/viewClaim" >View Claims</Link>
                 <Link className='navbuttons' to="/LoginSignup">Login and Sign-Up</Link>
             </nav>
         

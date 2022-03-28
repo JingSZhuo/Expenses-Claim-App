@@ -1,14 +1,20 @@
-import { Link } from 'react-router-dom';
+import {Link, useLocation} from "react-router-dom";
 
-function Create ()  {
+
+function EditClaimPage ()  {
+
+    const location = useLocation();
+    const data = location.state;
+    console.log(data);
+
     return ( 
         <body>
 
             <nav className="navbar">
                 <Link  className='navbuttons' to="/" >Home</Link>
                 <Link  className='navbuttons' to="/about" >About</Link>
-                <Link className='navbuttons' to="/claimPage" >view Claims</Link>
-                <Link className='navbuttons' to="/addClaim" >Add claims</Link>
+                <Link  className='navbuttons' to="/viewClaim" >view Claims</Link>
+                <Link  className='navbuttons' to="/addClaim" >Add claims</Link>
                 <Link  className='navbuttons' to="/LoginSignup" >Login and sign up</Link>
             </nav>
             <div>
@@ -20,4 +26,4 @@ function Create ()  {
      );
 }
  
-export default Create;
+export default EditClaimPage;
