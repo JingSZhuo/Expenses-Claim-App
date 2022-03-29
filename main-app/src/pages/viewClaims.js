@@ -66,7 +66,6 @@ function Status() {
         setLoginStatus(false); 
       }
     })
-    
     return loginStatus
   }
 

@@ -1,32 +1,33 @@
 import {Link, useLocation} from "react-router-dom";
 import {collection, query, where, getDocs  } from "firebase/firestore";
-import { getAuth } from "firebase/auth";
+import { getAuth, onAuthStateChanged } from "firebase/auth";
 import db from "../firebase";
+import { auth } from '../firebase.js'
 import { useEffect, useState } from "react";
 
 
 function EditClaimPage()  {
-    //window.location.reload(true)
 
-    //State prop settings
+    
+    // //State prop settings
     const location = useLocation();
     const dataFetch = location.state;
-    console.log(dataFetch)
+    console.log("ID: " + dataFetch)
 
-    //Auth Settings
     const auth = getAuth();
     const user = auth.currentUser;
+    //console.log(user.email)
 
-    //Collection settings
-    const [dataDoc, getDataDoc] = useState([])
-    const q = query(collection(db, user.email), where("ClaimId", "==" , dataFetch))
+    const [data, fetchData] = useState([])
+    const usersCollectionRef = collection(db, user.email)
+    const q = query(usersCollectionRef, where("ClaimId", "==" , dataFetch))
 
     useEffect(() => {
         const getData = async () => {
-            const data = await getDocs(q);
-            getDataDoc(data.docs.map((doc) => ({...doc.data(), id: doc.id})))
-          }
-        getData() 
+          const data_1 = await getDocs(q);
+          fetchData(data_1.docs.map((doc) => ({...doc.data(), id: doc.id })))
+        }
+        getData()
     }, [])
 
     return ( 
@@ -43,11 +44,8 @@ function EditClaimPage()  {
                 <h2>Edit Claim Page</h2>
             </div>
             <h2>Show selected data:</h2>
-            <br/>
-                Logged in as:  {user?.email}
-            <br/>
 
-            {dataDoc.map((data) => { 
+            {data.map((data) => { 
 
             return(
                 <div>
@@ -61,5 +59,34 @@ function EditClaimPage()  {
         </>
      );
 }
+
+function StatusOut() {
+    return(<h2>Not Logged In!!!</h2>)
+}
+
+function Status() {
+    const  [loginStatus, setLoginStatus] = useState(false)
+  
+    const auth = getAuth();
+    onAuthStateChanged(auth, (user) => {          //Check if user is logged in
+      if (user) {
+        setLoginStatus(true); 
+      } else {
+        setLoginStatus(false); 
+      }
+    })
+    
+    return loginStatus
+  }
+
+const editClaim = () => {
+
+    return (  
+        <div>
+            { Status() === true ?  <EditClaimPage/> : <StatusOut/>}
+        </div>
+
+    );
+}
  
-export default EditClaimPage;
+export default editClaim;
