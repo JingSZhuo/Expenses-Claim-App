@@ -1,10 +1,10 @@
 import {Link} from "react-router-dom";
 import { getAuth } from "firebase/auth";
-import { collection, doc, setDoc } from "firebase/firestore";
+import { collection, doc, setDoc, getDocs, getDoc, query, where } from "firebase/firestore";
 import db, { auth, storage } from "../firebase";
 import "../main.css";
 import { getDownloadURL, getStorage, ref, uploadBytes } from "firebase/storage";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 function AddClaimPage() {
 
@@ -14,6 +14,7 @@ function AddClaimPage() {
 
     const uploadImage = () => {
 
+        //Metadata
         const metadata = {
             contentType: `${imageType}`,
         }
@@ -28,18 +29,19 @@ function AddClaimPage() {
         uploadBytes(storageRef, image, metadata)            //Upload file with metadata
     }
 
-    async function addtoDB(){
+    async function AddtoDB(){
 
-        const auth3 = getAuth();
-        const user = auth3.currentUser;
+        const auth = getAuth();
+        const user = auth.currentUser;
     
-        const createCollection = collection(db, user.email)
-        await setDoc(doc(createCollection), {
-            ClaimId: Date.now(),
+        const getCollection = collection(db, user.email)
+        const generateID = doc(getCollection)
+
+        await setDoc(generateID, {
+            ClaimId: generateID.id ,
             Claim: document.getElementById("title").value,
             Amount: document.getElementById("amount").value,
         }) 
-
 
         /*Reset input fields after submit */
         document.getElementById("title").reset();
@@ -76,7 +78,7 @@ function AddClaimPage() {
                             setImageType(e.target.files[0].type) }}></input>
                     <br></br>
 
-                    <input type="button" onClick={() =>  { addtoDB(); uploadImage() }} value={"upload"}></input>
+                    <input type="button" onClick={() =>  { AddtoDB(); uploadImage() }} value={"upload"}></input>
                 </div>
             </form>
         </>

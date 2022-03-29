@@ -1,30 +1,25 @@
 import { useEffect, useState, } from "react";
 import db from "../firebase";
 import { onAuthStateChanged, getAuth} from "firebase/auth";
-import { collection, getDoc ,getDocs, doc } from "firebase/firestore";
+import { collection, getDoc ,getDocs, doc, setDoc } from "firebase/firestore";
 import {Link} from "react-router-dom";
     
 function StatusIn(){
     
     //...............................................................................
-    const auth2 = getAuth();
-    const user2 = auth2.currentUser;
+    const auth = getAuth();
+    const user = auth.currentUser;
 
     const [data, getData] = useState([])
-    const usersCollectionRef = collection(db, user2.email)
+    const usersCollectionRef = collection(db, user.email)
 
     useEffect(() => {
       const getData1 = async () => {
         const data_1 = await getDocs(usersCollectionRef);
-        getData(data_1.docs.map((doc1) => ({...doc1.data(), id: doc1.id })))
+        getData(data_1.docs.map((doc) => ({...doc.data(), id: doc.id })))
       }
       getData1()
     }, [])
-
-    function getID(ID) {
-      console.log(ID)
-      return ID ;
-    }
     
     return(
     <>
