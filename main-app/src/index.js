@@ -21,7 +21,7 @@ ReactDOM.render(
               <Route path="LoginSignup" element={ <LoginSignup/> } />
               <Route path='viewClaim' element={ <Claim/> } />
               <Route path='addClaim' element={ <AddClaim/> } />
-              <Route path='editClaim' element={ <EditClaim/> } />
+              <Route exact path='/editClaim' element={ <EditClaim/> } />
             </Routes>
   </BrowserRouter>,
   rootElement

@@ -6,10 +6,12 @@ import { useEffect, useState } from "react";
 
 
 function EditClaimPage()  {
+    //window.location.reload(true)
 
     //State prop settings
     const location = useLocation();
     const dataFetch = location.state;
+    console.log(dataFetch)
 
     //Auth Settings
     const auth = getAuth();
@@ -24,11 +26,11 @@ function EditClaimPage()  {
             const data = await getDocs(q);
             getDataDoc(data.docs.map((doc) => ({...doc.data(), id: doc.id})))
           }
-          getData() 
-    })
+        getData() 
+    }, [])
 
     return ( 
-        <body>
+        <>
 
             <nav className="navbar">
                 <Link  className='navbuttons' to="/" >Home</Link>
@@ -41,7 +43,10 @@ function EditClaimPage()  {
                 <h2>Edit Claim Page</h2>
             </div>
             <h2>Show selected data:</h2>
-{/* 
+            <br/>
+                Logged in as:  {user?.email}
+            <br/>
+
             {dataDoc.map((data) => { 
 
             return(
@@ -51,9 +56,9 @@ function EditClaimPage()  {
                     <a>, {data.Amount}</a>
                 </div>
                 )
-            })} */}
+            })}
             
-        </body>
+        </>
      );
 }
  
