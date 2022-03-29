@@ -5,12 +5,11 @@ import db from "../firebase";
 import { useEffect, useState } from "react";
 
 
-function EditClaimPage ()  {
+function EditClaimPage()  {
 
     //State prop settings
     const location = useLocation();
     const dataFetch = location.state;
-    console.log(dataFetch);
 
     //Auth Settings
     const auth = getAuth();
@@ -18,7 +17,7 @@ function EditClaimPage ()  {
 
     //Collection settings
     const [dataDoc, getDataDoc] = useState([])
-    const q = query(collection(db, user.email), where("ClaimId", "==" , `${dataFetch}`))
+    const q = query(collection(db, user.email), where("ClaimId", "==" , dataFetch))
 
     useEffect(() => {
         const getData = async () => {
@@ -42,20 +41,19 @@ function EditClaimPage ()  {
                 <h2>Edit Claim Page</h2>
             </div>
             <h2>Show selected data:</h2>
-
+{/* 
             {dataDoc.map((data) => { 
 
             return(
                 <div>
                     <a>{data.ClaimId}</a>
-                    <a>{data.Claim}</a>
-                    <a>{data.Amount}</a>
+                    <a>, {data.Claim}</a>
+                    <a>, {data.Amount}</a>
                 </div>
                 )
-            })}
+            })} */}
+            
         </body>
-
-        
      );
 }
  
