@@ -7,31 +7,29 @@ import { useEffect, useState } from "react";
 
 function EditClaimPage ()  {
 
+    //State prop settings
+    const location = useLocation();
+    const dataFetch = location.state;
+    console.log(dataFetch);
+
     //Auth Settings
     const auth = getAuth();
     const user = auth.currentUser;
 
     //Collection settings
     const [dataDoc, getDataDoc] = useState([])
-    const q = query(collection(db, user.email), where())
+    const q = query(collection(db, user.email), where("ClaimId", "==" , `${dataFetch}`))
 
     useEffect(() => {
-        const getData1 = async () => {
+        const getData = async () => {
             const data = await getDocs(q);
-            getDataDoc(data.docs.map((doc) => ({...doc.data(), id: doc.id })))
+            getDataDoc(data.docs.map((doc) => ({...doc.data(), id: doc.id})))
           }
-          getData1() 
+          getData() 
     })
-
-    const location = useLocation();
-    const data = location.state;
-    console.log(data);
 
     return ( 
         <body>
-            {dataDoc.map(() => { 
-                <div></div>
-             })}
 
             <nav className="navbar">
                 <Link  className='navbuttons' to="/" >Home</Link>
@@ -44,6 +42,17 @@ function EditClaimPage ()  {
                 <h2>Edit Claim Page</h2>
             </div>
             <h2>Show selected data:</h2>
+
+            {dataDoc.map((data) => { 
+
+            return(
+                <div>
+                    <a>{data.ClaimId}</a>
+                    <a>{data.Claim}</a>
+                    <a>{data.Amount}</a>
+                </div>
+                )
+            })}
         </body>
 
         
