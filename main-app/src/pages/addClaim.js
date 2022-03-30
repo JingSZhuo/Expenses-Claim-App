@@ -40,7 +40,11 @@ function AddClaimPage() {
         const user = auth.currentUser;
     
         const getCollection = collection(db, user?.email)
+        const getCollection2 = collection(db, "Employee")
+
         const generateID = doc(getCollection)                       //Creating new doc
+        const generateEmail = doc(getCollection2)
+
 
         await setDoc(generateID, {
             ClaimId: generateID.id ,
@@ -48,8 +52,19 @@ function AddClaimPage() {
             Amount: document.getElementById("amount").value,
             Description: document.getElementById("description").value,
             SortCode: document.getElementById("sortcode").value,
-            AccountNumber: document.getElementById("accountnumber").value
+            AccountNumber: document.getElementById("accountnumber").value,
+            Approve: "",
         }) 
+        await setDoc(generateEmail, {
+            ClaimId: generateID.id ,
+            Claim: document.getElementById("title").value,
+            Amount: document.getElementById("amount").value,
+            Description: document.getElementById("description").value,
+            SortCode: document.getElementById("sortcode").value,
+            AccountNumber: document.getElementById("accountnumber").value,
+            Approve: "",
+            email: user.email
+        })
 
         /*Reset input fields after submit */
         document.getElementById("title").value = "";

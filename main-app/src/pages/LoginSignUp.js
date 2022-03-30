@@ -9,48 +9,10 @@ import { async } from '@firebase/util';
 import { collection } from 'firebase/firestore';
 
 
-// function Status() {                         //Checks if user is logged in and renders based on login status
-//     const auth = getAuth();
-//     onAuthStateChanged(auth, (user) => {          //Check if user is logged in
-//       if (user.email === "linemanager@gmail.com") {
-//         console.log("TRUE");
-//       } else { 
-//         console.log("FALSE");
-//       }
-//     })
-//     //Handleclick(loginStatus)
-// }
-
-
-// function Status() {                         //Checks if user is logged in and renders based on login status
-//     const  [loginStatus, setLoginStatus] = useState(false)
-  
-//     const auth = getAuth();
-//     onAuthStateChanged(auth, (user) => {          //Check if user is logged in
-//       if (user) {
-//         setLoginStatus(true); console.log("TRUE")
-//       } else {
-//         setLoginStatus(false); console.log("FALSE")
-//       }
-//     })
-//     return loginStatus
-//   }
-
-// const viewClaim = () => {
-//         { Status() === true ?  console.log("TRUE") : console.log("FALSE") }
-// }
-
-
 function Login_Signup() {
 
-    function AdminNavigation(x) {
-        let navigate = useNavigate();
-        if (x === true) {
-            navigate('/admin')
-        }
-        else{ navigate('/viewClaim') }
-    }
-
+    //Hook states
+    let navigate = useNavigate();
     const [user, setUser] = useState({})
     const  [loginStatus, setLoginStatus] = useState(false)
 
@@ -60,18 +22,14 @@ function Login_Signup() {
         onAuthStateChanged(auth, (user) => {          //Check if user is logged in
             setUser(user)
             if (user.email === "linemanager@gmail.com") {
-                setLoginStatus(true); console.log("TRUE :" + loginStatus);
+                setLoginStatus(true); 
             } else {
-                setLoginStatus(false); console.log("FALSE :" + loginStatus)
+                setLoginStatus(false); 
             }
         })
-        GetStatus()
+        //GetStatus()
     }, [])
 
-    function GetStatus() {
-        console.log("F: " + loginStatus)
-    }
-    
 
     //Register + Login states
     const [registerEmail, setRegisterEmail]  = useState("");
@@ -100,12 +58,14 @@ function Login_Signup() {
     };
     const login = async () => {
         try{
-            await signInWithEmailAndPassword(auth, loginEmail, loginPassword)
-            //window.location.reload();
+            await signInWithEmailAndPassword(auth, loginEmail, loginPassword).then(() => {
+                if (auth.currentUser.email === "linemanager@gmail.com" ){
+                    navigate('/admin')
+                } else { navigate('/viewClaim') }
+            })
             } catch (error) { 
                 console.log(error.message) 
             }
-        console.log(":::" + loginStatus)
     };
 
     const logout = async () => {
@@ -154,33 +114,5 @@ function Login_Signup() {
         </>
         );
     }
-
-function StatusOut() {
-    return(<h2>Not Logged In!!!</h2>)
-}
-    
-// function Status() {                         //Checks if user is logged in and renders based on login status
-//     const  [loginStatus, setLoginStatus] = useState(false)
-    
-//     const auth = getAuth();
-//     onAuthStateChanged(auth, (user) => {          //Check if user is logged in
-//         if (user) {
-//         setLoginStatus(true); console.log("TRUE")
-//         } else {
-//         setLoginStatus(false);  console.log("FALSE")
-//         }
-//     })
-//     return loginStatus
-//     }
-
-// const viewClaim = () => {
-
-//     return (  
-//         <div>
-//                 { Status() === true ?  <StatusIn/> : <StatusOut/>}
-//         </div>
-
-//     );
-// }
 
 export default Login_Signup;

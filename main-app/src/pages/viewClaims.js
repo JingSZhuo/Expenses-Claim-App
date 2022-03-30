@@ -41,6 +41,7 @@ function StatusIn(){
                 <a>Claim: {testing.Claim}</a>,
                 <a>Amount: £{testing.Amount}</a>,
                 <a>ClaimID: {testing.id}</a>
+                <a>TestMAP: {testing.test.testmap}</a>
                 , <Link to="/editClaim" state={testing.id} >Edit Claim</Link>
               </div>
             );
