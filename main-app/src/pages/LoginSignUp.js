@@ -1,6 +1,6 @@
 
-import { useState } from 'react';
-import { Link } from 'react-router-dom';
+import { useEffect, useState } from 'react';
+import { Link, useNavigate } from 'react-router-dom';
 import { createUserWithEmailAndPassword, getAuth, onAuthStateChanged, signInWithEmailAndPassword, signOut } from 'firebase/auth';
 import { auth } from '../firebase.js'
 import db, { storage } from "../firebase";
@@ -8,20 +8,76 @@ import "../main.css";
 import { async } from '@firebase/util';
 import { collection } from 'firebase/firestore';
 
+
+// function Status() {                         //Checks if user is logged in and renders based on login status
+//     const auth = getAuth();
+//     onAuthStateChanged(auth, (user) => {          //Check if user is logged in
+//       if (user.email === "linemanager@gmail.com") {
+//         console.log("TRUE");
+//       } else { 
+//         console.log("FALSE");
+//       }
+//     })
+//     //Handleclick(loginStatus)
+// }
+
+
+// function Status() {                         //Checks if user is logged in and renders based on login status
+//     const  [loginStatus, setLoginStatus] = useState(false)
+  
+//     const auth = getAuth();
+//     onAuthStateChanged(auth, (user) => {          //Check if user is logged in
+//       if (user) {
+//         setLoginStatus(true); console.log("TRUE")
+//       } else {
+//         setLoginStatus(false); console.log("FALSE")
+//       }
+//     })
+//     return loginStatus
+//   }
+
+// const viewClaim = () => {
+//         { Status() === true ?  console.log("TRUE") : console.log("FALSE") }
+// }
+
+
 function Login_Signup() {
+
+    function AdminNavigation(x) {
+        let navigate = useNavigate();
+        if (x === true) {
+            navigate('/admin')
+        }
+        else{ navigate('/viewClaim') }
+    }
+
+    const [user, setUser] = useState({})
+    const  [loginStatus, setLoginStatus] = useState(false)
+
+    useEffect(() => {
+  
+        const auth = getAuth();
+        onAuthStateChanged(auth, (user) => {          //Check if user is logged in
+            setUser(user)
+            if (user.email === "linemanager@gmail.com") {
+                setLoginStatus(true); console.log("TRUE :" + loginStatus);
+            } else {
+                setLoginStatus(false); console.log("FALSE :" + loginStatus)
+            }
+        })
+        GetStatus()
+    }, [])
+
+    function GetStatus() {
+        console.log("F: " + loginStatus)
+    }
+    
 
     //Register + Login states
     const [registerEmail, setRegisterEmail]  = useState("");
     const [registerPassword, setRegisterPassword]  = useState("");
     const [loginEmail, setLoginEmail]  = useState("");
     const [loginPassword, setLoginrPassword]  = useState("");
-
-    //Auth state
-    const [user, setUser] = useState({})
-
-    onAuthStateChanged(auth, (currentUser) => {                         //Shows current user login status - Acts like a server var?
-        setUser(currentUser)
-    })
 
     async function AddToProfile() {
 
@@ -37,19 +93,19 @@ function Login_Signup() {
 
     const register = async () => {
         try{
-        await createUserWithEmailAndPassword(auth, registerEmail, registerPassword)
-
-        } catch (error) { 
-            console.log(error.message) 
-        }
+            await createUserWithEmailAndPassword(auth, registerEmail, registerPassword)
+            } catch (error) { 
+                console.log(error.message) 
+            }
     };
     const login = async () => {
         try{
             await signInWithEmailAndPassword(auth, loginEmail, loginPassword)
-    
+            //window.location.reload();
             } catch (error) { 
                 console.log(error.message) 
             }
+        console.log(":::" + loginStatus)
     };
 
     const logout = async () => {
@@ -58,8 +114,6 @@ function Login_Signup() {
 
      return (  
         <>
-
-        
             <nav className="navbar">
                 <Link className='navbuttons' to="/" >Home</Link>
                 <Link className='navbuttons' to="/about" >About</Link>
@@ -98,7 +152,35 @@ function Login_Signup() {
                 Logged in as:  {user?.email}
             <br/>
         </>
-    );
+        );
+    }
+
+function StatusOut() {
+    return(<h2>Not Logged In!!!</h2>)
 }
- 
+    
+// function Status() {                         //Checks if user is logged in and renders based on login status
+//     const  [loginStatus, setLoginStatus] = useState(false)
+    
+//     const auth = getAuth();
+//     onAuthStateChanged(auth, (user) => {          //Check if user is logged in
+//         if (user) {
+//         setLoginStatus(true); console.log("TRUE")
+//         } else {
+//         setLoginStatus(false);  console.log("FALSE")
+//         }
+//     })
+//     return loginStatus
+//     }
+
+// const viewClaim = () => {
+
+//     return (  
+//         <div>
+//                 { Status() === true ?  <StatusIn/> : <StatusOut/>}
+//         </div>
+
+//     );
+// }
+
 export default Login_Signup;

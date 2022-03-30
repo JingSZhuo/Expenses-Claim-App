@@ -1,5 +1,5 @@
 import {Link} from "react-router-dom";
-import { getAuth } from "firebase/auth";
+import { getAuth, onAuthStateChanged } from "firebase/auth";
 import { collection, doc, setDoc, getDocs, getDoc, query, where } from "firebase/firestore";
 import db, { auth, storage } from "../firebase";
 import "../main.css";
@@ -11,6 +11,11 @@ function AddClaimPage() {
     const [image, setImage] = useState(null);
     const [imageName, setImageName] = useState(null)
     const [imageType, setImageType] = useState(null)
+
+    //Auth 
+    const auth = getAuth()
+    const getUser = auth.currentUser
+
 
     const uploadImage = () => {
 
@@ -24,7 +29,7 @@ function AddClaimPage() {
         console.log(image)
 
         const storage = getStorage();           //Access storage
-        const storageRef = ref(storage, "images/"+`${imageName}` )      //If storage file/directory doesnt exist..create one
+        const storageRef = ref(storage, `${getUser.email}/`+`${imageName}` )      //If storage file/directory doesnt exist..create one
 
         uploadBytes(storageRef, image, metadata)            //Upload file with metadata
     }
@@ -34,19 +39,25 @@ function AddClaimPage() {
         const auth = getAuth();
         const user = auth.currentUser;
     
-        const getCollection = collection(db, user.email)
-        const generateID = doc(getCollection)
+        const getCollection = collection(db, user?.email)
+        const generateID = doc(getCollection)                       //Creating new doc
 
         await setDoc(generateID, {
             ClaimId: generateID.id ,
             Claim: document.getElementById("title").value,
             Amount: document.getElementById("amount").value,
+            Description: document.getElementById("description").value,
+            SortCode: document.getElementById("sortcode").value,
+            AccountNumber: document.getElementById("accountnumber").value
         }) 
 
         /*Reset input fields after submit */
-        document.getElementById("title").reset();
-        document.getElementById("amount").reset();
-        document.getElementById("evidence").reset();
+        document.getElementById("title").value = "";
+        document.getElementById("amount").value = "";
+        document.getElementById("description").value = "";
+        document.getElementById("evidence").value = "";
+        document.getElementById("sortcode").value = "";
+        document.getElementById("accountnumber").value = "";
     }
    
     return( 
@@ -69,6 +80,15 @@ function AddClaimPage() {
                     <h3>Enter Amount</h3>
                     <input id="amount" type="number" placeholder="Enter Amount " ></input>
 
+                    <h3>Description</h3>
+                    <input id="description" type="text" placeholder="Enter claim description" ></input>
+
+                    <h3>Sort Code</h3>
+                    <input id="sortcode" type="number" placeholder="Enter Sort Code" ></input>
+
+                    <h3>Account Number</h3>
+                    <input id="accountnumber" type="number" placeholder="Enter Account Number" ></input>
+
                     <br></br>
                     <h3>Upload</h3>
                     <input id="evidence" type="file" placeholder="No file uploaded" 
@@ -85,4 +105,33 @@ function AddClaimPage() {
     )
 }
 
-export default AddClaimPage;
+
+function StatusOut() {
+    return(<h2>Not Logged In!!!</h2>)
+}
+ 
+function Status() {                         //Checks if user is logged in and renders based on login status
+    const  [loginStatus, setLoginStatus] = useState(false)
+  
+    const auth = getAuth();
+    onAuthStateChanged(auth, (user) => {          //Check if user is logged in
+      if (user) {
+        setLoginStatus(true); 
+      } else {
+        setLoginStatus(false); 
+      }
+    })
+    return loginStatus
+}
+
+const viewClaim = () => {
+
+    return (  
+        <div>
+                { Status() === true ?  <AddClaimPage/> : <StatusOut/>}
+        </div>
+
+    );
+}
+ 
+export default viewClaim;

@@ -30,7 +30,7 @@ function StatusIn(){
             <Link className='navbuttons' to="/LoginSignup" >Login and Sign-Up</Link>
         </nav>
 
-        <h2>Logged in!</h2>
+        <h2>My Claims</h2>
 
         <div>
           {data.map((testing) => {
@@ -38,11 +38,10 @@ function StatusIn(){
 
             return (
               <div>
-                <a>Data: {testing.ClaimId}</a>
-                <a>, {testing.Claim}</a>
-                <a>, £{testing.Amount}</a>
-                <a>, ID: {testing.id}</a>
-                , <Link to="/editClaim" state={testing.id} >Edit </Link>
+                <a>Claim: {testing.Claim}</a>,
+                <a>Amount: £{testing.Amount}</a>,
+                <a>ClaimID: {testing.id}</a>
+                , <Link to="/editClaim" state={testing.id} >Edit Claim</Link>
               </div>
             );
           })}
@@ -55,15 +54,15 @@ function StatusOut() {
     return(<h2>Not Logged In!!!</h2>)
 }
  
-function Status() {
+function Status() {                         //Checks if user is logged in and renders based on login status
     const  [loginStatus, setLoginStatus] = useState(false)
   
     const auth = getAuth();
     onAuthStateChanged(auth, (user) => {          //Check if user is logged in
       if (user) {
-        setLoginStatus(true); 
+        setLoginStatus(true); console.log("TRUE")
       } else {
-        setLoginStatus(false); 
+        setLoginStatus(false);  console.log("FALSE")
       }
     })
     return loginStatus
@@ -74,7 +73,6 @@ const viewClaim = () => {
     return (  
         <div>
                 { Status() === true ?  <StatusIn/> : <StatusOut/>}
-                <h1>Claims page</h1>
         </div>
 
     );

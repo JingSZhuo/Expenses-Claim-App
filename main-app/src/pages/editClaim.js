@@ -24,8 +24,8 @@ function EditClaimPage()  {
 
     useEffect(() => {
         const getData = async () => {
-          const data_1 = await getDocs(q);
-          fetchData(data_1.docs.map((doc) => ({...doc.data(), id: doc.id })))
+          const data = await getDocs(q);
+          fetchData(data.docs.map((doc) => ({...doc.data(), id: doc.id})))
         }
         getData()
     }, [])
@@ -55,7 +55,6 @@ function EditClaimPage()  {
                 </div>
                 )
             })}
-            
         </>
      );
 }

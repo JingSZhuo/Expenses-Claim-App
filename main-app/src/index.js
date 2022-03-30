@@ -9,6 +9,7 @@ import LoginSignup from "./pages/LoginSignUp.js";
 import Claim from "./pages/viewClaims.js"
 import AddClaim from "./pages/addClaim.js";
 import EditClaim from "./pages/editClaim.js";
+import AdminPage from './pages/adminPage';
 
 const rootElement = document.getElementById('root');
 
@@ -21,7 +22,8 @@ ReactDOM.render(
               <Route path="LoginSignup" element={ <LoginSignup/> } />
               <Route path='viewClaim' element={ <Claim/> } />
               <Route path='addClaim' element={ <AddClaim/> } />
-              <Route exact path='/editClaim' element={ <EditClaim/> } />
+              <Route path='/editClaim' element={ <EditClaim/> } />
+              <Route path='/admin' element={ <AdminPage/> } />
             </Routes>
   </BrowserRouter>,
   rootElement
