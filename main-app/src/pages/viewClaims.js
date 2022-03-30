@@ -39,10 +39,13 @@ function StatusIn(){
             return (
               <div>
                 <a>Claim: {testing.Claim}</a>,
-                <a>Amount: £{testing.Amount}</a>,
-                <a>ClaimID: {testing.id}</a>
-                <a>TestMAP: {testing.test.testmap}</a>
+                <a> Claim Description: {testing.Description}</a>
+                <a> Amount: £{testing.Amount}</a>,
+                <a> Sort Code: {testing.SortCode}</a>,
+                <a> Account No: {testing.AccountNumber}</a>,
+                <a> ClaimID: {testing.id}</a>
                 , <Link to="/editClaim" state={testing.id} >Edit Claim</Link>
+                <br></br>
               </div>
             );
           })}

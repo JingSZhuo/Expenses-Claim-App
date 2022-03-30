@@ -52,7 +52,6 @@ function EditClaimPage()  {
                     <a>{data.ClaimId}</a>
                     <a>, {data.Claim}</a>
                     <a>, {data.Amount}</a>
-                    <a>, {data.test.testmap}</a>
                 </div>
                 )
             })}
