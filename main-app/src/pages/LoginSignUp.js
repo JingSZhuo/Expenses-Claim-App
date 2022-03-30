@@ -43,8 +43,7 @@ function Login_Signup() {
         const getCurrentUser = authorize.currentUser
     
         //Collection state
-        const createCollection = collection(db, getCurrentUser.email)
-    
+        const createCollection = collection(db, getCurrentUser.email)  //User getElementById of email field
     }
     
     /*Register and Login Functions*/ 
@@ -73,6 +72,7 @@ function Login_Signup() {
     const logout = async () => {
         await signOut(auth)
     };
+    
 
      return (  
         <>
@@ -81,9 +81,10 @@ function Login_Signup() {
                 <Link className='navbuttons' to="/about" >About</Link>
                 <Link className='navbuttons' to="/viewClaim" >View Claims</Link>
                 <Link className='navbuttons' to="/addClaim" >Add claims</Link>
+                <Link className='loginsignupbutton' to="/LoginSignup" >Login and Sign-Up</Link>
             </nav>
 
-            <h1>New empty page</h1>
+            <h1>Login/Sign up page</h1>
             <br></br>
 
 

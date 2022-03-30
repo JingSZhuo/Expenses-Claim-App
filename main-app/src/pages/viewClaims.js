@@ -72,7 +72,7 @@ function Status() {                         //Checks if user is logged in and re
       }
     })
     return loginStatus
-  }
+}
 
 const viewClaim = () => {
 
