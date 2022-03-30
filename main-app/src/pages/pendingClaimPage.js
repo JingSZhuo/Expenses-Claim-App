@@ -2,6 +2,7 @@ import { collection, collectionGroup, getDocs, query, setDoc, where, doc, update
 import { useEffect, useState, } from "react";
 import { Link } from 'react-router-dom';
 import db from "../firebase";
+import { onAuthStateChanged, getAuth} from "firebase/auth";
 
 const PendingClaimPage = () => {
 
@@ -22,7 +23,7 @@ const PendingClaimPage = () => {
           console.log("Email: "+email +", ClaimId: " + ClaimId) 
           const collectionRef = collection(db, email)
           await updateDoc(doc(collectionRef, ClaimId), {
-            Approve: "Approved!"
+            Approve: "Approved"
           })
         }
         catch (e) {
@@ -35,7 +36,7 @@ const PendingClaimPage = () => {
         console.log("Email: "+email +", ClaimId: " + ClaimId) 
         const collectionRef = collection(db, email)
         await updateDoc(doc(collectionRef, ClaimId), {
-          Approve: "Rejected!"
+          Approve: "Rejected"
         })
       }
       catch (e) {
@@ -66,5 +67,35 @@ const PendingClaimPage = () => {
         </body>
      );
 }
- 
-export default PendingClaimPage;
+
+
+
+function StatusOut() {
+  return(<h2>Not Admin!!!</h2>)
+}
+
+function Status() {                         //Checks if user is logged in and renders based on login status
+  const  [loginStatus, setLoginStatus] = useState(false)
+
+  const auth = getAuth();
+  onAuthStateChanged(auth, (user) => {          //Check if user is logged in
+    if (user.email === "linemanager@gmail.com") {
+      setLoginStatus(true); //console.log("TRUE")
+    } else {
+      setLoginStatus(false);  //console.log("FALSE")
+    }
+  })
+  return loginStatus
+}
+
+const viewClaim = () => {
+
+  return (  
+      <div>
+              { Status() === true ?  <PendingClaimPage/> : <StatusOut/>}
+      </div>
+
+  );
+}
+
+export default viewClaim;
