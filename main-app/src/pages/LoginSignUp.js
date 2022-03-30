@@ -51,7 +51,9 @@ function Login_Signup() {
 
     const register = async () => {
         try{
-            await createUserWithEmailAndPassword(auth, registerEmail, registerPassword)
+            await createUserWithEmailAndPassword(auth, registerEmail, registerPassword).then(() => {
+                navigate('/')
+            })
             } catch (error) { 
                 console.log(error.message) 
             }

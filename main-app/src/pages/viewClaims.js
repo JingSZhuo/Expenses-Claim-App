@@ -4,7 +4,7 @@ import { onAuthStateChanged, getAuth} from "firebase/auth";
 import { collection, getDoc ,getDocs, doc, setDoc } from "firebase/firestore";
 import {Link} from "react-router-dom";
     
-function StatusIn(){
+function ViewClaim(){
     
     //...............................................................................
     const auth = getAuth();
@@ -26,8 +26,9 @@ function StatusIn(){
         <nav className="navbar">
             <Link className='navbuttons' to="/" >Home</Link>
             <Link className='navbuttons' to="/about" >About</Link>
+            <Link className='navbuttons' to="/viewClaim" >View Claims</Link>
             <Link className='navbuttons' to="/addClaim" >Add Claim</Link>
-            <Link className='navbuttons' to="/LoginSignup" >Login and Sign-Up</Link>
+            <Link className='loginsignupbutton' to="/LoginSignup" >Login and Sign-Up</Link>
         </nav>
 
         <h2>My Claims</h2>
@@ -43,8 +44,9 @@ function StatusIn(){
                 <a> Amount: £{testing.Amount}</a>,
                 <a> Sort Code: {testing.SortCode}</a>,
                 <a> Account No: {testing.AccountNumber}</a>,
-                <a> ClaimID: {testing.id}</a>
-                , <Link to="/editClaim" state={testing.id} >Edit Claim</Link>
+                <a> ClaimID: {testing.id}</a>,
+                <a> Status: {testing.Approve}</a>
+               {/* , <Link to="/editClaim" state={testing.id} >Edit Claim</Link>*/}
                 <br></br>
               </div>
             );
@@ -76,7 +78,7 @@ const viewClaim = () => {
 
     return (  
         <div>
-                { Status() === true ?  <StatusIn/> : <StatusOut/>}
+                { Status() === true ?  <ViewClaim/> : <StatusOut/>}
         </div>
 
     );

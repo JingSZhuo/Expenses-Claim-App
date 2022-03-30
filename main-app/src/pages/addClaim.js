@@ -82,7 +82,8 @@ function AddClaimPage() {
                 <Link className='navbuttons' to="/" >Home</Link>
                 <Link className='navbuttons' to="/about" >About</Link>
                 <Link className='navbuttons' to="/viewClaim" >View Claims</Link>
-                <Link className='navbuttons' to="/LoginSignup">Login and Sign-Up</Link>
+                <Link className='navbuttons' to="/addClaim" >Add Claim</Link>
+                <Link className='loginsignupbutton' to="/LoginSignup">Login and Sign-Up</Link>
             </nav>
         
             <h1>Add Claim</h1>

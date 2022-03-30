@@ -6,6 +6,7 @@ const adminPage = () => {
         <body>
             <nav className="navbar">
                 <Link className='navbuttons' to="/" >Home</Link>
+                <Link className='navbuttons' to="/about" >About</Link>
                 <Link className='navbuttons' to="/pendingClaim" >Approve Claims</Link>
             </nav>
 
