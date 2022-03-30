@@ -4,22 +4,28 @@ import App from './Homepage';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 
 //pages
-import Create1 from "./pages/nextpage.js";
+import About from "./pages/aboutPage.js";
 import LoginSignup from "./pages/LoginSignUp.js";
 import Claim from "./pages/viewClaims.js"
 import AddClaim from "./pages/addClaim.js";
+import EditClaim from "./pages/editClaim.js";
+import AdminPage from './pages/adminPage';
+import PendingClaimPage from './pages/pendingClaimPage';
 
-const rootElement = document.getElementById('root')
+const rootElement = document.getElementById('root');
 
 
 ReactDOM.render(
   <BrowserRouter>
             <Routes>
               <Route path="/" element={<App/>} />             //to keep certain page components persistent throughout pages - nest inside App route
-              <Route path="name1" element={<Create1 />} />    //Seperate pages with new content
-              <Route path="LoginSignup" element={ <LoginSignup /> } />
-              <Route path='claimPage' element={ <Claim/> } />
+              <Route path="about" element={<About/>} />    //Seperate pages with new content
+              <Route path="LoginSignup" element={ <LoginSignup/> } />
+              <Route path='viewClaim' element={ <Claim/> } />
               <Route path='addClaim' element={ <AddClaim/> } />
+              <Route path='/editClaim' element={ <EditClaim/> } />
+              <Route path='/admin' element={ <AdminPage/> } />
+              <Route path='/pendingClaim' element={ <PendingClaimPage/> }  />
             </Routes>
   </BrowserRouter>,
   rootElement
