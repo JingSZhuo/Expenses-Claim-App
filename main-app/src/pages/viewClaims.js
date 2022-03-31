@@ -1,22 +1,22 @@
 import { useEffect, useState, } from "react";
 import db from "../firebase";
 import { onAuthStateChanged, getAuth} from "firebase/auth";
-import { collection, getDoc ,getDocs, doc } from "firebase/firestore";
+import { collection, getDoc ,getDocs, doc, setDoc } from "firebase/firestore";
 import {Link} from "react-router-dom";
     
-function StatusIn(){
+function ViewClaim(){
     
     //...............................................................................
-    const auth2 = getAuth();
-    const user2 = auth2.currentUser;
+    const auth = getAuth();
+    const user = auth.currentUser;
 
     const [data, getData] = useState([])
-    const usersCollectionRef = collection(db, user2.email)
+    const usersCollectionRef = collection(db, user.email)
 
     useEffect(() => {
       const getData1 = async () => {
         const data_1 = await getDocs(usersCollectionRef);
-        getData(data_1.docs.map((doc1) => ({...doc1.data(), id: doc1.id })))
+        getData(data_1.docs.map((doc) => ({...doc.data(), id: doc.id })))
       }
       getData1()
     }, [])
@@ -24,24 +24,34 @@ function StatusIn(){
     return(
     <>
         <nav className="navbar">
-              <Link className='navbuttons' to="/addClaim" >Add Claim</Link>
-              <Link className='navbuttons' to="/LoginSignup" >Login and Sign-Up</Link>
+            <Link className='navbuttons' to="/" >Home</Link>
+            <Link className='navbuttons' to="/about" >About</Link>
+            <Link className='navbuttons' to="/viewClaim" >View Claims</Link>
+            <Link className='navbuttons' to="/addClaim" >Add Claim</Link>
+            <Link className='loginsignupbutton' to="/LoginSignup" >Login and Sign-Up</Link>
         </nav>
 
-        <h2>Logged in!</h2>
+        <h2>My Claims</h2>
 
         <div>
           {data.map((testing) => {
+            //Implement function for ID for each claim?
+
             return (
               <div>
-                <a>Data: {testing.ClaimId}</a>
-                <a>, {testing.Claim}</a>
-                <a>, £{testing.Amount}</a>
+                <a>Claim: {testing.Claim}</a>,
+                <a> Claim Description: {testing.Description}</a>
+                <a> Amount: £{testing.Amount}</a>,
+                <a> Sort Code: {testing.SortCode}</a>,
+                <a> Account No: {testing.AccountNumber}</a>,
+                <a> ClaimID: {testing.id}</a>,
+                <a> Status: {testing.Approve}</a>
+               {/* , <Link to="/editClaim" state={testing.id} >Edit Claim</Link>*/}
+                <br></br>
               </div>
             );
           })}
         </div>
-        <></>
     </>
     )
 }
@@ -50,18 +60,17 @@ function StatusOut() {
     return(<h2>Not Logged In!!!</h2>)
 }
  
-function Status() {
+function Status() {                         //Checks if user is logged in and renders based on login status
     const  [loginStatus, setLoginStatus] = useState(false)
   
     const auth = getAuth();
     onAuthStateChanged(auth, (user) => {          //Check if user is logged in
       if (user) {
-        setLoginStatus(true); 
+        setLoginStatus(true); console.log("TRUE")
       } else {
-        setLoginStatus(false); 
+        setLoginStatus(false);  console.log("FALSE")
       }
     })
-    
     return loginStatus
   }
 
@@ -69,8 +78,7 @@ const viewClaim = () => {
 
     return (  
         <div>
-                { Status() === true ?  <StatusIn/> : <StatusOut/>}
-                <h1>Claims page</h1>
+                { Status() === true ?  <ViewClaim/> : <StatusOut/>}
         </div>
 
     );
