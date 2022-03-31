@@ -58,13 +58,13 @@ body {
 }
 
 .navbar a:hover {
-  background-color: #3AA7A9;
+  background-color: #2cc7f2;
   box-shadow: inset 2px 2px 3px rgb(102, 102, 102);
   transition: 1s;
 }
 
 .dropdown:hover .dropbtn{
-  background-color: #3AA7A9;
+  background-color: #2cc7f2;
   box-shadow: inset 2px 3px rgb(102, 102, 102);
   transition: 1s;
 }
@@ -97,7 +97,7 @@ body {
 
 .divider{
   padding: 5px;
-  background-color: #3AAFA9;
+  background-color: #2cc7f2;
   box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
 }
 
@@ -134,7 +134,7 @@ body {
   height: 300px;
   perspective: 1000px; 
   margin-left: 70px;
-
+  
   
 }
 
@@ -161,6 +161,7 @@ body {
   -webkit-backface-visibility: hidden;
   backface-visibility: hidden;
   box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  
 
 }
 
@@ -168,12 +169,13 @@ body {
 .flip-card-front {
   background-color: #DEF2F1;
   color: #17252A;
-
+  background-image: url("/src/images/homepage-background.jpg");
+  background-position: center;
 }
 
 
 .flip-card-back {
-  background-color: #3AA7A9;
+  background-color: #2cc7f2;
   color: white;
   transform: rotateY(180deg);
   
@@ -212,8 +214,9 @@ body {
 .home-page-section{
   text-align: center;
   padding: 341px;
+  background-image: url("/src/images/homepage-background.jpg");
   background-color: #9cdad6;
-  animation: transform 1.5s;
+  animation: transform 1.3s;
 }
 
 
@@ -225,7 +228,7 @@ body {
 .home-title{
   font-size: 100px;
   color: #17252A;
-  animation: home-title-animation 1.8s;
+  animation: home-title-animation 2s;
   text-shadow: 2px 4px 5px rgb(139, 139, 139);
 }
 
