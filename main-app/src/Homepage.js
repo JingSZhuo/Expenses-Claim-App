@@ -44,6 +44,7 @@ function App() {
           <div class="card-section">
             <div class="flip-card">
               <div class="flip-card-inner">
+              <div class="divider"></div>
                 <div class="flip-card-front">
                   <div class="card-text">
                     <FontAwesomeIcon icon={faPlaneArrival} class="icon-img"/>
@@ -63,12 +64,15 @@ function App() {
 
             <div class="flip-card">
               <div class="flip-card-inner">
+              <div class="divider"></div>
                 <div class="flip-card-front">
                   <div class="card-text">
-                    <FontAwesomeIcon icon={faFileShield} class="icon-img"/>
+                    <FontAwesomeIcon icon={faFileShield} class="FileShield"/>
                     <h1 class="card-title">Paperless</h1>
                   </div>
+                
                 </div>
+                
                 <div class="flip-card-back">
                   <div class="card-text card-text-back">
                   <h1>Paperless:</h1>
@@ -77,10 +81,12 @@ function App() {
                   </div>
                 </div>
               </div>
+              
             </div>
 
             <div class="flip-card">
               <div class="flip-card-inner">
+              <div class="divider"></div>
                 <div class="flip-card-front">
                   <div class="card-text">
                     <FontAwesomeIcon icon={faMoneyBillTransfer} class="icon-img"/>
