@@ -285,7 +285,7 @@ body {
   }
   
   .navbar a {
-    font-size: 0.5rem;
+    font-size: 12px;
     color: white;
     text-align: center;
     padding: 0.875rem 1rem;
@@ -300,7 +300,7 @@ body {
   }
   
   .dropdown .dropbtn {
-    font-size: 0.5rem;  
+    font-size: 12px;  
   }
   
   
@@ -341,11 +341,21 @@ body {
       font-size: 50px;
     }
 
+    @keyframes home-title-animation {
+      0% {opacity: 0;}
+      50% {opacity: 0; transform: translateY(-100px);}
+      100% {opacity: 1; transform: translateY(0px);}
+    }
+
     @keyframes home-desc-animation{
       0% { opacity: 0;}
       70% {opacity: 0; transform: translateX(300px);}
       80% {opacity: 0; transform: translateX(100px);}
       100% {opacity: 1; transform: translateX(0px);}
+    }
+
+    .flip-card{
+      margin-bottom: 10px;
     }
 
     .card-title{
@@ -369,6 +379,10 @@ body {
 
     .flip-card-front{
       background-position: 10% 20%;
+    }
+
+    .divider{
+
     }
 }
 
