@@ -51,7 +51,7 @@ const PendingClaimPage = () => {
                 <Link className='navbuttons' to="/about" >About</Link>
                 <Link className='navbuttons' to="/admin" >Admin</Link>
             </nav>
-
+            <div class="divider"></div>
             <h1>CLAIMS TO APPROVE</h1>
 
             {data.map((data) => {

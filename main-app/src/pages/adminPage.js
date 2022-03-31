@@ -10,6 +10,7 @@ const AdminPage = () => {
                 <Link className='navbuttons' to="/about" >About</Link>
                 <Link className='navbuttons' to="/pendingClaim" >Approve Claims</Link>
             </nav>
+            <div class="divider"></div>
 
             <h1>ADMIN PAGE</h1>
             <br></br>
