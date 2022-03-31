@@ -100,7 +100,7 @@ function App() {
           </div>
 
 
-
+          <div class="footer"><h1>footer</h1></div>
 
             <Outlet/>
 

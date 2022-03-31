@@ -59,11 +59,13 @@ body {
 
 .navbar a:hover {
   background-color: #3AA7A9;
+  box-shadow: inset 2px 2px 3px rgb(102, 102, 102);
   transition: 1s;
 }
 
 .dropdown:hover .dropbtn{
   background-color: #3AA7A9;
+  box-shadow: inset 2px 3px rgb(102, 102, 102);
   transition: 1s;
 }
 
@@ -159,7 +161,6 @@ body {
   -webkit-backface-visibility: hidden;
   backface-visibility: hidden;
   box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
-  border-radius: 10px;
 
 }
 
@@ -225,6 +226,7 @@ body {
   font-size: 100px;
   color: #17252A;
   animation: home-title-animation 1.8s;
+  text-shadow: 2px 4px 5px rgb(139, 139, 139);
 }
 
 .home-description{
@@ -245,4 +247,10 @@ body {
   0% {opacity: 0;}
   50% {opacity: 0; transform: translateY(-100px);}
   100% {opacity: 1; transform: translateY(0px);}
+}
+
+/* Footer */
+.footer{
+  padding: 100px;
+  background-color: #17252A;
 }
