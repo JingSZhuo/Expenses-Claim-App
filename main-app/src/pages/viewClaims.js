@@ -70,7 +70,7 @@ function ViewClaim(){
                 <a> Status: {testing.Approve}</a>
                 <br></br>
                
-                <div className="filescontainer">{showFiles(testing.NoFiles, testing.URLS)}</div>
+                {/* <div className="filescontainer">{showFiles(testing.NoFiles, testing.URLS)}</div> */}
                 {/*<a> URLS: {testing.URLS[0]} , {testing.URLS[1]}</a>*/}
                 <br></br>
                {/* , <Link to="/editClaim" state={testing.id} >Edit Claim</Link>*/}
