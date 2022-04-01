@@ -31,27 +31,20 @@ function ViewClaim(){
 
       return [...Array(numberOfFiles)].map((e, i) => 
         <div key={i}>
-            <img className="files" src={arrayOfURLS[i]} />
+            <embed className="files"  src={`${arrayOfURLS[i]}`}/>
         </div>);
     }
     
     return(
     <>
-    <nav className="navbar">
-        <Link className='navbuttons' to="/" >Home</Link>
-        <Link className='navbuttons' to="/about" >About</Link>
-          <div class="dropdown">
-              <button class="dropbtn">Claims
-               <i class="fa fa-caret-down"></i>
-              </button>
-              <div class="dropdown-content">
-                  <Link className='navbuttons' to="/viewClaim" >View Claims</Link>
-                  <Link className='navbuttons' to="/addClaim">Add New Claim</Link>
-              </div>
-        </div>
-        <Link className='loginsignupbutton' to="/LoginSignup" onClick={logout} >Logout</Link> 
-      </nav>
-      <div class="divider"></div>
+        <nav className="navbar">
+            <Link className='navbuttons' to="/" >Home</Link>
+            <Link className='navbuttons' to="/about" >About</Link>
+            <Link className='navbuttons' to="/viewClaim" >View Claims</Link>
+            <Link className='navbuttons' to="/addClaim" >Add Claim</Link>
+            <Link className='loginsignupbutton' to="/LoginSignup" onClick={logout} >Logout</Link> 
+        </nav>
+
         <h2>My Claims</h2>
 
         <div>
@@ -69,8 +62,9 @@ function ViewClaim(){
                 <a> ClaimID: {testing.id}</a>,
                 <a> Status: {testing.Approve}</a>
                 <br></br>
-               
-                {/* <div className="filescontainer">{showFiles(testing.NoFiles, testing.URLS)}</div> */}
+                <a>Files:</a>
+                <br></br>
+                <div className="filescontainer">{showFiles(testing.NoFiles, testing.URLS)}</div>
                 {/*<a> URLS: {testing.URLS[0]} , {testing.URLS[1]}</a>*/}
                 <br></br>
                {/* , <Link to="/editClaim" state={testing.id} >Edit Claim</Link>*/}
