@@ -16,7 +16,7 @@ body {
 }
 
 
-/*Navigation bar*/
+/******************************************************************************** navigation bar ******************************************************************************** */
 
 .navbuttons {
   padding-left: 2rem;
@@ -109,19 +109,28 @@ body {
   background-color: #2cc7f2;
   box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
 }
-/*View Claims page*/
+
+
+
+/******************************************************************************** view claims page ******************************************************************************** */
 
 .filescontainer {
   display: inline-flex;
   flex-direction: row;
-  padding: 5;
 }
 
 .files {
-  width: 150px;
-  height: 150px;
+  width: 200px;
+  height: 200px;
+  padding: 10px;
 }
 
+embed {
+  overflow-x: hidden;
+  overflow-y: hidden;
+  width: auto;
+  height: auto;
+}
 
 /*Claim form*/
 
@@ -141,7 +150,7 @@ body {
   background-color: rgba(38, 37, 37, 0.576);
 }
 
-/* HOME PAGE SECTION */
+/******************************************************************************** Home page ******************************************************************************** */
 
 /* Flip Cards */
 .flip-card {
@@ -239,7 +248,8 @@ body {
 
 
 
-/* Home page title */
+/******************************************************************************** Home page title ******************************************************************************** */
+
 .home-page-section{
   text-align: center;
   padding: 341px;
@@ -399,7 +409,9 @@ body {
     }
 }
 
-/* ABOUT SECTION */
+
+/******************************************************************************** About page ******************************************************************************** */
+
 .main-body-container{
   padding: 0px 0px 0px 0px;
   height: 800px;

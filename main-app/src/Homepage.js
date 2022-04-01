@@ -50,8 +50,8 @@ function App() {
                      <i class="fa fa-caret-down"></i>
                     </button>
                     <div class="dropdown-content">
-                        <Link className='navbuttons' to="/viewClaim" >View Claims</Link>
-                        <Link className='navbuttons' to="/addClaim">Add New Claim</Link>
+                        {loginStatus === true ?<Link className='navbuttons' to="/viewClaim" >View Claims</Link> :  <Link className='loginsignupbutton' to="/LoginSignup">View Claims</Link>}
+                        {loginStatus === true ? <Link className='navbuttons' to="/addClaim">Add New Claim</Link> :  <Link className='loginsignupbutton' to="/LoginSignup">Add New Claim</Link>}
                     </div>
               </div>
               {loginStatus === true ? <Link className='loginsignupbutton' to="/LoginSignup" onClick={logout} >Logout</Link> :  <Link className='loginsignupbutton' to="/LoginSignup">Login and Sign-Up</Link>}

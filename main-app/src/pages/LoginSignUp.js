@@ -117,7 +117,7 @@ function Login_Signup() {
                 <h3>User - logged in</h3>
 
 
-                <button onClick={logout}>Logout</button>
+                {/* <button onClick={logout}>Logout</button> */}
             </div>
             <br/>
                 Logged in as:  {user?.email}

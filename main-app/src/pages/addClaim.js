@@ -9,6 +9,10 @@ import { async } from "@firebase/util";
 
 function AddClaimPage() {
 
+    function ReloadPageOnce () {
+        window.location.reload()
+    }
+
     // const [image, setImage] = useState(null);
     // const [imageName, setImageName] = useState(null)
     // const [imageType, setImageType] = useState(null)
@@ -19,10 +23,14 @@ function AddClaimPage() {
     const [length, setLength] = useState(0)
     const [urls, setUrls] = useState([])
     const [docID, setdocID] = useState()
-    
+    const [docIDAdmin, setDocIDAdmin] = useState()
     //Auth 
     const auth = getAuth()
     const getUser = auth.currentUser
+
+    // useEffect(() => {
+    //     ReloadPageOnce()
+    // }, [])
 
     useEffect(() => { 
         //console.log("EEE: " , urls, " ID:", docID)
@@ -33,7 +41,7 @@ function AddClaimPage() {
         const auth = getAuth();
         const user = auth.currentUser;
 
-        const writeIntoDocument = doc(collection(db, "Employee"), docID)
+        const writeIntoDocument = doc(collection(db, "Employee"), docIDAdmin)
         const writeIntoDocumentTwo = doc(collection(db, user?.email),  docID)
 
         // {urls.map((data) => {
@@ -41,10 +49,14 @@ function AddClaimPage() {
         // } )}
         console.log("urls: ", urls)
 
-        await updateDoc( writeIntoDocumentTwo, {
-                URLS: urls ,
+        await updateDoc( writeIntoDocument, {
+            URLS: urls ,
             }
         )
+        await updateDoc( writeIntoDocumentTwo, {
+            URLS: urls ,
+        }
+    )
     }
 
     const UploadImage = async () => {
@@ -82,7 +94,11 @@ function AddClaimPage() {
         const generateEmail = doc(getCollection2)
 
         const generatedId = generateID.id        //Generated ID in variable
+        const generatedIdForAdmin = generateEmail.id
+
         setdocID(generatedId)
+        setDocIDAdmin(generatedIdForAdmin)
+
 
         const dateNow = Date.now()
 
@@ -109,6 +125,7 @@ function AddClaimPage() {
             Approve: "",
             email: user.email,
             URLS: "" ,
+            NoFiles: length
         })
 
         /*Reset input fields after submit */
