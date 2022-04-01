@@ -23,9 +23,8 @@ function AddClaimPage() {
     const [length, setLength] = useState(0)
     const [urls, setUrls] = useState([])
     const [docID, setdocID] = useState()
-    const [docIDAdmin, setDocIDAdmin] = useState("0")
+    const [docIDAdmin, setDocIDAdmin] = useState()
 
-    const [x, setX] = useState()
     //Auth 
     const auth = getAuth()
     const getUser = auth.currentUser
@@ -36,10 +35,8 @@ function AddClaimPage() {
 
     useEffect(() => { 
         //console.log("EEE: " , urls, " ID:", docID)
-        //UploadFile()
-        UploadFile()
         AddURLToDB()
-    }, [x])
+    }, [urls, docID, docIDAdmin])
 
     async function AddURLToDB () {
         const auth = getAuth();
@@ -65,7 +62,7 @@ function AddClaimPage() {
 
         const storage = getStorage();           //Access storage
 
-        const arrayOfUrls = []
+        
         for (let i = 0; i < length; i++ ) {
             const storageRef = ref(storage, `${getUser.email}/`+`${multipleImageNames[i]}` )      //If storage file/directory doesnt exist..create one
             const metadata = {
@@ -74,13 +71,13 @@ function AddClaimPage() {
         
             uploadBytes(storageRef, multipleImages[i], metadata)
 
-            await getDownloadURL(storageRef).then((url) => { 
-                arrayOfUrls[i] = url
-            })
-            console.log(arrayOfUrls[i])    
+            // await getDownloadURL(storageRef).then((url) => { 
+            //     arrayOfUrls[i] = url
+            // })
+            // console.log(arrayOfUrls[i])    
         }
-        setUrls(arrayOfUrls)
-        setX("1")
+        // setUrls(arrayOfUrls)
+        console.log("URLS: ", urls)
     }
 
     async function AddtoDB(){
@@ -136,11 +133,33 @@ function AddClaimPage() {
         document.getElementById("evidence").value = "";
         document.getElementById("sortcode").value = "";
         document.getElementById("accountnumber").value = "";
+
+        const arrayOfUrls = []
+        for (let i = 0; i < length; i++ ) {
+            const storageRef = ref(storage, `${getUser.email}/`+`${multipleImageNames[i]}` )      //If storage file/directory doesnt exist..create one
+            // const metadata = {
+            //     contentType: `${multipleimageTypes[i]}`,
+            // }
+        
+            //uploadBytes(storageRef, multipleImages[i], metadata)
+    
+            await getDownloadURL(storageRef).then((url) => { 
+                arrayOfUrls[i] = url
+            })
+            console.log(arrayOfUrls[i])    
+        }
+        setUrls(arrayOfUrls)
+        console.log("URLS: ", urls)
     }
+
+    //_____________________________________________________________________________________________________________________________
+
 
     const logout = async () => {
         await signOut(auth)
       };
+
+    
    
     return( 
 
@@ -199,8 +218,10 @@ function AddClaimPage() {
                             }}>
                         </input>
                     <br></br>
-
-                    <input type="button" onClick={() => {  AddtoDB(); }} value={"upload"}></input>
+                    <input type="button" onClick={() => {  UploadFile(); }} value={"upload Image"}></input>
+                    <br></br>       
+                    <br></br>  
+                    <input type="button" onClick={() => {  AddtoDB(); }} value={"Submit"}></input>
                 </div>
             </form>
         </>
