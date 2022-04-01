@@ -1,4 +1,4 @@
-import { collection, collectionGroup, getDocs, query, setDoc, where, doc, updateDoc } from 'firebase/firestore';
+import { collection, collectionGroup, getDocs, query, setDoc, where, doc, updateDoc, orderBy } from 'firebase/firestore';
 import { useEffect, useState, } from "react";
 import { Link } from 'react-router-dom';
 import db from "../firebase";
@@ -8,11 +8,12 @@ const PendingClaimPage = () => {
 
 
     const [data, getData] = useState([])
-    const usersCollectionRef = collectionGroup(db, "Employee")
+    const usersCollectionRef = collection(db, "Employee")
+    const sort = query(usersCollectionRef, orderBy("ID", "asc"))
 
     useEffect(() => {
       const getData1 = async () => {
-        const data_1 = await getDocs(usersCollectionRef);
+        const data_1 = await getDocs(sort);
         getData(data_1.docs.map((doc) => ({...doc.data(), id: doc.id })))
       }
       getData1()
