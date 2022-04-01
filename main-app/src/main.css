@@ -36,7 +36,9 @@ body {
 /*View Claims page*/
 
 .filescontainer {
+  display: inline-flex;
   flex-direction: row;
+  padding: 5;
 }
 
 .files {

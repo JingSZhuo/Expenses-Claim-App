@@ -30,7 +30,7 @@ function ViewClaim(){
     function showFiles (numberOfFiles, arrayOfURLS) {
 
       return [...Array(numberOfFiles)].map((e, i) => 
-        <div className="filescontainer" key={i}>
+        <div key={i}>
             <img className="files" src={arrayOfURLS[i]} />
         </div>);
     }
@@ -62,7 +62,8 @@ function ViewClaim(){
                 <a> ClaimID: {testing.id}</a>,
                 <a> Status: {testing.Approve}</a>
                 <br></br>
-                {showFiles(testing.NoFiles, testing.URLS)}
+               
+                <div className="filescontainer">{showFiles(testing.NoFiles, testing.URLS)}</div>
                 {/*<a> URLS: {testing.URLS[0]} , {testing.URLS[1]}</a>*/}
                 <br></br>
                {/* , <Link to="/editClaim" state={testing.id} >Edit Claim</Link>*/}
