@@ -47,10 +47,10 @@ function AddClaimPage() {
 
         console.log("urls: ", urls)
 
-        // await updateDoc( writeIntoDocument, {           //!Doesnt update!
-        //     URLS: "urls" ,
-        //     }
-        // )
+        await updateDoc( writeIntoDocument, {          
+            URLS: urls ,
+            }
+        )
         await updateDoc( writeIntoDocumentTwo, {
             URLS: urls ,
             //URLS: "someurls" ,
@@ -202,7 +202,7 @@ function AddClaimPage() {
 
                     <br></br>
                     <h3>Upload</h3>
-                    <input id="evidence" type="file" placeholder="No file uploaded"
+                    <input id="evidence" type="file" placeholder="No file uploaded" multiple
                         onChange={(e) => { 
                             let max = e.target.files.length
                             const files = []; const fileNames = []; const fileTypes = []
