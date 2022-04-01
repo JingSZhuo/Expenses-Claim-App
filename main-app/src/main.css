@@ -138,7 +138,7 @@ body {
   width: 500px;
   height: 300px;
   perspective: 1000px; 
-  margin-left: 70px;
+  margin-left: 130px;
   
   
 }
@@ -229,8 +229,9 @@ body {
 /* Home page title */
 .home-page-section{
   text-align: center;
-  padding: 341px;
+  padding: 394px;
   background-image: url("/src/images/homepage-background.jpg");
+  background-position-y: -85px;
   background-color: #9cdad6;
   animation: home-transform 1.5s;
 }
@@ -238,7 +239,7 @@ body {
 
 @keyframes home-transform {
   0% {padding: 0px; opacity: 0;}
-  100% {padding: 341px; opacity: 1;}
+  100% {padding: 394px; opacity: 1;}
 }
 
 .home-title{
@@ -246,12 +247,14 @@ body {
   color: #17252A;
   animation: home-title-animation 2s;
   text-shadow: 2px 4px 5px rgb(139, 139, 139);
+
 }
 
 .home-description{
   font-size: 20px;
   color: #3a3b3b;
   animation: home-desc-animation 2s;
+
 
 }
 
@@ -274,8 +277,10 @@ body {
   background-color: #17252A;
 }
 
+
+/* HOME MOBILE PAGE */
+
 @media (max-width: 500px){
-  
   
   .navbar {
     overflow: hidden;
@@ -356,6 +361,7 @@ body {
 
     .flip-card{
       margin-bottom: 10px;
+      margin-left: 65px;
     }
 
     .card-title{
@@ -381,26 +387,34 @@ body {
       background-position: 10% 20%;
     }
 
-    .divider{
 
-    }
 }
 
 /* ABOUT SECTION */
-.main-body-container{
+.about-main-container{
+  animation: about-transform 1s;
+}
+
+.about-page{
   padding: 0px 0px 0px 0px;
-  height: 800px;
+  height: 845px;
   margin: 70px 300px 0px 300px;
   box-shadow: 0px 10px 10px 10px rgba(0,0,0,0.2);
   background-color: white;
-  animation: about-transform 1s;
+  animation: about-page-transform 1.5s;
+}
+
+@keyframes about-page-transform{
+  0% {height: 0px;}
+  60% {height: 0px;}
+  100% {height: 845px;}
 }
 
 .about-title{
   color: #17252A;
   padding: 70px 70px 30px 70px;
   font-size: 50px;
-  animation: about-title-fadein 1.5s;
+  animation: about-title-fadein 2.3s;
 }
 
 .title-bar{
@@ -409,12 +423,13 @@ body {
 }
 .about-body{
   background-image: url("/src/images/homepage-background.jpg");
+  height: 1200px;
 }
 
 .about-text{
   padding: 0px 70px;
   color: #17252A;
-  animation: about-text-fadein 2s;
+  animation: about-text-fadein 2.3s;
 }
 
 @keyframes about-transform {
@@ -434,22 +449,26 @@ body {
   100% {opacity: 1; transform: translateY(0px);}
 }
 
+/* ABOUT MOBILE PAGE */
+
 @media (max-width: 500px){
 
-  .main-body-container{
+  .about-page{
     margin: 30px 30px 0px 30px;
-    animation: about-transform 1s;
+    animation: about-page-transform 2s;
   }
+
+
 
   .about-text{
     padding: 0px 30px;
-    animation: about-text-fadein 2s;
+    animation: about-text-fadein 3s;
   }
 
   .about-title{
     font-size: 30px;
     padding: 30px 30px 20px 30px;
-    animation: about-title-fadein 1.5s;
+    animation: about-title-fadein 3s;
   }
 
   @keyframes about-transform{

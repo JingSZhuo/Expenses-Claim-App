@@ -5,6 +5,10 @@ import db, { auth, storage } from "../firebase";
 import "../main.css";
 import { getDownloadURL, getStorage, ref, uploadBytes } from "firebase/storage";
 import { useState, useEffect } from "react";
+import { FontAwesomeIcon} from '@fortawesome/react-fontawesome'
+import { faPlaneArrival, faFileShield, faMoneyBillTransfer, faCaretDown} from '@fortawesome/free-solid-svg-icons';
+
+
 
 function AddClaimPage() {
 
@@ -83,7 +87,7 @@ function AddClaimPage() {
             <Link className='navbuttons' to="/" >Home</Link>
             <Link className='navbuttons' to="/about" >About</Link>
               <div class="dropdown">
-                  <button class="dropbtn">Claims
+                  <button class="dropbtn">Claims <FontAwesomeIcon icon={faCaretDown}></FontAwesomeIcon>
                    <i class="fa fa-caret-down"></i>
                   </button>
                   <div class="dropdown-content">

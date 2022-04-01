@@ -1,6 +1,10 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { onAuthStateChanged, getAuth} from "firebase/auth";
+import { FontAwesomeIcon} from '@fortawesome/react-fontawesome'
+import { faPlaneArrival, faFileShield, faMoneyBillTransfer, faCaretDown} from '@fortawesome/free-solid-svg-icons';
+
+
 
 const AdminPage = () => {
     return ( 
