@@ -33,6 +33,17 @@ body {
   text-decoration: none;
 }
 
+/*View Claims page*/
+
+.filescontainer {
+  flex-direction: row;
+}
+
+.files {
+  width: 150px;
+  height: 150px;
+}
+
 
 /*Claim form*/
 

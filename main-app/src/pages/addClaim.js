@@ -39,7 +39,7 @@ function AddClaimPage() {
         // {urls.map((data) => {
         //     data.
         // } )}
-        console.log(urls[0])
+        console.log("urls: ", urls)
 
         await updateDoc( writeIntoDocumentTwo, {
                 URLS: urls ,
@@ -96,6 +96,7 @@ function AddClaimPage() {
             AccountNumber: document.getElementById("accountnumber").value,
             Approve: "",
             URLS: "" ,
+            NoFiles: length
         }) 
         await setDoc(generateEmail, {                   //Employee database
             ID: dateNow,

@@ -26,6 +26,14 @@ function ViewClaim(){
     const logout = async () => {
       await signOut(auth)
     };
+
+    function showFiles (numberOfFiles, arrayOfURLS) {
+
+      return [...Array(numberOfFiles)].map((e, i) => 
+        <div className="filescontainer" key={i}>
+            <img className="files" src={arrayOfURLS[i]} />
+        </div>);
+    }
     
     return(
     <>
@@ -53,6 +61,10 @@ function ViewClaim(){
                 <a> Account No: {testing.AccountNumber}</a>,
                 <a> ClaimID: {testing.id}</a>,
                 <a> Status: {testing.Approve}</a>
+                <br></br>
+                {showFiles(testing.NoFiles, testing.URLS)}
+                {/*<a> URLS: {testing.URLS[0]} , {testing.URLS[1]}</a>*/}
+                <br></br>
                {/* , <Link to="/editClaim" state={testing.id} >Edit Claim</Link>*/}
                 <br></br>
               </div>
