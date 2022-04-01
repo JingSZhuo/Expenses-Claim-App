@@ -62,7 +62,8 @@ function ViewClaim(){
                 <a> ClaimID: {testing.id}</a>,
                 <a> Status: {testing.Approve}</a>
                 <br></br>
-               
+                <a>Files:</a>
+                <br></br>
                 <div className="filescontainer">{showFiles(testing.NoFiles, testing.URLS)}</div>
                 {/*<a> URLS: {testing.URLS[0]} , {testing.URLS[1]}</a>*/}
                 <br></br>
