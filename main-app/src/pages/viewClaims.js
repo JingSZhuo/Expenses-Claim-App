@@ -1,7 +1,7 @@
 import { useEffect, useState, } from "react";
 import db from "../firebase";
-import { onAuthStateChanged, getAuth} from "firebase/auth";
-import { collection, getDoc ,getDocs, doc, setDoc } from "firebase/firestore";
+import { onAuthStateChanged, getAuth, signOut} from "firebase/auth";
+import { collection, getDoc ,getDocs, doc, setDoc, query, orderBy } from "firebase/firestore";
 import {Link} from "react-router-dom";
     
 function ViewClaim(){
@@ -11,19 +11,32 @@ function ViewClaim(){
     const user = auth.currentUser;
 
     const [data, getData] = useState([])
+    console.log(data)
     const usersCollectionRef = collection(db, user.email)
+    const sort = query(usersCollectionRef, orderBy("ID", "desc"))
 
     useEffect(() => {
       const getData1 = async () => {
-        const data_1 = await getDocs(usersCollectionRef);
+        const data_1 = await getDocs(sort);
         getData(data_1.docs.map((doc) => ({...doc.data(), id: doc.id })))
       }
       getData1()
     }, [])
+
+    const logout = async () => {
+      await signOut(auth)
+    };
+
+    function showFiles (numberOfFiles, arrayOfURLS) {
+
+      return [...Array(numberOfFiles)].map((e, i) => 
+        <div key={i}>
+            <img className="files" src={arrayOfURLS[i]} />
+        </div>);
+    }
     
     return(
     <>
-
     <nav className="navbar">
         <Link className='navbuttons' to="/" >Home</Link>
         <Link className='navbuttons' to="/about" >About</Link>
@@ -36,7 +49,7 @@ function ViewClaim(){
                   <Link className='navbuttons' to="/addClaim">Add New Claim</Link>
               </div>
         </div>
-        <Link className='loginsignupbutton' to="/LoginSignup">Login and Sign-Up</Link>
+        <Link className='loginsignupbutton' to="/LoginSignup" onClick={logout} >Logout</Link> 
       </nav>
       <div class="divider"></div>
         <h2>My Claims</h2>
@@ -47,13 +60,19 @@ function ViewClaim(){
 
             return (
               <div>
-                <a>Claim: {testing.Claim}</a>,
+                <a> Time: {testing.ID}</a>,
+                <a> Claim: {testing.Claim}</a>,
                 <a> Claim Description: {testing.Description}</a>
                 <a> Amount: £{testing.Amount}</a>,
                 <a> Sort Code: {testing.SortCode}</a>,
                 <a> Account No: {testing.AccountNumber}</a>,
                 <a> ClaimID: {testing.id}</a>,
                 <a> Status: {testing.Approve}</a>
+                <br></br>
+               
+                <div className="filescontainer">{showFiles(testing.NoFiles, testing.URLS)}</div>
+                {/*<a> URLS: {testing.URLS[0]} , {testing.URLS[1]}</a>*/}
+                <br></br>
                {/* , <Link to="/editClaim" state={testing.id} >Edit Claim</Link>*/}
                 <br></br>
               </div>
@@ -80,7 +99,7 @@ function Status() {                         //Checks if user is logged in and re
       }
     })
     return loginStatus
-  }
+}
 
 const viewClaim = () => {
 

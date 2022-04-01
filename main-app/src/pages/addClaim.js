@@ -1,37 +1,73 @@
 import {Link} from "react-router-dom";
-import { getAuth, onAuthStateChanged } from "firebase/auth";
-import { collection, doc, setDoc, getDocs, getDoc, query, where } from "firebase/firestore";
+import { getAuth, onAuthStateChanged, signOut } from "firebase/auth";
+import { collection, doc, setDoc, getDocs, getDoc, query, where, updateDoc, arrayUnion } from "firebase/firestore";
 import db, { auth, storage } from "../firebase";
 import "../main.css";
 import { getDownloadURL, getStorage, ref, uploadBytes } from "firebase/storage";
 import { useState, useEffect } from "react";
+import { async } from "@firebase/util";
 
 function AddClaimPage() {
 
-    const [image, setImage] = useState(null);
-    const [imageName, setImageName] = useState(null)
-    const [imageType, setImageType] = useState(null)
+    // const [image, setImage] = useState(null);
+    // const [imageName, setImageName] = useState(null)
+    // const [imageType, setImageType] = useState(null)
 
+    const [multipleImages, setMultipleImages] = useState([])
+    const [multipleImageNames, setMultipleImageNames ] = useState([])
+    const [multipleimageTypes, setMultipleImageTypes] = useState([])
+    const [length, setLength] = useState(0)
+    const [urls, setUrls] = useState([])
+    const [docID, setdocID] = useState()
+    
     //Auth 
     const auth = getAuth()
     const getUser = auth.currentUser
 
+    useEffect(() => { 
+        //console.log("EEE: " , urls, " ID:", docID)
+        AddURLToDB()
+    }, [urls, docID])
 
-    const uploadImage = () => {
+    async function AddURLToDB () {
+        const auth = getAuth();
+        const user = auth.currentUser;
 
-        //Metadata
-        const metadata = {
-            contentType: `${imageType}`,
-        }
-        
-        if (image == null) {return null;}
+        const writeIntoDocument = doc(collection(db, "Employee"), docID)
+        const writeIntoDocumentTwo = doc(collection(db, user?.email),  docID)
 
-        console.log(image)
+        // {urls.map((data) => {
+        //     data.
+        // } )}
+        console.log("urls: ", urls)
+
+        await updateDoc( writeIntoDocumentTwo, {
+                URLS: urls ,
+            }
+        )
+    }
+
+    const UploadImage = async () => {
 
         const storage = getStorage();           //Access storage
-        const storageRef = ref(storage, `${getUser.email}/`+`${imageName}` )      //If storage file/directory doesnt exist..create one
 
-        uploadBytes(storageRef, image, metadata)            //Upload file with metadata
+        const arrayOfUrls = []
+        for (let i = 0; i < length; i++ ) {
+            const storageRef = ref(storage, `${getUser.email}/`+`${multipleImageNames[i]}` )      //If storage file/directory doesnt exist..create one
+            const metadata = {
+                contentType: `${multipleimageTypes[i]}`,
+            }
+        
+            uploadBytes(storageRef, multipleImages[i], metadata)
+
+            await getDownloadURL(storageRef).then((url) => { 
+                //console.log("No ", i, " URL: ", url) 
+                arrayOfUrls[i] = url
+                //console.log(arrayOfUrls[i])
+            })
+            console.log(arrayOfUrls[i])    
+        }
+        setUrls(arrayOfUrls)
     }
 
     async function AddtoDB(){
@@ -45,25 +81,34 @@ function AddClaimPage() {
         const generateID = doc(getCollection)                       //Creating new doc
         const generateEmail = doc(getCollection2)
 
+        const generatedId = generateID.id        //Generated ID in variable
+        setdocID(generatedId)
 
-        await setDoc(generateID, {
-            ClaimId: generateID.id ,
+        const dateNow = Date.now()
+
+        await setDoc(generateID, {                      //individual database
+            ID: dateNow,
+            ClaimId: generatedId,
             Claim: document.getElementById("title").value,
             Amount: document.getElementById("amount").value,
             Description: document.getElementById("description").value,
             SortCode: document.getElementById("sortcode").value,
             AccountNumber: document.getElementById("accountnumber").value,
             Approve: "",
+            URLS: "" ,
+            NoFiles: length
         }) 
-        await setDoc(generateEmail, {
-            ClaimId: generateID.id ,
+        await setDoc(generateEmail, {                   //Employee database
+            ID: dateNow,
+            ClaimId: generatedId ,
             Claim: document.getElementById("title").value,
             Amount: document.getElementById("amount").value,
             Description: document.getElementById("description").value,
             SortCode: document.getElementById("sortcode").value,
             AccountNumber: document.getElementById("accountnumber").value,
             Approve: "",
-            email: user.email
+            email: user.email,
+            URLS: "" ,
         })
 
         /*Reset input fields after submit */
@@ -74,6 +119,10 @@ function AddClaimPage() {
         document.getElementById("sortcode").value = "";
         document.getElementById("accountnumber").value = "";
     }
+
+    const logout = async () => {
+        await signOut(auth)
+      };
    
     return( 
 
@@ -91,9 +140,10 @@ function AddClaimPage() {
                       <Link className='navbuttons' to="/addClaim">Add New Claim</Link>
                   </div>
             </div>
-            <Link className='loginsignupbutton' to="/LoginSignup">Login and Sign-Up</Link>
+            <Link className='loginsignupbutton' to="/LoginSignup" onClick={logout} >Logout</Link> 
           </nav>
           <div class="divider"></div>
+        
             <h1>Add Claim</h1>
 
             <form className="claimform">
@@ -115,20 +165,29 @@ function AddClaimPage() {
 
                     <br></br>
                     <h3>Upload</h3>
-                    <input id="evidence" type="file" placeholder="No file uploaded" 
+                    <input id="evidence" type="file" placeholder="No file uploaded" multiple
                         onChange={(e) => { 
-                            setImage(e.target.files[0]); 
-                            setImageName(e.target.files[0].name); 
-                            setImageType(e.target.files[0].type) }}></input>
+                            let max = e.target.files.length
+                            const files = []; const fileNames = []; const fileTypes = []
+                            for (var i = 0; i < max; i++){
+                                files[i] = e.target.files[i]
+                                fileNames[i] = e.target.files[i].name
+                                fileTypes[i] = e.target.files[i].type
+                            }
+                            setMultipleImages(files); 
+                            setMultipleImageNames(fileNames)
+                            setMultipleImageTypes(fileTypes)
+                            setLength(max)
+                            }}>
+                        </input>
                     <br></br>
 
-                    <input type="button" onClick={() =>  { AddtoDB(); uploadImage() }} value={"upload"}></input>
+                    <input type="button" onClick={() => {  AddtoDB();  UploadImage() }} value={"upload"}></input>
                 </div>
             </form>
         </>
     )
 }
-
 
 function StatusOut() {
     return(<h2>Not Logged In!!!</h2>)

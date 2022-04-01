@@ -43,8 +43,7 @@ function Login_Signup() {
         const getCurrentUser = authorize.currentUser
     
         //Collection state
-        const createCollection = collection(db, getCurrentUser.email)
-    
+        const createCollection = collection(db, getCurrentUser.email)  //User getElementById of email field
     }
     
     /*Register and Login Functions*/ 
@@ -73,6 +72,7 @@ function Login_Signup() {
     const logout = async () => {
         await signOut(auth)
     };
+    
 
      return (  
         <>

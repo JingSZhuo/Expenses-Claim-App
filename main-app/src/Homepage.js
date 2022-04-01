@@ -2,14 +2,40 @@ import { Link,  Outlet } from 'react-router-dom';
 import { FontAwesomeIcon} from '@fortawesome/react-fontawesome'
 import { faPlaneArrival, faFileShield, faMoneyBillTransfer} from '@fortawesome/free-solid-svg-icons';
 
+import { onAuthStateChanged, getAuth, signOut} from "firebase/auth";
 
 //Images
 
 //Pages
 import "./main.css"
 import "./reset.css"
+import { useEffect, useState } from 'react';
 
 function App() {
+
+  const  [loginStatus, setLoginStatus] = useState(false)
+
+  function Status() {                         //Checks if user is logged in and renders based on login status
+  
+    const auth = getAuth();
+    onAuthStateChanged(auth, (user) => {          //Check if user is logged in
+      if (user!== null) {
+        setLoginStatus(true); //console.log("TRUE")
+      } else {
+        setLoginStatus(false);  //console.log("FALSE")
+      }
+    })
+    return loginStatus
+  }
+  useEffect(() => {       //run once
+    Status()
+  }, [])
+
+  const logout = async () => {
+    await signOut(auth)
+  };
+
+  const auth = getAuth();
 
   return (
       
@@ -28,7 +54,7 @@ function App() {
                         <Link className='navbuttons' to="/addClaim">Add New Claim</Link>
                     </div>
               </div>
-              <Link className='loginsignupbutton' to="/LoginSignup">Login and Sign-Up</Link>
+              {loginStatus === true ? <Link className='loginsignupbutton' to="/LoginSignup" onClick={logout} >Logout</Link> :  <Link className='loginsignupbutton' to="/LoginSignup">Login and Sign-Up</Link>}
             </nav>
 
             <div class="divider"></div>
