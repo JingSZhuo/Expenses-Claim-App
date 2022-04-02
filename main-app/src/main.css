@@ -29,14 +29,14 @@ body {
 
 .navbar {
   overflow: hidden;
-  background-color: #17252A;
+  background-color: #92e1fd;
   padding: 0.8rem;
 
 }
 
 .navbar a {
   font-size: 1rem;
-  color: white;
+  color: rgb(0, 0, 0);
   text-align: center;
   padding: 0.875rem 1rem;
   text-decoration: none;
@@ -53,7 +53,7 @@ body {
   font-size: 16px;  
   border: none;
   outline: none;
-  color: white;
+  color: rgb(0, 0, 0);
   padding: 14px 16px;
   background-color: inherit;
   font-family: inherit;

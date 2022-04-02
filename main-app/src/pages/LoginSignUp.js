@@ -80,7 +80,7 @@ function Login_Signup() {
         <nav className="navbar">
             <Link className='navbuttons' to="/" >Home</Link>
             <Link className='navbuttons' to="/about" >About</Link>
-              <div class="dropdown">
+            {/* <div class="dropdown">
                   <button class="dropbtn">Claims
                    <i class="fa fa-caret-down"></i>
                   </button>
@@ -88,11 +88,10 @@ function Login_Signup() {
                       <Link className='navbuttons' to="/viewClaim" >View Claims</Link>
                       <Link className='navbuttons' to="/addClaim">Add New Claim</Link>
                   </div>
-            </div>
+            </div> */}
             <Link className='loginsignupbutton' to="/LoginSignup">Login and Sign-Up</Link>
           </nav>
-          <div class="divider"></div>
-            <h1>New empty page</h1>
+            <h1>Login | Sign Up </h1>
             <br></br>
 
 
@@ -100,6 +99,7 @@ function Login_Signup() {
                 <h3>Signup</h3>
                 <input type="email" placeholder='Email...' onChange={(event) => {setRegisterEmail(event.target.value)}} required/>
                 <input placeholder='Password...' onChange={(event) => {setRegisterPassword(event.target.value)}} required/>
+                <input placeholder='Confirm password...' required/>
 
                 <input type="button" onClick={register} value={"Signup"} ></input>
             </form>
