@@ -1,6 +1,6 @@
 import { Link,  Outlet } from 'react-router-dom';
 import { FontAwesomeIcon} from '@fortawesome/react-fontawesome'
-import { faPlaneArrival, faFileShield, faMoneyBillTransfer} from '@fortawesome/free-solid-svg-icons';
+import { faPlaneArrival, faFileShield, faMoneyBillTransfer, faCaretDown} from '@fortawesome/free-solid-svg-icons';
 
 import { onAuthStateChanged, getAuth, signOut} from "firebase/auth";
 
@@ -46,7 +46,7 @@ function App() {
               <Link className='navbuttons' to="/" >Home</Link>
               <Link className='navbuttons' to="/about" >About</Link>
                 <div class="dropdown">
-                    <button class="dropbtn">Claims
+                    <button class="dropbtn">Claims  <FontAwesomeIcon icon={faCaretDown}></FontAwesomeIcon>
                      <i class="fa fa-caret-down"></i>
                     </button>
                     <div class="dropdown-content">
@@ -70,8 +70,8 @@ function App() {
           <div class="card-section">
             <div class="flip-card">
               <div class="flip-card-inner">
-              <div class="divider"></div>
                 <div class="flip-card-front">
+                <div class="divider"></div>
                   <div class="card-text">
                     <FontAwesomeIcon icon={faPlaneArrival} class="icon-img"/>
                     <h1 class="card-title">Travel</h1>
@@ -90,8 +90,8 @@ function App() {
 
             <div class="flip-card">
               <div class="flip-card-inner">
-              <div class="divider"></div>
                 <div class="flip-card-front">
+                <div class="divider"></div>
                   <div class="card-text">
                     <FontAwesomeIcon icon={faFileShield} class="FileShield"/>
                     <h1 class="card-title">Paperless</h1>
@@ -112,8 +112,8 @@ function App() {
 
             <div class="flip-card">
               <div class="flip-card-inner">
-              <div class="divider"></div>
                 <div class="flip-card-front">
+                <div class="divider"></div>
                   <div class="card-text">
                     <FontAwesomeIcon icon={faMoneyBillTransfer} class="icon-img"/>
                     <h1 class="card-title">Expense</h1>
@@ -129,6 +129,9 @@ function App() {
                 </div>
               </div>
             </div>
+
+            
+
           </div>
 
 
