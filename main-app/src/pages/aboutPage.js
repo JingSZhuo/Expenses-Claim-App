@@ -1,10 +1,33 @@
 import { Link } from 'react-router-dom';
-import { FontAwesomeIcon} from '@fortawesome/react-fontawesome'
-import { faPlaneArrival, faFileShield, faMoneyBillTransfer, faCaretDown} from '@fortawesome/free-solid-svg-icons';
-
+import { onAuthStateChanged, getAuth, signOut} from "firebase/auth";
+import { useEffect, useState } from 'react';
 
 
 function AboutPage ()  {
+
+  const  [loginStatus, setLoginStatus] = useState(false)
+
+  function Status() {                         //Checks if user is logged in and renders based on login status
+  
+    const auth = getAuth();
+    onAuthStateChanged(auth, (user) => {          //Check if user is logged in
+      if (user!== null) {
+        setLoginStatus(true); //console.log("TRUE")
+      } else {
+        setLoginStatus(false);  //console.log("FALSE")
+      }
+    })
+    return loginStatus
+  }
+  useEffect(() => {       //run once
+    Status()
+  }, [])
+
+  const auth = getAuth();
+  const logout = async () => {
+    await signOut(auth)
+  };
+
     return ( 
         <body class="about-body">
 
@@ -16,11 +39,11 @@ function AboutPage ()  {
                      <i class="fa fa-caret-down"></i>
                     </button>
                     <div class="dropdown-content">
-                        <Link className='navbuttons' to="/viewClaim" >View Claims</Link>
-                        <Link className='navbuttons' to="/addClaim">Add New Claim</Link>
+                        {loginStatus === true ?<Link className='navbuttons' to="/viewClaim" >View Claims</Link> :  <Link className='loginsignupbutton' to="/LoginSignup">View Claims</Link>}
+                        {loginStatus === true ? <Link className='navbuttons' to="/addClaim">Add New Claim</Link> :  <Link className='loginsignupbutton' to="/LoginSignup">Add New Claim</Link>}
                     </div>
               </div>
-              <Link className='loginsignupbutton' to="/LoginSignup">Login and Sign-Up</Link>
+              {loginStatus === true ? <Link className='loginsignupbutton' to="/LoginSignup" onClick={logout} >Logout</Link> :  <Link className='loginsignupbutton' to="/LoginSignup">Login and Sign-Up</Link>}
             </nav>
             <div class="divider"></div>
 
