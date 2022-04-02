@@ -7,6 +7,10 @@ import db, { storage } from "../firebase";
 import "../main.css";
 import { async } from '@firebase/util';
 import { collection } from 'firebase/firestore';
+import { FontAwesomeIcon} from '@fortawesome/react-fontawesome'
+import { faCaretDown} from '@fortawesome/free-solid-svg-icons';
+
+
 
 
 function Login_Signup() {
@@ -80,15 +84,15 @@ function Login_Signup() {
         <nav className="navbar">
             <Link className='navbuttons' to="/" >Home</Link>
             <Link className='navbuttons' to="/about" >About</Link>
-            {/* <div class="dropdown">
-                  <button class="dropbtn">Claims
+              <div class="dropdown">
+                  <button class="dropbtn">Claims <FontAwesomeIcon icon={faCaretDown}></FontAwesomeIcon>
                    <i class="fa fa-caret-down"></i>
                   </button>
                   <div class="dropdown-content">
                       <Link className='navbuttons' to="/viewClaim" >View Claims</Link>
                       <Link className='navbuttons' to="/addClaim">Add New Claim</Link>
                   </div>
-            </div> */}
+            </div> 
             <Link className='loginsignupbutton' to="/LoginSignup">Login and Sign-Up</Link>
           </nav>
             <h1>Login | Sign Up </h1>

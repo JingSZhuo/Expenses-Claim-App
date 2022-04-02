@@ -4,6 +4,10 @@ import { getAuth, onAuthStateChanged } from "firebase/auth";
 import db from "../firebase";
 import { auth } from '../firebase.js'
 import { useEffect, useState } from "react";
+import { FontAwesomeIcon} from '@fortawesome/react-fontawesome'
+import { faCaretDown} from '@fortawesome/free-solid-svg-icons';
+
+
 
 
 function EditClaimPage()  {
@@ -37,7 +41,7 @@ function EditClaimPage()  {
             <Link className='navbuttons' to="/" >Home</Link>
             <Link className='navbuttons' to="/about" >About</Link>
               <div class="dropdown">
-                  <button class="dropbtn">Claims
+                  <button class="dropbtn">Claims <FontAwesomeIcon icon={faCaretDown}></FontAwesomeIcon>
                    <i class="fa fa-caret-down"></i>
                   </button>
                   <div class="dropdown-content">
