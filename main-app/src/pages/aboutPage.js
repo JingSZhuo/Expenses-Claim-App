@@ -44,7 +44,6 @@ function AboutPage ()  {
               </div>
               {loginStatus === true ? <Link className='loginsignupbutton' to="/LoginSignup" onClick={logout} >Logout</Link> :  <Link className='loginsignupbutton' to="/LoginSignup">Login and Sign-Up</Link>}
             </nav>
-            <div class="divider"></div>
 
 
             <div class="main-body-container">

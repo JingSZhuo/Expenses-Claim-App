@@ -1,7 +1,7 @@
 import { useEffect, useState, } from "react";
 import db from "../firebase";
 import { onAuthStateChanged, getAuth, signOut} from "firebase/auth";
-import { collection, getDoc ,getDocs, doc, setDoc, query, orderBy } from "firebase/firestore";
+import { collection ,getDocs, query, orderBy } from "firebase/firestore";
 import {Link} from "react-router-dom";
     
 function ViewClaim(){
