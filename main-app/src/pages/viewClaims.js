@@ -4,7 +4,7 @@ import { onAuthStateChanged, getAuth, signOut} from "firebase/auth";
 import { collection, getDoc ,getDocs, doc, setDoc, query, orderBy } from "firebase/firestore";
 import {Link} from "react-router-dom";
 import { FontAwesomeIcon} from '@fortawesome/react-fontawesome'
-import { faPlaneArrival, faFileShield, faMoneyBillTransfer, faCaretDown} from '@fortawesome/free-solid-svg-icons';
+import { faCaretDown} from '@fortawesome/free-solid-svg-icons';
 
 
     
@@ -41,13 +41,6 @@ function ViewClaim(){
     
     return(
     <>
-        <nav className="navbar">
-            <Link className='navbuttons' to="/" >Home</Link>
-            <Link className='navbuttons' to="/about" >About</Link>
-            <Link className='navbuttons' to="/viewClaim" >View Claims</Link>
-            <Link className='navbuttons' to="/addClaim" >Add Claim</Link>
-            <Link className='loginsignupbutton' to="/LoginSignup" onClick={logout} >Logout</Link> 
-        </nav>
 
     <nav className="navbar">
         <Link className='navbuttons' to="/" >Home</Link>

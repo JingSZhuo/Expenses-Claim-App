@@ -8,7 +8,7 @@ import "../main.css";
 import { async } from '@firebase/util';
 import { collection } from 'firebase/firestore';
 import { FontAwesomeIcon} from '@fortawesome/react-fontawesome'
-import { faPlaneArrival, faFileShield, faMoneyBillTransfer, faCaretDown} from '@fortawesome/free-solid-svg-icons';
+import { faCaretDown} from '@fortawesome/free-solid-svg-icons';
 
 
 

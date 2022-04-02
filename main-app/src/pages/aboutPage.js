@@ -1,7 +1,8 @@
 import { Link } from 'react-router-dom';
 import { onAuthStateChanged, getAuth, signOut} from "firebase/auth";
 import { useEffect, useState } from 'react';
-
+import { FontAwesomeIcon} from '@fortawesome/react-fontawesome'
+import { faCaretDown} from '@fortawesome/free-solid-svg-icons';
 
 function AboutPage ()  {
 

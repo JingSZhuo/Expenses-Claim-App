@@ -5,7 +5,7 @@ import db from "../firebase";
 import { auth } from '../firebase.js'
 import { useEffect, useState } from "react";
 import { FontAwesomeIcon} from '@fortawesome/react-fontawesome'
-import { faPlaneArrival, faFileShield, faMoneyBillTransfer, faCaretDown} from '@fortawesome/free-solid-svg-icons';
+import { faCaretDown} from '@fortawesome/free-solid-svg-icons';
 
 
 

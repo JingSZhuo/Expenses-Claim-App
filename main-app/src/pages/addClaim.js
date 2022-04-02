@@ -6,6 +6,8 @@ import "../main.css";
 import { getDownloadURL, getStorage, ref, uploadBytes, uploadBytesResumable } from "firebase/storage";
 import { useState, useEffect } from "react";
 import { async } from "@firebase/util";
+import { FontAwesomeIcon} from '@fortawesome/react-fontawesome'
+import { faCaretDown} from '@fortawesome/free-solid-svg-icons';
 
 function AddClaimPage() {
 
