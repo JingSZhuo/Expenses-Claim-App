@@ -6,6 +6,8 @@ import "../main.css";
 import { getDownloadURL, getStorage, ref, uploadBytes, uploadBytesResumable } from "firebase/storage";
 import { useState, useEffect } from "react";
 import { async } from "@firebase/util";
+import { FontAwesomeIcon} from '@fortawesome/react-fontawesome'
+import { faCaretDown} from '@fortawesome/free-solid-svg-icons';
 
 function AddClaimPage() {
 
@@ -169,7 +171,7 @@ function AddClaimPage() {
             <Link className='navbuttons' to="/" >Home</Link>
             <Link className='navbuttons' to="/about" >About</Link>
               <div class="dropdown">
-                  <button class="dropbtn">Claims
+                  <button class="dropbtn">Claims <FontAwesomeIcon icon={faCaretDown}></FontAwesomeIcon>
                    <i class="fa fa-caret-down"></i>
                   </button>
                   <div class="dropdown-content">

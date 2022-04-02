@@ -3,6 +3,10 @@ import db from "../firebase";
 import { onAuthStateChanged, getAuth, signOut} from "firebase/auth";
 import { collection, getDoc ,getDocs, doc, setDoc, query, orderBy } from "firebase/firestore";
 import {Link} from "react-router-dom";
+import { FontAwesomeIcon} from '@fortawesome/react-fontawesome'
+import { faCaretDown} from '@fortawesome/free-solid-svg-icons';
+
+
     
 function ViewClaim(){
     
@@ -37,14 +41,22 @@ function ViewClaim(){
     
     return(
     <>
-        <nav className="navbar">
-            <Link className='navbuttons' to="/" >Home</Link>
-            <Link className='navbuttons' to="/about" >About</Link>
-            <Link className='navbuttons' to="/viewClaim" >View Claims</Link>
-            <Link className='navbuttons' to="/addClaim" >Add Claim</Link>
-            <Link className='loginsignupbutton' to="/LoginSignup" onClick={logout} >Logout</Link> 
-        </nav>
 
+    <nav className="navbar">
+        <Link className='navbuttons' to="/" >Home</Link>
+        <Link className='navbuttons' to="/about" >About</Link>
+          <div class="dropdown">
+              <button class="dropbtn">Claims <FontAwesomeIcon icon={faCaretDown}></FontAwesomeIcon>
+               <i class="fa fa-caret-down"></i>
+              </button>
+              <div class="dropdown-content">
+                  <Link className='navbuttons' to="/viewClaim" >View Claims</Link>
+                  <Link className='navbuttons' to="/addClaim">Add New Claim</Link>
+              </div>
+        </div>
+        <Link className='loginsignupbutton' to="/LoginSignup">Login and Sign-Up</Link>
+      </nav>
+      <div class="divider"></div>
         <h2>My Claims</h2>
 
         <div>
