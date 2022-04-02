@@ -131,15 +131,17 @@ body {
 /* HOME PAGE SECTION */
 
 /* Flip Cards */
+
+
+
 .flip-card {
   display: inline-block;
-  margin-right: 60px;
+  margin: 10px;
   background-color: transparent;
   width: 500px;
   height: 300px;
   perspective: 1000px; 
-  margin-left: 130px;
-  
+  transform: translate(50%, 0%);
   
 }
 
@@ -360,8 +362,7 @@ body {
     }
 
     .flip-card{
-      margin-bottom: 10px;
-      margin-left: 65px;
+      transform: translate(20%, 0%);
     }
 
     .card-title{
@@ -447,6 +448,10 @@ body {
   0% {opacity: 0; transform: translateY(-50px);}
   50% {opacity: 0; transform: translateY(-20px);}
   100% {opacity: 1; transform: translateY(0px);}
+}
+
+.divider-bottom{
+  margin: 0px 300px 0px 300px;
 }
 
 /* ABOUT MOBILE PAGE */
