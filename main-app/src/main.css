@@ -1,23 +1,23 @@
 /*General settings*/
 
-body {
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-}
 
 /*Hello*/
 
-/*Navigation bar*/
-
-.navbar {
-  margin: auto;
+[class*="col-"] {
   width: 100%;
-  padding-top: 1.5rem;
-  padding-bottom: 1.5rem;
-  float: left;
-  background-color: rgba(112, 108, 108, 0.412);
 }
+
+
+body {
+  font-family: '-apple-system', 'BlinkMacSystemFont', 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue';
+    
+  
+    
+}
+
+
+/******************************************************************************** navigation bar ******************************************************************************** */
 
 .navbuttons {
   padding-left: 2rem;
@@ -29,10 +29,109 @@ body {
 .loginsignupbutton {
   display: block;
   float: right;
-  margin-right: 20px;
+  margin-right: 1.25px;
   text-decoration: none;
 }
 
+
+.navbar {
+  overflow: hidden;
+  background-color: #17252A;
+  padding: 0.8rem;
+
+}
+
+.navbar a {
+  font-size: 1rem;
+  color: white;
+  text-align: center;
+  padding: 0.875rem 1rem;
+  text-decoration: none;
+}
+
+
+.dropdown {
+  float: left;
+  overflow: hidden;
+  
+}
+
+.dropdown .dropbtn {
+  font-size: 16px;  
+  border: none;
+  outline: none;
+  color: white;
+  padding: 14px 16px;
+  background-color: inherit;
+  font-family: inherit;
+  margin: 0;
+}
+
+.navbar a:hover {
+  background-color: #2cc7f2;
+  box-shadow: inset 2px 2px 3px rgb(102, 102, 102);
+  transition: 1s;
+}
+
+.dropdown:hover .dropbtn{
+  background-color: #2cc7f2;
+  box-shadow: inset 2px 3px rgb(102, 102, 102);
+  transition: 1s;
+}
+
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: #f9f9f9;
+  min-width: 160px;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  z-index: 1;
+}
+
+.dropdown-content a {
+  float: none;
+  color: #17252A;
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+  text-align: left;
+}
+
+.dropdown-content a:hover {
+  background-color: #DEF2F1;
+}
+
+.dropdown:hover .dropdown-content {
+  display: block;
+}
+
+.divider{
+  padding: 5px;
+  background-color: #2cc7f2;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+}
+
+
+
+/******************************************************************************** view claims page ******************************************************************************** */
+
+.filescontainer {
+  display: inline-flex;
+  flex-direction: row;
+}
+
+.files {
+  width: 200px;
+  height: 200px;
+  padding: 10px;
+}
+
+embed {
+  overflow-x: hidden;
+  overflow-y: hidden;
+  width: auto;
+  height: auto;
+}
 
 /*Claim form*/
 
@@ -50,4 +149,350 @@ body {
   margin: 0% 10% 0% 10%; 
   padding: 10px 0 0 0;
   background-color: rgba(38, 37, 37, 0.576);
+}
+
+/******************************************************************************** Home page ******************************************************************************** */
+
+/* Flip Cards */
+.flip-card {
+  display: inline-block;
+  margin-right: 60px;
+  background-color: transparent;
+  width: 500px;
+  height: 300px;
+  perspective: 1000px; 
+  margin-left: 70px;
+  
+  
+}
+
+
+.flip-card-inner {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  transition: transform 0.8s;
+  transform-style: preserve-3d;
+}
+
+
+.flip-card:hover .flip-card-inner {
+  transform: rotateY(180deg);
+  
+}
+
+
+.flip-card-front, .flip-card-back {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  
+
+}
+
+
+.flip-card-front {
+  background-color: #DEF2F1;
+  color: #17252A;
+  background-image: url("/src/images/homepage-background.jpg");
+  background-position: center;
+}
+
+
+.flip-card-back {
+  background-color: #2cc7f2;
+  color: white;
+  transform: rotateY(180deg);
+  
+}
+
+.card-text{
+  margin: 25px;
+  font-size: 20px;
+
+  
+}
+
+.icon-img{
+  width: 112px;
+  text-align: right;
+  float: center;
+  padding-left: 170px;
+  margin-bottom: 10px;
+
+}
+
+.FileShield{
+  width: 112px;
+  padding-left: 170px;
+  float: center;
+
+}
+
+.card-title{
+  text-align: center;
+  margin-top: 40px;
+  font-size: 50px;
+}
+
+.card-text-back{
+  padding: 25px;
+}
+
+.card-section{
+  padding-top: 30px;
+  padding-bottom: 100px;
+}
+
+
+
+/******************************************************************************** Home page title ******************************************************************************** */
+
+.home-page-section{
+  text-align: center;
+  padding: 341px;
+  background-image: url("/src/images/homepage-background.jpg");
+  background-color: #9cdad6;
+  animation: home-transform 1.5s;
+}
+
+
+@keyframes home-transform {
+  0% {padding: 0px; opacity: 0;}
+  100% {padding: 341px; opacity: 1;}
+}
+
+.home-title{
+  font-size: 100px;
+  color: #17252A;
+  animation: home-title-animation 2s;
+  text-shadow: 2px 4px 5px rgb(139, 139, 139);
+}
+
+.home-description{
+  font-size: 20px;
+  color: #3a3b3b;
+  animation: home-desc-animation 2s;
+
+}
+
+@keyframes home-desc-animation{
+  0% { opacity: 0; font-size: 0px;}
+  70% {opacity: 0; transform: translateX(300px);}
+  80% {opacity: 0; transform: translateX(100px);font-size: 20px;}
+  100% {opacity: 1; transform: translateX(0px);}
+}
+
+@keyframes home-title-animation {
+  0% {opacity: 0; font-size: 0px;}
+  50% {opacity: 0; transform: translateY(-100px); font-size: 100px;}
+  100% {opacity: 1; transform: translateY(0px);}
+}
+
+/* Footer */
+.footer{
+  padding: 100px;
+  background-color: #17252A;
+}
+
+@media (max-width: 500px){
+  
+  
+  .navbar {
+    overflow: hidden;
+    background-color: #17252A;
+    padding: 0.8rem;
+  
+  }
+  
+  .navbar a {
+    font-size: 12px;
+    color: white;
+    text-align: center;
+    padding: 0.875rem 1rem;
+    text-decoration: none;
+    
+  }
+  
+  .dropdown {
+    float: left;
+    overflow: hidden;
+    
+  }
+  
+  .dropdown .dropbtn {
+    font-size: 12px;  
+  }
+  
+  
+  .dropdown-content a {
+    float: none;
+    color: #17252A;
+    padding: 12px 16px;
+    text-align: left;
+
+  }
+  .flip-card{
+    width: 250px;
+    height: 200px;
+    padding-bottom: 10px;
+    padding-left: 4px;
+    } 
+
+    .card-text{
+      padding: 2px;
+    }
+  
+    .home-page-section{
+      padding: 100px;
+      background-position: left;
+      animation: transform 1s;
+    }
+
+    @keyframes transform {
+      from {padding: 0px; opacity: 0;}
+      to {padding: 100px; opacity: 1;}
+    }
+  
+    .home-description{
+      font-size: 10px;
+    }
+ 
+    .home-title{
+      font-size: 50px;
+    }
+
+    @keyframes home-title-animation {
+      0% {opacity: 0;}
+      50% {opacity: 0; transform: translateY(-100px);}
+      100% {opacity: 1; transform: translateY(0px);}
+    }
+
+    @keyframes home-desc-animation{
+      0% { opacity: 0;}
+      70% {opacity: 0; transform: translateX(300px);}
+      80% {opacity: 0; transform: translateX(100px);}
+      100% {opacity: 1; transform: translateX(0px);}
+    }
+
+    .flip-card{
+      margin-bottom: 10px;
+    }
+
+    .card-title{
+      font-size: 30px;
+      margin-top: 5px;
+    }
+
+    .icon-img{
+      width: 70px;
+      padding-left: 65px;
+    }
+
+    .FileShield{
+      width: 70px;
+      padding-left: 65px;
+    }
+
+    .card-text{
+      font-size: 14px;
+    }
+
+    .flip-card-front{
+      background-position: 10% 20%;
+    }
+
+    .divider{
+
+    }
+}
+
+
+/******************************************************************************** About page ******************************************************************************** */
+
+.main-body-container{
+  padding: 0px 0px 0px 0px;
+  height: 800px;
+  margin: 70px 300px 0px 300px;
+  box-shadow: 0px 10px 10px 10px rgba(0,0,0,0.2);
+  background-color: white;
+  animation: about-transform 1s;
+}
+
+.about-title{
+  color: #17252A;
+  padding: 70px 70px 30px 70px;
+  font-size: 50px;
+  animation: about-title-fadein 1.5s;
+}
+
+.title-bar{
+  background-color: #2cc7f2;
+  line-height: 10px;
+}
+.about-body{
+  background-image: url("/src/images/homepage-background.jpg");
+}
+
+.about-text{
+  padding: 0px 70px;
+  color: #17252A;
+  animation: about-text-fadein 2s;
+}
+
+@keyframes about-transform {
+  from {margin-top: 1000px; opacity: 0;}
+  to {margin-top: 70px; opacity: 1;}
+}
+
+@keyframes about-text-fadein{
+  0% {opacity: 0; transform: translateX(50px);}
+  60% {opacity: 0; transform: translateX(20px);}
+  100% {opacity: 1; transform: translateX(0px);}
+}
+
+@keyframes about-title-fadein{
+  0% {opacity: 0; transform: translateY(-50px);}
+  50% {opacity: 0; transform: translateY(-20px);}
+  100% {opacity: 1; transform: translateY(0px);}
+}
+
+@media (max-width: 500px){
+
+  .main-body-container{
+    margin: 30px 30px 0px 30px;
+    animation: about-transform 1s;
+  }
+
+  .about-text{
+    padding: 0px 30px;
+    animation: about-text-fadein 2s;
+  }
+
+  .about-title{
+    font-size: 30px;
+    padding: 30px 30px 20px 30px;
+    animation: about-title-fadein 1.5s;
+  }
+
+  @keyframes about-transform{
+    from {margin-top: 600px; opacity: 0;}
+    to {margin-top: 30px; opacity: 1;}
+  }
+
+  @keyframes about-text-fadein{
+    0% {opacity: 0; transform: translateX(50px);}
+    60% {opacity: 0; transform: translateX(20px);}
+    100% {opacity: 1; transform: translateX(0px);}
+  }
+
+  @keyframes about-title-fadein{
+    0% {opacity: 0; transform: translateY(-50px);}
+    50% {opacity: 0; transform: translateY(-20px);}
+    100% {opacity: 1; transform: translateY(0px);}
+  }
+
 }
