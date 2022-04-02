@@ -1,23 +1,15 @@
 import {Link} from "react-router-dom";
 import { getAuth, onAuthStateChanged, signOut } from "firebase/auth";
-import { collection, doc, setDoc, getDocs, getDoc, query, where, updateDoc, arrayUnion } from "firebase/firestore";
-import db, { auth, storage } from "../firebase";
+import { collection, doc, setDoc, updateDoc } from "firebase/firestore";
+import db, { storage } from "../firebase";
 import "../main.css";
-import { getDownloadURL, getStorage, ref, uploadBytes, uploadBytesResumable } from "firebase/storage";
+import { getDownloadURL, getStorage, ref, uploadBytes } from "firebase/storage";
 import { useState, useEffect } from "react";
 import { async } from "@firebase/util";
 import { FontAwesomeIcon} from '@fortawesome/react-fontawesome'
 import { faCaretDown} from '@fortawesome/free-solid-svg-icons';
 
 function AddClaimPage() {
-
-    function ReloadPageOnce () {
-        window.location.reload()
-    }
-
-    // const [image, setImage] = useState(null);
-    // const [imageName, setImageName] = useState(null)
-    // const [imageType, setImageType] = useState(null)
 
     const [multipleImages, setMultipleImages] = useState([])
     const [multipleImageNames, setMultipleImageNames ] = useState([])
@@ -31,14 +23,26 @@ function AddClaimPage() {
     const auth = getAuth()
     const getUser = auth.currentUser
 
-    // useEffect(() => {
-    //     ReloadPageOnce()
-    // }, [])
+    //UseEffects
+    useEffect(() => {
+        DisableOnStart()
+    }, [])
 
     useEffect(() => { 
-        //console.log("EEE: " , urls, " ID:", docID)
         AddURLToDB()
     }, [urls, docID, docIDAdmin])
+
+    function DisableOnStart () {
+        document.getElementById('submitbutton').disabled = true;
+    }
+    function EnableOnUpload () {
+        if (length === 0){
+            document.getElementById('submitbutton').disabled = true;
+            alert('Need to submit at least one file!')
+        } 
+        else {document.getElementById('submitbutton').disabled = false;
+        }
+    }
 
     async function AddURLToDB () {
         const auth = getAuth();
@@ -47,7 +51,7 @@ function AddClaimPage() {
         const writeIntoDocument = doc(collection(db, "Employee"), docIDAdmin)
         const writeIntoDocumentTwo = doc(collection(db, user?.email),  docID)
 
-        console.log("urls: ", urls)
+        //console.log("urls: ", urls)
 
         await updateDoc( writeIntoDocument, {          
             URLS: urls ,
@@ -151,7 +155,7 @@ function AddClaimPage() {
             console.log(arrayOfUrls[i])    
         }
         setUrls(arrayOfUrls)
-        console.log("URLS: ", urls)
+        //console.log("URLS: ", urls)
     }
 
     //_____________________________________________________________________________________________________________________________
@@ -161,29 +165,28 @@ function AddClaimPage() {
         await signOut(auth)
       };
 
-    
    
     return( 
 
         <>
+            <nav className="navbar">
+                <Link className='navbuttons' to="/" >Home</Link>
+                <Link className='navbuttons' to="/about" >About</Link>
+                <div class="dropdown">
+                    <button class="dropbtn">Claims <FontAwesomeIcon icon={faCaretDown}></FontAwesomeIcon>
+                    <i class="fa fa-caret-down"></i>
+                    </button>
+                    <div class="dropdown-content">
+                        <Link className='navbuttons' to="/viewClaim" >View Claims</Link>
+                        <Link className='navbuttons' to="/addClaim">Add New Claim</Link>
+                    </div>
+                </div>
+                <Link className='loginsignupbutton' to="/LoginSignup" onClick={logout} >Logout</Link> 
+            </nav>
 
-        <nav className="navbar">
-            <Link className='navbuttons' to="/" >Home</Link>
-            <Link className='navbuttons' to="/about" >About</Link>
-              <div class="dropdown">
-                  <button class="dropbtn">Claims <FontAwesomeIcon icon={faCaretDown}></FontAwesomeIcon>
-                   <i class="fa fa-caret-down"></i>
-                  </button>
-                  <div class="dropdown-content">
-                      <Link className='navbuttons' to="/viewClaim" >View Claims</Link>
-                      <Link className='navbuttons' to="/addClaim">Add New Claim</Link>
-                  </div>
+            <div>
+                <h1>Add Claim</h1>
             </div>
-            <Link className='loginsignupbutton' to="/LoginSignup" onClick={logout} >Logout</Link> 
-          </nav>
-          <div class="divider"></div>
-        
-            <h1>Add Claim</h1>
 
             <form className="claimform">
                 <div className="formbox">
@@ -220,10 +223,10 @@ function AddClaimPage() {
                             }}>
                         </input>
                     <br></br>
-                    <input type="button" onClick={() => {  UploadFile(); }} value={"upload Image"}></input>
+                    <input id="uploadfilesbutton" type="button" onClick={() => {  UploadFile(); EnableOnUpload(); }} value={"upload Image"}></input>
                     <br></br>       
                     <br></br>  
-                    <input type="button" onClick={() => {  AddtoDB(); }} value={"Submit"}></input>
+                    <input id="submitbutton" type="button" onClick={() => {  AddtoDB(); }} value={"Submit"}></input>
                 </div>
             </form>
         </>

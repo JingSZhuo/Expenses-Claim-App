@@ -92,11 +92,10 @@ function Login_Signup() {
                       <Link className='navbuttons' to="/viewClaim" >View Claims</Link>
                       <Link className='navbuttons' to="/addClaim">Add New Claim</Link>
                   </div>
-            </div>
+            </div> 
             <Link className='loginsignupbutton' to="/LoginSignup">Login and Sign-Up</Link>
           </nav>
-          <div class="divider"></div>
-            <h1>New empty page</h1>
+            <h1>Login | Sign Up </h1>
             <br></br>
 
 
@@ -104,6 +103,7 @@ function Login_Signup() {
                 <h3>Signup</h3>
                 <input type="email" placeholder='Email...' onChange={(event) => {setRegisterEmail(event.target.value)}} required/>
                 <input placeholder='Password...' onChange={(event) => {setRegisterPassword(event.target.value)}} required/>
+                <input placeholder='Confirm password...' required/>
 
                 <input type="button" onClick={register} value={"Signup"} ></input>
             </form>

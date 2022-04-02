@@ -57,7 +57,6 @@ function App() {
               {loginStatus === true ? <Link className='loginsignupbutton' to="/LoginSignup" onClick={logout} >Logout</Link> :  <Link className='loginsignupbutton' to="/LoginSignup">Login and Sign-Up</Link>}
             </nav>
 
-            <div class="divider"></div>
 
             <div class="home-page-section">
             <h1 class="home-title">ClaimIT</h1> 
