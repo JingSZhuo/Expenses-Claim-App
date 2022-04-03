@@ -55,9 +55,8 @@ function ViewClaim(){
                   <Link className='navbuttons' to="/addClaim">Add New Claim</Link>
               </div>
         </div>
-        <Link className='loginsignupbutton' to="/LoginSignup">Login and Sign-Up</Link>
+        <Link className='loginsignupbutton' to="/LoginSignup" onClick={logout} >Logout</Link> 
       </nav>
-      <div class="divider"></div>
         <h2>My Claims</h2>
 
         <div>
