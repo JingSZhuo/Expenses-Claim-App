@@ -119,7 +119,7 @@ function Login_Signup() {
                         <form>
                             <h3>Employee/Staff Login</h3>
                             <input placeholder='Email...' onChange={(event) => {setLoginEmail(event.target.value)}}/>
-                            <input placeholder='Password...' onChange={(event) => {setLoginrPassword(event.target.value)}}/>
+                            <input type ="password" placeholder='Password...' onChange={(event) => {setLoginrPassword(event.target.value)}}/>
                             <div className="form-button">
                             
                             <button type ="button" id="submit" onClick={login} className="ibtn" value={"Login"}>Login</button>
@@ -133,8 +133,8 @@ function Login_Signup() {
                         <form>
                             <h3>Signup</h3>
                             <input className ="form-control" type="email" placeholder='Email...' onChange={(event) => {setRegisterEmail(event.target.value)}} required/>
-                            <input className ="form-control" placeholder='Password...' onChange={(event) => {setRegisterPassword(event.target.value)}} required/>
-                            <input className ="form-control" placeholder='Confirm password...' required/>
+                            <input type="password" className ="form-control" placeholder='Password...' onChange={(event) => {setRegisterPassword(event.target.value)}} required/>
+                            <input type="password" className ="form-control" placeholder='Confirm password...' required/>
                             <div className="form-button">
                             <button id="submit" className="ibtn" type="button" onClick={register} value={"Signup"} >Sign Up</button>
                             </div>
