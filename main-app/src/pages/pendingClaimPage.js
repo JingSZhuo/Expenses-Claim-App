@@ -69,10 +69,6 @@ const PendingClaimPage = () => {
       }
   }
 
-  function DisableAfterClick() {
-    document.getElementById("finalchoice").disabled = 'disabled';
-  }
-
   function showFiles (numberOfFiles, arrayOfURLS) {
 
     return [...Array(numberOfFiles)].map((e, i) => 
@@ -80,12 +76,18 @@ const PendingClaimPage = () => {
           <embed className="files"  src={`${arrayOfURLS[i]}`}/>
       </div>);
   }
+
+  function OnPressChoice() {
+    document.getElementById('approve').disabled = true
+    document.getElementById('reject').disabled = true
+    // document.getElementsByClassName('finalchoice').disabled =true
+  }
  
     return ( 
         <div>
             <nav className="navbar">
-                <Link className='navbuttons' to="/" >Home</Link>
-                <Link className='navbuttons' to="/about" >About</Link>
+                {/* <Link className='navbuttons' to="/" >Home</Link>
+                <Link className='navbuttons' to="/about" >About</Link> */}
                 <Link className='navbuttons' to="/admin" >Admin</Link>
                 <Link className='loginsignupbutton' to="/LoginSignup" onClick={logout} >Logout</Link> 
             </nav>
@@ -94,7 +96,7 @@ const PendingClaimPage = () => {
 
             {data.map((data) => {
                 return(
-                  <body>
+                  <div>
                       <div>
                           <a> Time: {data.ID}</a>,
                           <a> Claim: {data.Claim}</a>,
@@ -104,14 +106,14 @@ const PendingClaimPage = () => {
                           <a> Account No: {data.AccountNumber}</a>,
                           <a> ClaimID: {data.id}</a>,
                           <a> Status: {data.Approve}</a>
-                          <a> Len: {data.NoFiles}</a>
+                          <br></br>
+                          <a> No. of Files: {data.NoFiles}</a>
                           <br></br>
                           {<div className="filescontainer">{showFiles(data.NoFiles, data.URLS)}</div>}
                       </div>
-                      <button className='finalchoice' onClick={() => Approve(data.email, data.ClaimId)}  value="Approve" >Approve</button>
-                      <button className='finalchoice' onClick={() => Reject(data.email, data.ClaimId)}  value="Reject" >Reject</button>
-                  </body>
-              
+                      <button id='approve' className='finalchoice' onClick={() => {Approve(data.email, data.ClaimId); OnPressChoice()} }  value="Approve" >Approve</button>
+                      <button id='reject' className='finalchoice' onClick={() => {Reject(data.email, data.ClaimId); OnPressChoice() }}  value="Reject" >Reject</button>
+                  </div>
                 )
             })}
         </div>

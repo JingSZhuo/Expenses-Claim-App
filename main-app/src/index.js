@@ -12,6 +12,7 @@ import AddClaim from "./pages/addClaim.js";
 import EditClaim from "./pages/editClaim.js";
 import AdminPage from './pages/adminPage';
 import PendingClaimPage from './pages/pendingClaimPage';
+import ProfilePage from './pages/profilePage'
 
 const rootElement = document.getElementById('root');
 
@@ -27,6 +28,7 @@ ReactDOM.render(
               <Route path='/editClaim' element={ <EditClaim/> } />
               <Route path='/admin' element={ <AdminPage/> } />
               <Route path='/pendingClaim' element={ <PendingClaimPage/> }  />
+              <Route path='/editProfile' element={ <ProfilePage/> } />
             </Routes>
   </BrowserRouter>,
   rootElement
