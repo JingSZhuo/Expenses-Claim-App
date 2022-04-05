@@ -6,7 +6,7 @@ import { auth } from '../firebase.js'
 import db, { storage } from "../firebase";
 import "../main.css";
 import { async } from '@firebase/util';
-import { collection } from 'firebase/firestore';
+import { collection, doc, setDoc } from 'firebase/firestore';
 import { FontAwesomeIcon} from '@fortawesome/react-fontawesome'
 import { faCaretDown} from '@fortawesome/free-solid-svg-icons';
 
@@ -16,22 +16,6 @@ function Login_Signup() {
 
     //Hook states
     let navigate = useNavigate();
-    const [user, setUser] = useState({})
-    const  [loginStatus, setLoginStatus] = useState(false)
-
-    useEffect(() => {
-  
-        const auth = getAuth();
-        onAuthStateChanged(auth, (user) => {          //Check if user is logged in
-            setUser(user)
-            if (user.email === "linemanager@gmail.com") {
-                setLoginStatus(true); 
-            } else {
-                setLoginStatus(false); 
-            }
-        })
-        //GetStatus()
-    }, [])
 
 
     //Register + Login states
@@ -39,27 +23,34 @@ function Login_Signup() {
     const [registerPassword, setRegisterPassword]  = useState("");
     const [loginEmail, setLoginEmail]  = useState("");
     const [loginPassword, setLoginrPassword]  = useState("");
-
-    async function AddToProfile() {
-
-        const authorize = getAuth()
-        const getCurrentUser = authorize.currentUser
-    
-        //Collection state
-        const createCollection = collection(db, getCurrentUser.email)  //User getElementById of email field
-    }
     
     /*Register and Login Functions*/ 
 
     const register = async () => {
         try{
             await createUserWithEmailAndPassword(auth, registerEmail, registerPassword).then(() => {
+                CreateDetails()
                 navigate('/')
             })
             } catch (error) { 
                 console.log(error.message) 
             }
     };
+    const CreateDetails = async () => {
+        const createCollectionProfile = collection(db, registerEmail)
+
+        const createProfileDoc = doc(createCollectionProfile, "Profile")
+        const dateNow = Date.now()
+
+        await setDoc(createProfileDoc, {
+            UserName: "",
+            Email: registerEmail ,
+            Address: "", 
+            Joined: dateNow, 
+            Status: "Active"
+        })
+    }
+
     const login = async () => {
         try{
             await signInWithEmailAndPassword(auth, loginEmail, loginPassword).then(() => {
@@ -72,12 +63,7 @@ function Login_Signup() {
             }
     };
 
-    const logout = async () => {
-        await signOut(auth)
-    };
-    
-
-     return (  
+    return (  
         <>
        
         <nav className="navbar">
@@ -93,7 +79,7 @@ function Login_Signup() {
                   </div>
             </div> 
             <Link className='loginsignupbutton' to="/LoginSignup">Login and Sign-Up</Link>
-          </nav>
+        </nav>
 
           
           <link rel="stylesheet" type="text/css" href="src/bootstrap.min.css"></link>
@@ -136,18 +122,15 @@ function Login_Signup() {
                             <input type="password" className ="form-control" placeholder='Password...' onChange={(event) => {setRegisterPassword(event.target.value)}} required/>
                             <input type="password" className ="form-control" placeholder='Confirm password...' required/>
                             <div className="form-button">
-                            <button id="submit" className="ibtn" type="button" onClick={register} value={"Signup"} >Sign Up</button>
+                            <button id="submit" className="ibtn" type="button" onClick={() => {register();}} value={"Signup"} >Sign Up</button>
                             </div>
                         </form>
         
                         <div className='LS'>
-                            <h3>User - logged in</h3>
-
-
-                            {/* <button onClick={logout}>Logout</button> */}
+                           {/* <button onClick={logout}>Logout</button> */}
                         </div>
                         <br/>
-                            Logged in as:  {user?.email}
+                        <br/>
                         <br/>
                     </div>
                 </div>

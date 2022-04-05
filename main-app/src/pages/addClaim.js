@@ -88,15 +88,8 @@ function AddClaimPage() {
             const metadata = {
                 contentType: `${multipleimageTypes[i]}`,
             }
-        
             uploadBytes(storageRef, multipleImages[i], metadata)
-
-            // await getDownloadURL(storageRef).then((url) => { 
-            //     arrayOfUrls[i] = url
-            // })
-            // console.log(arrayOfUrls[i])    
         }
-        // setUrls(arrayOfUrls)
         console.log("URLS: ", urls)
     }
 
@@ -129,6 +122,7 @@ function AddClaimPage() {
             SortCode: document.getElementById("sortcode").value,
             AccountNumber: document.getElementById("accountnumber").value,
             Approve: "Not Yet Approved",
+            email: user.email,
             URLS: "" ,
             NoFiles: length
         }) 
