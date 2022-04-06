@@ -38,8 +38,6 @@ function App() {
   const auth = getAuth();
 
   return (
-      
-
       <div className="App">
 
           <nav className="navbar">
@@ -128,19 +126,9 @@ function App() {
                 </div>
               </div>
             </div>
-
-            
-
           </div>
-
-
           <div class="footer"><h1>footer</h1></div>
-
-            <Outlet/>
-
-
-            
-
+          <Outlet/>
       </div>
 
   );

@@ -112,8 +112,8 @@ function Login_Signup() {
                             <input type ="password" placeholder='Password...' onChange={(event) => {setLoginrPassword(event.target.value)}}/>
                             <div className="form-button">
                             
-                            <button type ="button" id="submit" onClick={login} className="ibtn" value={"Login"}>Login</button>
-                            <button type ="button" id="submit" onClick={ navigateToReset } className="ibtn">Forgotten Password</button>
+                            <button type ="button"  onClick={login} className="ibtn" value={"Login"}>Login</button>
+                            <button type ="button"  onClick={ navigateToReset } className="ibtn">Forgotten Password</button>
                             </div>
                         </form>
 
@@ -127,7 +127,7 @@ function Login_Signup() {
                             <input type="password" className ="form-control" placeholder='Password...' onChange={(event) => {setRegisterPassword(event.target.value)}} required/>
                             <input type="password" className ="form-control" placeholder='Confirm password...' required/>
                             <div className="form-button">
-                            <button id="submit" className="ibtn" type="button" onClick={() => {register();}} value={"Signup"} >Sign Up</button>
+                            <button className="ibtn" type="button" onClick={() => {register();}} value={"Signup"} >Sign Up</button>
                             </div>
                         </form>
         
