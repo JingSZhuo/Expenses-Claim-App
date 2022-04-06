@@ -5,9 +5,10 @@ import db, { storage } from "../firebase";
 import "../main.css";
 import { getDownloadURL, getStorage, ref, uploadBytes } from "firebase/storage";
 import { useState, useEffect } from "react";
-import { async } from "@firebase/util";
 import { FontAwesomeIcon} from '@fortawesome/react-fontawesome'
 import { faCaretDown} from '@fortawesome/free-solid-svg-icons';
+import LoginSignup from "./LoginSignUp";
+
 
 function AddClaimPage() {
 
@@ -36,12 +37,25 @@ function AddClaimPage() {
         document.getElementById('submitbutton').disabled = true;
     }
     function EnableOnUpload () {
-        if (length === 0){
+        // || (title, amount, description, sortcode, accountnumber === "")
+        if ((length === 0)){
             document.getElementById('submitbutton').disabled = true;
-            alert('Need to submit at least one file!')
+            alert('Please fill in all the fields and upload evidence!')
         } 
         else {document.getElementById('submitbutton').disabled = false;
         }
+    }
+
+    function SubmitFileCheck () {
+        const title = document.getElementById('title').value
+        const amount = document.getElementById('amount').value
+        const description = document.getElementById('description').value
+        const sortcode = document.getElementById('sortcode').value
+        const accountnumber = document.getElementById('accountnumber').value
+        if ((title, amount, description, sortcode, accountnumber === "")) {
+            alert("Please fill in all fields")
+        }
+        else { AddtoDB()}
     }
 
     async function AddURLToDB () {
@@ -74,15 +88,8 @@ function AddClaimPage() {
             const metadata = {
                 contentType: `${multipleimageTypes[i]}`,
             }
-        
             uploadBytes(storageRef, multipleImages[i], metadata)
-
-            // await getDownloadURL(storageRef).then((url) => { 
-            //     arrayOfUrls[i] = url
-            // })
-            // console.log(arrayOfUrls[i])    
         }
-        // setUrls(arrayOfUrls)
         console.log("URLS: ", urls)
     }
 
@@ -114,7 +121,8 @@ function AddClaimPage() {
             Description: document.getElementById("description").value,
             SortCode: document.getElementById("sortcode").value,
             AccountNumber: document.getElementById("accountnumber").value,
-            Approve: "",
+            Approve: "Not Yet Approved",
+            email: user.email,
             URLS: "" ,
             NoFiles: length
         }) 
@@ -226,15 +234,11 @@ function AddClaimPage() {
                     <input id="uploadfilesbutton" type="button" onClick={() => {  UploadFile(); EnableOnUpload(); }} value={"upload Image"}></input>
                     <br></br>       
                     <br></br>  
-                    <input id="submitbutton" type="button" onClick={() => {  AddtoDB(); }} value={"Submit"}></input>
+                    <input id="submitbutton" type="button" onClick={() => {  SubmitFileCheck(); }} value={"Submit"}></input>
                 </div>
             </form>
         </>
     )
-}
-
-function StatusOut() {
-    return(<h2>Not Logged In!!!</h2>)
 }
  
 function Status() {                         //Checks if user is logged in and renders based on login status
@@ -255,7 +259,7 @@ const viewClaim = () => {
 
     return (  
         <div>
-                { Status() === true ?  <AddClaimPage/> : <StatusOut/>}
+                { Status() === true ?  <AddClaimPage/> : <LoginSignup/>}
         </div>
 
     );
