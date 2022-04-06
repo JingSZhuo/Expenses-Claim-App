@@ -36,7 +36,9 @@ function ViewClaim(){
 
       return [...Array(numberOfFiles)].map((e, i) => 
         <div key={i}>
-            <embed className="files"  src={`${arrayOfURLS[i]}`}/>
+            <embed className="files" src={`${arrayOfURLS[i]}`}/>
+            <br></br>
+            <a href={`${arrayOfURLS[i]}`}>View</a>
         </div>);
     }
     
@@ -79,6 +81,8 @@ function ViewClaim(){
                 <a>Files:</a>
                 <br></br>
                 <div className="filescontainer">{showFiles(data.NoFiles, data.URLS)}</div>
+                <br></br>
+                {/* <a href={`${data.URLS}`}>View</a> */}
                 {/*<a> URLS: {testing.URLS[0]} , {testing.URLS[1]}</a>*/}
                 <br></br>
                {/* , <Link to="/editClaim" state={testing.id} >Edit Claim</Link>*/}
