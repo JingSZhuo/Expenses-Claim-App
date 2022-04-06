@@ -29,7 +29,7 @@ function Login_Signup() {
     const register = async () => {
         try{
             await createUserWithEmailAndPassword(auth, registerEmail, registerPassword).then(() => {
-                CreateDetails()
+                //CreateDetails()
                 navigate('/')
             })
             } catch (error) { 
@@ -62,6 +62,10 @@ function Login_Signup() {
                 console.log(error.message) 
             }
     };
+
+    const navigateToReset = () => {
+        navigate('/reset')
+    }
 
     return (  
         <>
@@ -109,6 +113,7 @@ function Login_Signup() {
                             <div className="form-button">
                             
                             <button type ="button" id="submit" onClick={login} className="ibtn" value={"Login"}>Login</button>
+                            <button type ="button" id="submit" onClick={ navigateToReset } className="ibtn">Forgotten Password</button>
                             </div>
                         </form>
 
