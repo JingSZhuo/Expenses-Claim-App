@@ -78,20 +78,12 @@ function ViewClaim(){
 
                 <a class="claim-purchaseplace">Spent at {data.Description}</a>
                 </div>
-
-
-                {/* <a href={`${data.URLS}`}>View</a> */}
-                {/*<a> URLS: {testing.URLS[0]} , {testing.URLS[1]}</a>*/}
-
-               {/* , <Link to="/editClaim" state={testing.id} >Edit Claim</Link>*/}
-
-                
+                               
               </div>
             );
           })}
         </div>
     </body>
-
 
 /*                <a> Time: {data.ID}</a>,
                 <a> Claim: {data.Claim}</a>,
