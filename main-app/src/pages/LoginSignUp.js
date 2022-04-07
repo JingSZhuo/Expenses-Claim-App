@@ -73,7 +73,7 @@ function Login_Signup() {
         <nav className="navbar">
             <Link className='navbuttons' to="/" >Home</Link>
             <Link className='navbuttons' to="/about" >About</Link>
-              <div class="dropdown">
+              {/* <div class="dropdown">
                   <button class="dropbtn">Claims <FontAwesomeIcon icon={faCaretDown}></FontAwesomeIcon>
                    <i class="fa fa-caret-down"></i>
                   </button>
@@ -81,7 +81,7 @@ function Login_Signup() {
                       <Link className='navbuttons' to="/viewClaim" >View Claims</Link>
                       <Link className='navbuttons' to="/addClaim">Add New Claim</Link>
                   </div>
-            </div> 
+            </div>  */}
             <Link className='loginsignupbutton active-page' to="/LoginSignup">Login and Sign-Up</Link>
         </nav>
 
