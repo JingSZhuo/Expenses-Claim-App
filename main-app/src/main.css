@@ -13,63 +13,70 @@ body {
 /******************************************************************************** navigation bar ******************************************************************************** */
 
 .navbuttons {
-  padding-left: 2rem;
+  padding-left: 20rem;
   display: block;
   float: left;
   text-decoration: none;
+
 }
 
 .loginsignupbutton {
   display: block;
   float: right;
-  margin-right: 1.25px;
+  margin-right: 10px;
   text-decoration: none;
 }
 
 
 .navbar {
   overflow: hidden;
-  background-color: #92e1fd;
-  padding: 0.8rem;
+  background-color: #1a67af;
+  padding: 0.8rem 0.8rem 0 0.8rem;
+  box-shadow: 2px 2px 3px rgb(102, 102, 102);
 
 }
 
 .navbar a {
   font-size: 1rem;
-  color: rgb(0, 0, 0);
+  color: rgb(255, 255, 255);
   text-align: center;
-  padding: 0.875rem 1rem;
+  padding: 0.875rem 1rem 1rem;
   text-decoration: none;
+  font-weight: 600;
+  transition: 0.6s;
 }
 
 
 .dropdown {
   float: left;
   overflow: hidden;
-  
+
 }
+
+
 
 .dropdown .dropbtn {
   font-size: 16px;  
   border: none;
   outline: none;
-  color: rgb(0, 0, 0);
-  padding: 14px 16px;
+  color: rgb(255, 255, 255);
+  padding: 0.875rem 1rem 1rem 1rem;
   background-color: inherit;
   font-family: inherit;
   margin: 0;
+  font-weight: 600;
+  transition: 0.6s;
 }
 
 .navbar a:hover {
-  background-color: #2cc7f2;
+  background-color: rgba(255, 255, 255, 0.5);
   box-shadow: inset 2px 2px 3px rgb(102, 102, 102);
-  transition: 1s;
+  transition: 0.6s;
 }
 
 .dropdown:hover .dropbtn{
-  background-color: #2cc7f2;
+  background-color: rgba(255, 255, 255, 0.5);
   box-shadow: inset 2px 3px rgb(102, 102, 102);
-  transition: 1s;
 }
 
 .dropdown-content {
@@ -84,7 +91,7 @@ body {
 .dropdown-content a {
   float: none;
   color: #17252A;
-  padding: 12px 16px;
+  padding: 12px 14px;
   text-decoration: none;
   display: block;
   text-align: left;
@@ -104,19 +111,57 @@ body {
   box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
 }
 
+.active-page{
+  border-bottom: 5px solid #2cc7f2;
 
+}
 
 /******************************************************************************** view claims page ******************************************************************************** */
+
+.viewClaim-body{
+  background-color: #e5e2e2c4;
+}
+
+.view-claim-header{
+  padding: 30px;
+  background-color: #fafafa;
+  box-shadow: 0px 1px 5px 0px rgba(0,0,0,0.2);
+}
+
+.new-claim{
+  text-decoration: none;
+  float: right;
+  margin: -45px 50px 0px 0px;
+  background-color: #5cb85c;
+  padding: 10px;
+  border-radius: 5px;
+  color: #ffffff;
+  font-weight: 500;
+  transition: 0.3s ease-out;
+}
+
+.new-claim:hover{
+  background-color: #4b9e4b;
+  transition: 0.3s ease-out;
+}
+
+.claim-plus{
+  width: 15px;
+  padding: 0px 5px 0px 0px;
+  margin: 0px 0px -3px 0px;
+}
 
 .filescontainer {
   display: inline-flex;
   flex-direction: row;
+  float: left;
 }
 
 .files {
-  width: 200px;
-  height: 200px;
-  padding: 10px;
+  width: 70px;
+  height: 70px;
+  padding: 30px 0px 0px 50px;
+  
 }
 
 embed {
@@ -124,6 +169,126 @@ embed {
   overflow-y: hidden;
   width: auto;
   height: auto;
+}
+
+.claim-container{
+  border-style: solid;
+  border-width: 1px;
+  border-color: #41424260;
+  margin: 0px 100px 0px 100px;
+  padding: 10px 0px 60px 0px;
+  background-color: #ffffff;
+  box-shadow: 0px 1px 5px 0px rgba(0,0,0,0.2);
+}
+
+.main-claim-container{
+  padding: 100px 100px 800px 100px;
+  
+}
+
+
+.collapse-btn{
+  float: right;
+  padding: 10px 14px 10px 15px;
+  margin: -100px 15px 0px 0px;
+  border: none;
+  background-color: #ffffff;
+  transition: 0.2s;
+}
+
+.collapse-btn:hover{
+  background-color: #6e727525;
+  border-radius: 25px;
+  transition: 0.2s;
+}
+
+.content{
+  margin: 0px 0px 0px 30px;
+  padding: 50px 0px 0px 0px;
+  animation: content-fadein 0.5s;
+}
+
+@keyframes content-fadein{
+  0% {opacity:0;}
+  50% {opacity: 0;}
+  100% {opacity: 1;}
+}
+
+.claim-text{
+  padding: 0px 0px 0px 0px;
+  margin: 30px 0px 0px 100px;
+}
+
+.claim-name{
+  color: #17252A;
+  font-size: 30px;
+  padding-bottom: 5px;
+}
+
+.claim-amount{
+  float: right;
+  padding: 0px 40px 0px 0px;
+  margin: -25px 40px 0px 0px;
+  font-weight: 600;
+  font-size: 30px;
+  color: #17252A;
+
+}
+
+.view-button{
+  margin: 0px 50px 0px 67px;
+  padding: 3px 10px 3px 10px;
+  position: relative;
+  display: flex;
+  justify-content: center;
+  text-decoration: none;
+  background-color: #1a67af;
+  border-radius: 5px;
+  color: #f0f0f0
+}
+
+.view-button:hover{
+  background-color: #032a5094;
+}
+
+.claim-status-pending{
+  background-color: rgba(255, 136, 0, 0.137);
+  border-style: solid;
+  border-color: rgb(255, 136, 0);
+  border-width: 0.5px;
+  border-radius: 5px;
+  padding: 4px;
+  font-size: 12px;
+  color: rgb(255, 136, 0);
+}
+
+.claim-status-rejected{
+  padding: 4px;
+  background-color: rgba(255, 0, 0, 0.137);
+  border-style: solid;
+  border-color: rgb(255, 0, 0);
+  border-width: 0.5px;
+  border-radius: 5px;
+  font-size: 12px;
+  color: rgb(255, 0, 0);
+}
+
+.claim-status-Approved{
+  background-color: rgba(92, 184, 92, 0.178);
+  border-style: solid;
+  border-color: rgb(92, 184, 92);
+  border-width: 0.5px;
+  border-radius: 5px;
+  padding: 4px;
+  font-size: 12px;
+  color: rgb(92, 184, 92);
+}
+
+.claim-purchaseplace{
+  padding: 10px 0px 10px 10px;
+  font-size: 20px;
+  margin: 20px 0px 0px 0px;
+  color: #3a3b3bc2;
 }
 
 /*Claim form*/
@@ -1000,7 +1165,8 @@ embed {
 
 
 .form-body{
-  margin-right:28.9%;
+  margin-right:26%;
   background-image:url("/src/images/img1.jpg");
+  
 }
 
