@@ -38,7 +38,7 @@ function ViewClaim(){
         <div key={i}>
             <embed className="files" src={`${arrayOfURLS[i]}`}/>
             <br></br>
-            <a href={`${arrayOfURLS[i]}`}>View</a>
+            <center><a href={`${arrayOfURLS[i]}`}>View</a></center>
         </div>);
     }
     
@@ -48,7 +48,7 @@ function ViewClaim(){
     <nav className="navbar">
         <Link className='navbuttons' to="/" >Home</Link>
         <Link className='navbuttons' to="/about" >About</Link>
-          <div class="dropdown">
+          <div class="dropdown active-page">
               <button class="dropbtn">Claims <FontAwesomeIcon icon={faCaretDown}></FontAwesomeIcon>
                <i class="fa fa-caret-down"></i>
               </button>
@@ -65,8 +65,8 @@ function ViewClaim(){
         <div>
           {data.map((data) => {
             //Implement function for ID for each claim?
-
             return (
+              
               <div>
                 <a> Time: {data.ID}</a>,
                 <a> Claim: {data.Claim}</a>,
@@ -87,6 +87,7 @@ function ViewClaim(){
                 <br></br>
                {/* , <Link to="/editClaim" state={testing.id} >Edit Claim</Link>*/}
                 <br></br>
+                
               </div>
             );
           })}

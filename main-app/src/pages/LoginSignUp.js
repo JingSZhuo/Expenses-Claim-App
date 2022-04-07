@@ -82,7 +82,7 @@ function Login_Signup() {
                       <Link className='navbuttons' to="/addClaim">Add New Claim</Link>
                   </div>
             </div> 
-            <Link className='loginsignupbutton' to="/LoginSignup">Login and Sign-Up</Link>
+            <Link className='loginsignupbutton active-page' to="/LoginSignup">Login and Sign-Up</Link>
         </nav>
 
           

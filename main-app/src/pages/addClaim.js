@@ -180,7 +180,7 @@ function AddClaimPage() {
             <nav className="navbar">
                 <Link className='navbuttons' to="/" >Home</Link>
                 <Link className='navbuttons' to="/about" >About</Link>
-                <div class="dropdown">
+                <div class="dropdown active-page">
                     <button class="dropbtn">Claims <FontAwesomeIcon icon={faCaretDown}></FontAwesomeIcon>
                     <i class="fa fa-caret-down"></i>
                     </button>

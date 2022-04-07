@@ -13,63 +13,69 @@ body {
 /******************************************************************************** navigation bar ******************************************************************************** */
 
 .navbuttons {
-  padding-left: 2rem;
+  padding-left: 20rem;
   display: block;
   float: left;
   text-decoration: none;
+
 }
 
 .loginsignupbutton {
   display: block;
   float: right;
-  margin-right: 1.25px;
+  margin-right: 10px;
   text-decoration: none;
 }
 
 
 .navbar {
   overflow: hidden;
-  background-color: #92e1fd;
-  padding: 0.8rem;
+  background-color: #1a67af;
+  padding: 0.8rem 0.8rem 0 0.8rem;
+  box-shadow: 2px 2px 3px rgb(102, 102, 102);
 
 }
 
 .navbar a {
   font-size: 1rem;
-  color: rgb(0, 0, 0);
+  color: rgb(255, 255, 255);
   text-align: center;
-  padding: 0.875rem 1rem;
+  padding: 0.875rem 1rem 1rem;
   text-decoration: none;
+  font-weight: 600;
 }
 
 
 .dropdown {
   float: left;
   overflow: hidden;
-  
+
 }
+
+
 
 .dropdown .dropbtn {
   font-size: 16px;  
   border: none;
   outline: none;
-  color: rgb(0, 0, 0);
-  padding: 14px 16px;
+  color: rgb(255, 255, 255);
+  padding: 0.875rem 1rem 1rem 1rem;
   background-color: inherit;
   font-family: inherit;
   margin: 0;
+  font-weight: 600;
+  
 }
 
 .navbar a:hover {
-  background-color: #2cc7f2;
+  background-color: rgba(255, 255, 255, 0.5);
   box-shadow: inset 2px 2px 3px rgb(102, 102, 102);
-  transition: 1s;
+
 }
 
 .dropdown:hover .dropbtn{
   background-color: #2cc7f2;
   box-shadow: inset 2px 3px rgb(102, 102, 102);
-  transition: 1s;
 }
 
 .dropdown-content {
@@ -84,7 +90,7 @@ body {
 .dropdown-content a {
   float: none;
   color: #17252A;
-  padding: 12px 16px;
+  padding: 12px 14px;
   text-decoration: none;
   display: block;
   text-align: left;
@@ -104,7 +110,10 @@ body {
   box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
 }
 
+.active-page{
+  border-bottom: 5px solid #b7e5fa;
 
+}
 
 /******************************************************************************** view claims page ******************************************************************************** */
 
@@ -1000,7 +1009,8 @@ embed {
 
 
 .form-body{
-  margin-right:28.9%;
+  margin-right:26%;
   background-image:url("/src/images/img1.jpg");
+  
 }
 
