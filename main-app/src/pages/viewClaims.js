@@ -5,6 +5,7 @@ import { collection ,getDocs, query, orderBy } from "firebase/firestore";
 import {Link} from "react-router-dom";
 import { FontAwesomeIcon} from '@fortawesome/react-fontawesome'
 import { faCaretDown} from '@fortawesome/free-solid-svg-icons';
+import Login_Signup from "./LoginSignUp";
 
 
     
@@ -54,9 +55,8 @@ function ViewClaim(){
                   <Link className='navbuttons' to="/addClaim">Add New Claim</Link>
               </div>
         </div>
-        <Link className='loginsignupbutton' to="/LoginSignup">Login and Sign-Up</Link>
+        <Link className='loginsignupbutton' to="/LoginSignup" onClick={logout} >Logout</Link> 
       </nav>
-      <div class="divider"></div>
         <h2>My Claims</h2>
 
         <div>
@@ -111,7 +111,7 @@ const viewClaim = () => {
 
     return (  
         <div>
-                { Status() === true ?  <ViewClaim/> : <StatusOut/>}
+                { Status() === true ?  <ViewClaim/> : <Login_Signup/>}
         </div>
 
     );
