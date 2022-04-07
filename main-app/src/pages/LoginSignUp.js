@@ -56,10 +56,11 @@ function Login_Signup() {
             await signInWithEmailAndPassword(auth, loginEmail, loginPassword).then(() => {
                 if (auth.currentUser.email === "linemanager@gmail.com" ){
                     navigate('/admin')
-                } else { navigate('/viewClaim') }
+                } else { navigate('/viewClaim'); }
             })
             } catch (error) { 
                 console.log(error.message) 
+                alert('Incorrect Email/Password')
             }
     };
 

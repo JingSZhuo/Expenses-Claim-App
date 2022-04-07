@@ -108,7 +108,13 @@ const PendingClaimPage = () => {
                           <br></br>
                           <a> No. of Files: {data.NoFiles}</a>
                           <br></br>
-                          {<div className="filescontainer">{showFiles(data.NoFiles, data.URLS)}</div>}
+                          <br></br>
+                          <div className="filescontainer">{showFiles(data.NoFiles, data.URLS)}</div>
+                          <br></br>
+                          <br></br>
+                          <br></br>
+                          <br></br>
+                          <br></br>
                       </div>
                       <button id='approve' className='finalchoice' onClick={() => {Approve(data.email, data.ClaimId); OnPressChoice()} }  value="Approve" >Approve</button>
                       <button id='reject' className='finalchoice' onClick={() => {Reject(data.email, data.ClaimId); OnPressChoice() }}  value="Reject" >Reject</button>
