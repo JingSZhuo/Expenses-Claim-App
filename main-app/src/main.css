@@ -242,7 +242,7 @@ embed {
   display: flex;
   justify-content: center;
   text-decoration: none;
-  background-color: #1a67af;
+  background-color: #1a67afd8;
   border-radius: 5px;
   color: #f0f0f0
 }
@@ -287,7 +287,8 @@ embed {
 .claim-purchaseplace{
   padding: 10px 0px 10px 10px;
   font-size: 20px;
-  margin: 20px 0px 0px 0px;
+  margin: -27px 7px 0px 0px;
+  float: right;
   color: #3a3b3bc2;
 }
 
