@@ -229,12 +229,12 @@ function AddClaimPage() {
                     </select>
 
                     <h3>Enter Amount</h3>
-                    <input id="amount" type="number" placeholder="Enter Amount " onChange={() => { currencyConverter(document.getElementById('amount').value)}} ></input>
+                    <input id="amount" type="number" onchange="setTwoNumberDecimal" min="0.00" max="100000.00" step="0.01" placeholder="Enter Amount " onChange={() => { currencyConverter(document.getElementById('amount').value)}} ></input>
 
                     <h4>GBP: £{currency} </h4>
 
-                    <h3>Description</h3>
-                    <input id="description" type="text" placeholder="Enter place of purchase" ></input>
+                    <h3>Place of purchase</h3>
+                    <input id="description" type="text" placeholder="Enter claim description" ></input>
 
                     <h3>Sort Code</h3>
                     <input id="sortcode" type="number" placeholder="Enter Sort Code" ></input>
@@ -270,6 +270,7 @@ function AddClaimPage() {
     )
 }
  
+
 function Status() {                         //Checks if user is logged in and renders based on login status
     const  [loginStatus, setLoginStatus] = useState(false)
   
