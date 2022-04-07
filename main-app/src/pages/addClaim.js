@@ -234,7 +234,7 @@ function AddClaimPage() {
                     <h4>GBP: £{currency} </h4>
 
                     <h3>Description</h3>
-                    <input id="description" type="text" placeholder="Enter claim description" ></input>
+                    <input id="description" type="text" placeholder="Enter place of purchase" ></input>
 
                     <h3>Sort Code</h3>
                     <input id="sortcode" type="number" placeholder="Enter Sort Code" ></input>
