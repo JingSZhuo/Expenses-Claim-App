@@ -103,9 +103,6 @@ function Login_Signup() {
                                         <a href="" class="active">Login</a>
                         </div>
 
-                       
-
-
                         <form>
                             <h3>Employee/Staff Login</h3>
                             <input placeholder='Email...' onChange={(event) => {setLoginEmail(event.target.value)}}/>
