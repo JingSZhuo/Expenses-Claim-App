@@ -34,7 +34,7 @@ function AboutPage ()  {
 
             <nav className="navbar">
               <Link className='navbuttons' to="/" >Home</Link>
-              <Link className='navbuttons' to="/about" >About</Link>
+              <Link className='navbuttons active-page' to="/about" >About</Link>
                 <div class="dropdown">
                     <button class="dropbtn">Claims <FontAwesomeIcon icon={faCaretDown}></FontAwesomeIcon>
                      <i class="fa fa-caret-down"></i>

@@ -41,7 +41,7 @@ function App() {
       <div className="App">
 
           <nav className="navbar">
-              <Link className='navbuttons' to="/" >Home</Link>
+              <Link className='navbuttons active-page' to="/" >Home</Link>
               <Link className='navbuttons' to="/about" >About</Link>
                 <div class="dropdown">
                     <button class="dropbtn">Claims  <FontAwesomeIcon icon={faCaretDown}></FontAwesomeIcon>
