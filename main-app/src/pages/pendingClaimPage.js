@@ -88,10 +88,9 @@ const PendingClaimPage = () => {
             <nav className="navbar">
                 {/* <Link className='navbuttons' to="/" >Home</Link>
                 <Link className='navbuttons' to="/about" >About</Link> */}
-                <Link className='navbuttons' to="/admin" >Admin</Link>
+                <Link className='navbuttons active-page' to="/admin" >Admin</Link>
                 <Link className='loginsignupbutton' to="/LoginSignup" onClick={logout} >Logout</Link> 
             </nav>
-            <div class="divider"></div>
             <h1>CLAIMS TO APPROVE</h1>
 
             {data.map((data) => {
