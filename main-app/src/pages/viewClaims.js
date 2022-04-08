@@ -97,7 +97,7 @@ function ViewClaim(){
                         <br></br>
                         <p>Sort code: {data.SortCode}</p>
                         <br></br>
-                        <p>Time: {data.ID}</p>
+                        <p>Time Submitted: {data.ID}</p>
                         </div>
                     </div>
                 </div>

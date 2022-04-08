@@ -112,8 +112,8 @@ function AddClaimPage() {
         setdocID(generatedId)
         setDocIDAdmin(generatedIdForAdmin)
 
-
-        const dateNow = Date.now()
+        const d = new Date()
+        const dateNow = d.toUTCString()
 
         await setDoc(generateID, {                      //individual database
             ID: dateNow,
@@ -132,6 +132,7 @@ function AddClaimPage() {
         await setDoc(generateEmail, {                   //Employee database
             ID: dateNow,
             ClaimId: generatedId ,
+            ClaimIdAdmin: generatedIdForAdmin ,
             Claim: document.getElementById("title").value,
             Amount: document.getElementById("amount").value,
             Description: document.getElementById("description").value,
@@ -161,6 +162,8 @@ function AddClaimPage() {
             console.log(arrayOfUrls[i])    
         }
         setUrls(arrayOfUrls)
+
+        alert("Claim submitted")
     }
 
     //Currency converter function
