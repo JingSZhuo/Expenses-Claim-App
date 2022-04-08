@@ -101,7 +101,6 @@ function ViewClaim(){
                         </div>
                     </div>
                 </div>
-
               </div>
             );
           })} 
