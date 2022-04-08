@@ -134,6 +134,8 @@ const PendingClaimPage = () => {
                           <br></br>
                           <br></br>
                           <br></br>
+                          <br></br>
+                          <br></br>
                       </div>
                       <button id='approve' className='finalchoice' onClick={() => {Approve(data.email, data.ClaimId, data.ClaimIdAdmin); }}  value="Approve" >Approve</button>
                       <button id='reject' className='finalchoice' onClick={() => {Reject(data.email, data.ClaimId, data.ClaimIdAdmin); }}  value="Reject" >Reject</button>
