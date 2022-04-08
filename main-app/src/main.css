@@ -43,6 +43,7 @@ body {
   padding: 0.875rem 1rem 1rem;
   text-decoration: none;
   font-weight: 600;
+  transition: 0.6s;
 }
 
 
@@ -64,17 +65,17 @@ body {
   font-family: inherit;
   margin: 0;
   font-weight: 600;
-  
+  transition: 0.6s;
 }
 
 .navbar a:hover {
   background-color: rgba(255, 255, 255, 0.5);
   box-shadow: inset 2px 2px 3px rgb(102, 102, 102);
-
+  transition: 0.6s;
 }
 
 .dropdown:hover .dropbtn{
-  background-color: #2cc7f2;
+  background-color: rgba(255, 255, 255, 0.5);
   box-shadow: inset 2px 3px rgb(102, 102, 102);
 }
 
@@ -111,7 +112,7 @@ body {
 }
 
 .active-page{
-  border-bottom: 5px solid #b7e5fa;
+  border-bottom: 5px solid #2cc7f2;
 
 }
 
@@ -122,7 +123,7 @@ body {
 }
 
 .view-claim-header{
-  padding: 20px;
+  padding: 30px;
   background-color: #fafafa;
   box-shadow: 0px 1px 5px 0px rgba(0,0,0,0.2);
 }
@@ -130,12 +131,18 @@ body {
 .new-claim{
   text-decoration: none;
   float: right;
-  margin: -39px 50px 0px 0px;
+  margin: -45px 50px 0px 0px;
   background-color: #5cb85c;
-  padding: 8px;
+  padding: 10px;
   border-radius: 5px;
   color: #ffffff;
   font-weight: 500;
+  transition: 0.3s ease-out;
+}
+
+.new-claim:hover{
+  background-color: #4b9e4b;
+  transition: 0.3s ease-out;
 }
 
 .claim-plus{
@@ -179,6 +186,34 @@ embed {
   
 }
 
+
+.collapse-btn{
+  float: right;
+  padding: 10px 14px 10px 15px;
+  margin: -100px 15px 0px 0px;
+  border: none;
+  background-color: #ffffff;
+  transition: 0.2s;
+}
+
+.collapse-btn:hover{
+  background-color: #6e727525;
+  border-radius: 25px;
+  transition: 0.2s;
+}
+
+.content{
+  margin: 0px 0px 0px 30px;
+  padding: 50px 0px 0px 0px;
+  animation: content-fadein 0.5s;
+}
+
+@keyframes content-fadein{
+  0% {opacity:0;}
+  50% {opacity: 0;}
+  100% {opacity: 1;}
+}
+
 .claim-text{
   padding: 0px 0px 0px 0px;
   margin: 30px 0px 0px 100px;
@@ -207,7 +242,7 @@ embed {
   display: flex;
   justify-content: center;
   text-decoration: none;
-  background-color: #1a67af;
+  background-color: #1a67afd8;
   border-radius: 5px;
   color: #f0f0f0
 }
@@ -216,15 +251,26 @@ embed {
   background-color: #032a5094;
 }
 
-.claim-status-notApproved{
-  background-color: rgba(255, 0, 0, 0.137);
+.claim-status-pending{
+  background-color: rgba(255, 136, 0, 0.137);
   border-style: solid;
-  border-color: red;
+  border-color: rgb(255, 136, 0);
   border-width: 0.5px;
   border-radius: 5px;
   padding: 4px;
   font-size: 12px;
-  color: red;
+  color: rgb(255, 136, 0);
+}
+
+.claim-status-rejected{
+  padding: 4px;
+  background-color: rgba(255, 0, 0, 0.137);
+  border-style: solid;
+  border-color: rgb(255, 0, 0);
+  border-width: 0.5px;
+  border-radius: 5px;
+  font-size: 12px;
+  color: rgb(255, 0, 0);
 }
 
 .claim-status-Approved{
@@ -241,7 +287,8 @@ embed {
 .claim-purchaseplace{
   padding: 10px 0px 10px 10px;
   font-size: 20px;
-  margin: 20px 0px 0px 0px;
+  margin: -27px 7px 0px 0px;
+  float: right;
   color: #3a3b3bc2;
 }
 

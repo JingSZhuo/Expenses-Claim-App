@@ -4,14 +4,17 @@ import { onAuthStateChanged, getAuth, signOut} from "firebase/auth";
 import { collection ,getDocs, query, orderBy } from "firebase/firestore";
 import {Link} from "react-router-dom";
 import { FontAwesomeIcon} from '@fortawesome/react-fontawesome'
-import { faCaretDown, faExpand, faPlus} from '@fortawesome/free-solid-svg-icons';
+import { faCaretDown, faExpand, faPlus, faAngleDown, faAngleUp} from '@fortawesome/free-solid-svg-icons';
 import Login_Signup from "./LoginSignUp";
+import useCollapse from 'react-collapsed';
+
+
 
 
     
 function ViewClaim(){
-    
     //...............................................................................
+
     const auth = getAuth();
     const user = auth.currentUser;
 
@@ -40,6 +43,8 @@ function ViewClaim(){
             <a class="view-button" href={`${arrayOfURLS[i]}`}><FontAwesomeIcon icon={faExpand}></FontAwesomeIcon></a>
         </div>);
     }
+
+
     
     return(
     <body class="viewClaim-body">
@@ -60,28 +65,33 @@ function ViewClaim(){
         <Link className='loginsignupbutton' to="/LoginSignup" onClick={logout} >Logout</Link> 
         {/* <Link className='loginsignupbutton' to="/editProfile" >Profile</Link>  */}
       </nav>
+
       <div class="view-claim-header">
         <h1 class="claim-name">Claims</h1>
         <Link className="new-claim" to="/addClaim"><FontAwesomeIcon class="claim-plus" icon={faPlus}></FontAwesomeIcon>New Expense</Link>
         </div>
+
+
         <div class="main-claim-container">
           {data.map((data) => {
             //Implement function for ID for each claim?
             return (
               
               <div class="claim-container">
+                
                 <div className="filescontainer">{showFiles(data.NoFiles, data.URLS)}</div>
                 <div class="claim-text">
                 <h1 class="claim-name">{data.Claim}</h1>
                 <a class="claim-amount"> {data.Amount}</a>
-                <a class={data.Approve == 'Not Yet Approved' ? "claim-status-notApproved" : "claim-status-Approved"}>{data.Approve}</a>
-
-                <a class="claim-purchaseplace">Spent at {data.Description}</a>
+                <a class={(data.Approve == 'Not Yet Approved') ? "claim-status-pending" : data.Approve== 'Rejected' ?"claim-status-rejected" : "claim-status-Approved"}>{data.Approve}</a>
+                <a class="claim-purchaseplace">Spent at {data.Description} - </a>
                 </div>
-                               
+                <Collapsible/>
               </div>
             );
-          })}
+          })} 
+
+          
         </div>
     </body>
 
@@ -98,7 +108,28 @@ function ViewClaim(){
                  */
 
     )
+}                                
+
+function Collapsible() {
+
+  const { getCollapseProps, getToggleProps, isExpanded } = useCollapse();
+
+return (
+  <div className="collapsible">
+      <div className="collapse-btn" {...getToggleProps()}>
+          {isExpanded ? <FontAwesomeIcon  icon={faAngleUp}></FontAwesomeIcon> : <FontAwesomeIcon  icon={faAngleDown}></FontAwesomeIcon>}
+      </div>
+      <div {...getCollapseProps()}>
+          <div className="content">
+          <p>Account number: data.AccountNumber</p><br></br>
+          <p>Sort code: data.SortCode</p><br></br>
+          <p>Time: data.ID</p>
+          </div>
+      </div>
+  </div>
+  );
 }
+
 
 function StatusOut() {
     return(<h2>Not Logged In!!!</h2>)
