@@ -115,7 +115,6 @@ const PendingClaimPage = () => {
                 return(
                   <div>
                       <div>
-                          {/* <a> Time: { new Date(data.ID * 1000).getUTCDate()}-{ new Date(data.ID * 1000 ).getUTCMonth()}-{ new Date(data.ID * 1000 ).getUTCFullYear()}</a>, */}
                           <a> Time Submitted: {data.ID} </a>,
                           <a> Claim: {data.Claim}</a>,
                           <a> Claim Description: {data.Description}</a>
