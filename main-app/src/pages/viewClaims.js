@@ -44,7 +44,7 @@ function ViewClaim(){
         </div>);
     }
 
-
+    const { getCollapseProps, getToggleProps, isExpanded } = useCollapse();
     
     return(
     <body class="viewClaim-body">
@@ -83,10 +83,30 @@ function ViewClaim(){
                 <div class="claim-text">
                 <h1 class="claim-name">{data.Claim}</h1>
                 <a class="claim-amount"> {data.Amount}</a>
-                <a class={(data.Approve == 'Not Yet Approved') ? "claim-status-pending" : data.Approve== 'Rejected' ?"claim-status-rejected" : "claim-status-Approved"}>{data.Approve}</a>
+                <a class={(data.Approve == 'Not Yet Approved') ? "claim-status-pending" : data.Approve == 'Rejected' ? "claim-status-rejected" : "claim-status-Approved"}>{data.Approve}</a>
                 <a class="claim-purchaseplace">Spent at {data.Description} - </a>
                 </div>
-                <Collapsible/>
+                
+                {/* <Collapsible /> */}
+
+
+              
+
+                <div className="collapsible">
+                    <div className="collapse-btn" {...getToggleProps()}>
+                        {isExpanded ? <FontAwesomeIcon  icon={faAngleUp}></FontAwesomeIcon> : <FontAwesomeIcon  icon={faAngleDown}></FontAwesomeIcon>}
+                    </div>
+                    <div {...getCollapseProps()}>
+                        <div className="content">
+                        <p>Account number: {data.AccountNumber}</p>
+                        <br></br>
+                        <p>Sort code: {data.SortCode}</p>
+                        <br></br>
+                        <p>Time: {data.ID}</p>
+                        </div>
+                    </div>
+                </div>
+
               </div>
             );
           })} 
@@ -94,8 +114,9 @@ function ViewClaim(){
           
         </div>
     </body>
+    
 
-/*                <a> Time: {data.ID}</a>,
+              /*<a> Time: {data.ID}</a>,
                 <a> Claim: {data.Claim}</a>,
                 <a> Claim Description: {data.Description}</a>
                 <a> Amount: {data.Amount}</a>,
@@ -106,35 +127,33 @@ function ViewClaim(){
                 <a> Email: {data.email}</a>,
                 <a> Status: {data.Approve}</a>
                  */
-
     )
-}                                
+}          
 
-function Collapsible() {
+function Collapsible(){
 
   const { getCollapseProps, getToggleProps, isExpanded } = useCollapse();
 
-return (
-  <div className="collapsible">
-      <div className="collapse-btn" {...getToggleProps()}>
-          {isExpanded ? <FontAwesomeIcon  icon={faAngleUp}></FontAwesomeIcon> : <FontAwesomeIcon  icon={faAngleDown}></FontAwesomeIcon>}
-      </div>
-      <div {...getCollapseProps()}>
-          <div className="content">
-          <p>Account number: data.AccountNumber</p><br></br>
-          <p>Sort code: data.SortCode</p><br></br>
-          <p>Time: data.ID</p>
+    return (
+
+      <div className="collapsible">
+          <div className="collapse-btn" {...getToggleProps()}>
+              {isExpanded ? <FontAwesomeIcon  icon={faAngleUp}></FontAwesomeIcon> : <FontAwesomeIcon  icon={faAngleDown}></FontAwesomeIcon>}
+          </div>
+          <div {...getCollapseProps()}>
+              <div className="content">
+              <p>Account number: data.AccountNumber</p>
+              <br></br>
+              <p>Sort code: data.SortCode</p>
+              <br></br>
+              <p>Time: data.ID</p>
+              </div>
           </div>
       </div>
-  </div>
-  );
-}
-
-
-function StatusOut() {
-    return(<h2>Not Logged In!!!</h2>)
+      );
 }
  
+
 function Status() {                         //Checks if user is logged in and renders based on login status
     const  [loginStatus, setLoginStatus] = useState(false)
   
@@ -153,7 +172,7 @@ const viewClaim = () => {
 
     return (  
         <div>
-                { Status() === true ?  <ViewClaim/> : <Login_Signup/>}
+            { Status() === true ?  <ViewClaim/> : <Login_Signup/>}
         </div>
 
     );
