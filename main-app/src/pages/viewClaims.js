@@ -70,7 +70,6 @@ function ViewClaim(){
         <Link className="new-claim" to="/addClaim"><FontAwesomeIcon class="claim-plus" icon={faPlus}></FontAwesomeIcon>New Expense</Link>
         </div>
 
-
         <div class="main-claim-container">
           {data.map((data) => {
             //Implement function for ID for each claim?
