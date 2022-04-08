@@ -1,12 +1,25 @@
-import { collection, getDocs, query, doc, updateDoc, orderBy } from 'firebase/firestore';
+import { collection, getDocs, query, doc, updateDoc, orderBy, where } from 'firebase/firestore';
 import { useEffect, useState, } from "react";
 import { Link } from 'react-router-dom';
 import db from "../firebase";
 import { onAuthStateChanged, getAuth, signOut} from "firebase/auth";
+import { async } from '@firebase/util';
 
 const PendingClaimPage = () => {
 
   const  [loginStatus, setLoginStatus] = useState(false)
+
+  useEffect(() => {       //run once
+    Status()
+  }, [loginStatus])
+
+  useEffect(() => {
+    const getDataOne = async () => {
+      const fetchData = await getDocs(sort);
+      getData(fetchData.docs.map((doc) => ({...doc.data(), id: doc.id })))
+    }
+    getDataOne()
+  }, [])
 
   function Status() {                         //Checks if user is logged in and renders based on login status
   
@@ -20,9 +33,6 @@ const PendingClaimPage = () => {
     })
     return loginStatus
   }
-  useEffect(() => {       //run once
-    Status()
-  }, [loginStatus])
 
   const auth = getAuth();
   const logout = async () => {
@@ -33,36 +43,40 @@ const PendingClaimPage = () => {
     const usersCollectionRef = collection(db, "Employee")
     const sort = query(usersCollectionRef, orderBy("ID", "desc"))
 
-    useEffect(() => {
-      const getData1 = async () => {
-        const data_1 = await getDocs(sort);
-        getData(data_1.docs.map((doc) => ({...doc.data(), id: doc.id })))
-      }
-      getData1()
-    }, [])
-
-    const Approve = async (email, ClaimId) => {
+    const Approve = async (email, ClaimId, ClaimIdAdmin) => {
         try{
           console.log("Email: "+email +", ClaimId: " + ClaimId) 
           const collectionRef = collection(db, email)
+          const collectionRefLineManager = collection(db, "Employee")
+
           await updateDoc(doc(collectionRef, ClaimId), {
             Approve: "Approved"
           })
-       //   DisableAfterClick() 
+          await updateDoc(doc(collectionRefLineManager, ClaimIdAdmin), {
+            Approve: "Approved"
+          })
+          //OnPressChoice()
+          alert("Approved Claim")
         }
         catch (e) {
           console.log(e.message)
         }
     }
 
-    const Reject = async (email, ClaimId) => {
+    const Reject = async (email, ClaimId, ClaimIdAdmin) => {
       try{
         console.log("Email: "+email +", ClaimId: " + ClaimId) 
         const collectionRef = collection(db, email)
+        const collectionRefLineManager = collection(db, "Employee")
+
         await updateDoc(doc(collectionRef, ClaimId), {
           Approve: "Rejected"
         })
-       // DisableAfterClick() 
+        await updateDoc(doc(collectionRefLineManager, ClaimIdAdmin), {
+          Approve: "Rejected"
+        })
+        //OnPressChoice()
+        alert("Rejected Claim")
       }
       catch (e) {
         console.log(e.message)
@@ -94,17 +108,21 @@ const PendingClaimPage = () => {
             <h1>CLAIMS TO APPROVE</h1>
 
             {data.map((data) => {
+                // if ((data.Approve === "Approved") || (data.Approve === "Rejected")){
+                //   console.log("got data?? ", document.getElementById('approve'))
+                // }
+                // else { console.log("Did not get data :/ , " , data.ClaimIdAdmin)}
                 return(
                   <div>
                       <div>
-                          <a> Time: {data.ID}</a>,
+                          <a> Time Submitted: {data.ID} </a>,
                           <a> Claim: {data.Claim}</a>,
                           <a> Claim Description: {data.Description}</a>
                           <a> Amount: £{data.Amount}</a>,
                           <a> Sort Code: {data.SortCode}</a>,
                           <a> Account No: {data.AccountNumber}</a>,
                           <a> ClaimID: {data.id}</a>,
-                          <a> Status: {data.Approve}</a>
+                          {/* <a> Status: {data.Approve}</a> */}
                           <br></br>
                           <a> No. of Files: {data.NoFiles}</a>
                           <br></br>
@@ -115,9 +133,11 @@ const PendingClaimPage = () => {
                           <br></br>
                           <br></br>
                           <br></br>
+                          <br></br>
+                          <br></br>
                       </div>
-                      <button id='approve' className='finalchoice' onClick={() => {Approve(data.email, data.ClaimId); OnPressChoice()} }  value="Approve" >Approve</button>
-                      <button id='reject' className='finalchoice' onClick={() => {Reject(data.email, data.ClaimId); OnPressChoice() }}  value="Reject" >Reject</button>
+                      <button id='approve' className='finalchoice' onClick={() => {Approve(data.email, data.ClaimId, data.ClaimIdAdmin); }}  value="Approve" >Approve</button>
+                      <button id='reject' className='finalchoice' onClick={() => {Reject(data.email, data.ClaimId, data.ClaimIdAdmin); }}  value="Reject" >Reject</button>
                   </div>
                 )
             })}

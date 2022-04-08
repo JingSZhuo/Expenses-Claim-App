@@ -55,7 +55,7 @@ function Login_Signup() {
         try{
             await signInWithEmailAndPassword(auth, loginEmail, loginPassword).then(() => {
                 if (auth.currentUser.email === "linemanager@gmail.com" ){
-                    navigate('/admin')
+                    navigate('/pendingClaim')
                 } else { navigate('/viewClaim'); }
             })
             } catch (error) { 

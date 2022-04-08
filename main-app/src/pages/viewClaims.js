@@ -21,7 +21,7 @@ function ViewClaim(){
     const [data, getData] = useState([])
     //console.log(data)
     const usersCollectionRef = collection(db, user.email)
-    const sort = query(usersCollectionRef, orderBy("ID", "desc"))
+    const sort = query(usersCollectionRef, orderBy("ID2", "desc"))
 
     useEffect(() => {
       const getData1 = async () => {
@@ -40,10 +40,11 @@ function ViewClaim(){
       return [...Array(numberOfFiles)].map((e, i) => 
         <div key={i}>
             <embed className="files" src={`${arrayOfURLS[i]}`}/>
-            <a class="view-button" href={`${arrayOfURLS[i]}`}>
-              <FontAwesomeIcon icon={faExpand}></FontAwesomeIcon></a>
+            <a class="view-button" href={`${arrayOfURLS[i]}`}><FontAwesomeIcon icon={faExpand}></FontAwesomeIcon></a>
         </div>);
     }
+
+    const { getCollapseProps, getToggleProps, isExpanded } = useCollapse();
     
     return(
     <body class="viewClaim-body">
@@ -81,22 +82,16 @@ function ViewClaim(){
                 <div class="claim-text">
                 <h1 class="claim-name">{data.Claim}</h1>
                 <a class="claim-amount"> {data.Amount}</a>
-                <a class={(data.Approve == 'Not Yet Approved') ? "claim-status-pending" : data.Approve == 'Rejected' ? "claim-status-rejected" : "claim-status-Approved"}>{data.Approve}</a>
+                <a class={(data.Approve == 'Not Yet Approved') ? "claim-status-pending" : data.Approve == 'Rejected' ?"claim-status-rejected" : "claim-status-Approved"}>{data.Approve}</a>
                 <a class="claim-purchaseplace">Spent at {data.Description} - </a>
                 </div>
-                
-                 <Collapsible />
-              
 
+                <Collapsible accountNumber={`${data.AccountNumber}`} sortCode={`${data.SortCode}`} datetime={`${data.ID}`} />
               </div>
             );
           })} 
-
-          
         </div>
     </body>
-    
-
               /*<a> Time: {data.ID}</a>,
                 <a> Claim: {data.Claim}</a>,
                 <a> Claim Description: {data.Description}</a>
@@ -109,9 +104,9 @@ function ViewClaim(){
                 <a> Status: {data.Approve}</a>
                  */
     )
-}          
+}
 
-function Collapsible(){
+function Collapsible(props){
 
   const { getCollapseProps, getToggleProps, isExpanded } = useCollapse();
 
@@ -123,17 +118,18 @@ function Collapsible(){
           </div>
           <div {...getCollapseProps()}>
               <div className="content">
-              <p>Account number: data.AccountNumber</p>
               <br></br>
-              <p>Sort code: data.SortCode</p>
+              <p>Account number: {props.accountNumber}</p>
               <br></br>
-              <p>Time: data.ID</p>
+              <p>Sort code: {props.sortCode}</p>
+              <br></br>
+              <p>Time:  {props.datetime}</p>
               </div>
           </div>
       </div>
       );
 }
- 
+
 
 function Status() {                         //Checks if user is logged in and renders based on login status
     const  [loginStatus, setLoginStatus] = useState(false)
