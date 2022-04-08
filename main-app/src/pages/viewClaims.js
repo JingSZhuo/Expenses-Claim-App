@@ -88,8 +88,6 @@ function ViewClaim(){
                 </div>
                 
                 {/* <Collapsible /> */}
-
-
               
 
                 <div className="collapsible">
