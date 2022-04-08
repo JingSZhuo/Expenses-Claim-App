@@ -112,11 +112,13 @@ function AddClaimPage() {
         setdocID(generatedId)
         setDocIDAdmin(generatedIdForAdmin)
 
+        const timeUnix = Date.now()
         const d = new Date()
         const dateNow = d.toUTCString()
 
         await setDoc(generateID, {                      //individual database
             ID: dateNow,
+            ID2: timeUnix ,
             ClaimId: generatedId,
             Claim: document.getElementById("title").value,
             Amount: `${currencySign}` + document.getElementById("amount").value,
@@ -131,6 +133,7 @@ function AddClaimPage() {
         }) 
         await setDoc(generateEmail, {                   //Employee database
             ID: dateNow,
+            ID2: timeUnix,
             ClaimId: generatedId ,
             ClaimIdAdmin: generatedIdForAdmin ,
             Claim: document.getElementById("title").value,

@@ -21,7 +21,7 @@ function ViewClaim(){
     const [data, getData] = useState([])
     //console.log(data)
     const usersCollectionRef = collection(db, user.email)
-    const sort = query(usersCollectionRef, orderBy("ID", "desc"))
+    const sort = query(usersCollectionRef, orderBy("ID2", "desc"))
 
     useEffect(() => {
       const getData1 = async () => {
