@@ -83,7 +83,7 @@ function ViewClaim(){
                 <div class="claim-text">
                 <h1 class="claim-name">{data.Claim}</h1>
                 <a class="claim-amount"> {data.Amount}</a>
-                <a class={(data.Approve == 'Not Yet Approved') ? "claim-status-pending" : data.Approve== 'Rejected' ?"claim-status-rejected" : "claim-status-Approved"}>{data.Approve}</a>
+                <a class={(data.Approve == 'Not Yet Approved') ? "claim-status-pending" : data.Approve == 'Rejected' ?"claim-status-rejected" : "claim-status-Approved"}>{data.Approve}</a>
                 <a class="claim-purchaseplace">Spent at {data.Description} - </a>
                 </div>
                 <Collapsible/>
@@ -94,8 +94,7 @@ function ViewClaim(){
           
         </div>
     </body>
-
-/*                <a> Time: {data.ID}</a>,
+              /*<a> Time: {data.ID}</a>,
                 <a> Claim: {data.Claim}</a>,
                 <a> Claim Description: {data.Description}</a>
                 <a> Amount: {data.Amount}</a>,
@@ -106,7 +105,6 @@ function ViewClaim(){
                 <a> Email: {data.email}</a>,
                 <a> Status: {data.Approve}</a>
                  */
-
     )
 }                                
 
