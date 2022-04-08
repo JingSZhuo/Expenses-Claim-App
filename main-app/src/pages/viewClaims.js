@@ -40,11 +40,10 @@ function ViewClaim(){
       return [...Array(numberOfFiles)].map((e, i) => 
         <div key={i}>
             <embed className="files" src={`${arrayOfURLS[i]}`}/>
-            <a class="view-button" href={`${arrayOfURLS[i]}`}><FontAwesomeIcon icon={faExpand}></FontAwesomeIcon></a>
+            <a class="view-button" href={`${arrayOfURLS[i]}`}>
+              <FontAwesomeIcon icon={faExpand}></FontAwesomeIcon></a>
         </div>);
     }
-
-    const { getCollapseProps, getToggleProps, isExpanded } = useCollapse();
     
     return(
     <body class="viewClaim-body">
@@ -87,23 +86,8 @@ function ViewClaim(){
                 <a class="claim-purchaseplace">Spent at {data.Description} - </a>
                 </div>
                 
-                {/* <Collapsible /> */}
+                 <Collapsible />
               
-
-                <div className="collapsible">
-                    <div className="collapse-btn" {...getToggleProps()}>
-                        {isExpanded ? <FontAwesomeIcon  icon={faAngleUp}></FontAwesomeIcon> : <FontAwesomeIcon  icon={faAngleDown}></FontAwesomeIcon>}
-                    </div>
-                    <div {...getCollapseProps()}>
-                        <div className="content">
-                        <p>Account number: {data.AccountNumber}</p>
-                        <br></br>
-                        <p>Sort code: {data.SortCode}</p>
-                        <br></br>
-                        <p>Time: {data.ID}</p>
-                        </div>
-                    </div>
-                </div>
 
               </div>
             );
