@@ -87,20 +87,7 @@ function ViewClaim(){
                 <a class="claim-purchaseplace">Spent at {data.Description} - </a>
                 </div>
 
-                <div className="collapsible">
-                    <div className="collapse-btn" {...getToggleProps()}>
-                        {isExpanded ? <FontAwesomeIcon  icon={faAngleUp}></FontAwesomeIcon> : <FontAwesomeIcon  icon={faAngleDown}></FontAwesomeIcon>}
-                    </div>
-                    <div {...getCollapseProps()}>
-                        <div className="content">
-                        <p>Account number: {data.AccountNumber}</p>
-                        <br></br>
-                        <p>Sort code: {data.SortCode}</p>
-                        <br></br>
-                        <p>Time Submitted: {data.ID}</p>
-                        </div>
-                    </div>
-                </div>
+                <Collapsible accountNumber={`${data.AccountNumber}`} sortCode={`${data.SortCode}`} datetime={`${data.ID}`} />
               </div>
             );
           })} 
@@ -118,6 +105,30 @@ function ViewClaim(){
                 <a> Status: {data.Approve}</a>
                  */
     )
+}
+
+function Collapsible(props){
+
+  const { getCollapseProps, getToggleProps, isExpanded } = useCollapse();
+
+    return (
+
+      <div className="collapsible">
+          <div className="collapse-btn" {...getToggleProps()}>
+              {isExpanded ? <FontAwesomeIcon  icon={faAngleUp}></FontAwesomeIcon> : <FontAwesomeIcon  icon={faAngleDown}></FontAwesomeIcon>}
+          </div>
+          <div {...getCollapseProps()}>
+              <div className="content">
+              <br></br>
+              <p>Account number: {props.accountNumber}</p>
+              <br></br>
+              <p>Sort code: {props.sortCode}</p>
+              <br></br>
+              <p>Time:  {props.datetime}</p>
+              </div>
+          </div>
+      </div>
+      );
 }
 
 
