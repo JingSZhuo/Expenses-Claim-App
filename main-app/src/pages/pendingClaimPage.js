@@ -7,6 +7,7 @@ import { async } from '@firebase/util';
 
 const PendingClaimPage = () => {
 
+  const [data, getData] = useState([])
   const  [loginStatus, setLoginStatus] = useState(false)
 
   useEffect(() => {       //run once
@@ -21,6 +22,8 @@ const PendingClaimPage = () => {
     getDataOne()
   }, [])
 
+
+
   function Status() {                         //Checks if user is logged in and renders based on login status
   
     const auth = getAuth();
@@ -34,15 +37,16 @@ const PendingClaimPage = () => {
     return loginStatus
   }
 
+  //Signout function
   const auth = getAuth();
   const logout = async () => {
     await signOut(auth)
   };
 
-    const [data, getData] = useState([])
-    const usersCollectionRef = collection(db, "Employee")
-    const sort = query(usersCollectionRef, orderBy("ID", "desc"))
+  const usersCollectionRef = collection(db, "Employee")
+  const sort = query(usersCollectionRef, orderBy("ID", "desc"))
 
+  //Showing files for claims
   function showFiles (numberOfFiles, arrayOfURLS) {
 
     return [...Array(numberOfFiles)].map((e, i) => 
@@ -56,16 +60,12 @@ const PendingClaimPage = () => {
             <nav className="navbar">
                 {/* <Link className='navbuttons' to="/" >Home</Link>
                 <Link className='navbuttons' to="/about" >About</Link> */}
-                <Link className='navbuttons active-page' to="/admin" >Admin</Link>
+                <Link className='navbuttons active-page' to="/pendingClaim" >Admin</Link>
                 <Link className='loginsignupbutton' to="/LoginSignup" onClick={logout} >Logout</Link> 
             </nav>
             <h1>CLAIMS TO APPROVE</h1>
 
             {data.map((data) => {
-                // if ((data.Approve === "Approved") || (data.Approve === "Rejected")){
-                //   console.log("got data?? ", document.getElementById('approve'))
-                // }
-                // else { console.log("Did not get data :/ , " , data.ClaimIdAdmin)}
                 return(
                   <div>
                       <div>
@@ -100,6 +100,8 @@ const PendingClaimPage = () => {
         </div>
      );
 }
+
+//Approve/reject function buttons
 
 function OnPressChoice(x, y) {
   document.getElementById(`${x}`).disabled = true

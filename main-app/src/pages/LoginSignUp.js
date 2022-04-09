@@ -105,7 +105,7 @@ function Login_Signup() {
                         </div>
 
                         <form>
-                            <h3>Employee/Staff Login</h3>
+                            <h3>Employee | Staff Login</h3>
                             <input placeholder='Email...' onChange={(event) => {setLoginEmail(event.target.value)}}/>
                             <input type ="password" placeholder='Password...' onChange={(event) => {setLoginrPassword(event.target.value)}}/>
                             <div className="form-button">
