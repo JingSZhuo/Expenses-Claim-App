@@ -626,9 +626,8 @@ embed {
 /******************************************************************************** About page ******************************************************************************** */
 
 .about-page{
-  padding: 0px 0px 0px 0px;
-  height: 845px;
-  margin: 70px 300px 0px 300px;
+  margin: 7% 17% 7%;
+  padding: 0 0 70px;
   box-shadow: 0px 10px 10px 10px rgba(0,0,0,0.2);
   background-color: white;
   animation: about-page-transform 1s;
@@ -649,34 +648,124 @@ embed {
 
 .about-body{
   background-image: url("/src/images/homepage-background.jpg");
-  height: 1200px;
+}
+
+.about-border{
+  margin: 10%;
+  border: darkcyan;
+  border-left: 1em;
+  border-right: 1em;
+  border-style: dashed;
+}
+
+.about-border-2{
+  justify-content: center;
+  margin: 80px 150px 80px;
+  display: flex;
+  flex-direction: row;
+}
+
+.about-border-2-text{
+  margin: 12% 5% 0 0;
+  font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+  font-style: italic;
+  font-weight: bolder;
+  font-size: 1.5em;
+  text-align: center;
+}
+
+.about-border-2 img{
+  width: 350px;
 }
 
 .about-text{
+  margin: 5% 0 5% 0;
+  font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+  font-style: italic;
+  font-weight: bolder;
+  font-size: 2em;
+  text-align: center;
   padding: 0px 70px;
   color: #17252A;
   animation: about-text-fadein 2.3s;
 }
 
-@keyframes about-transform {
-  from {margin-top: 1000px; opacity: 0;}
-  to {margin-top: 70px; opacity: 1;}
+.htu-container{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin: 7% 7% 0% 7%;
 }
 
-@keyframes about-text-fadein{
-  0% {opacity: 0; transform: translateX(50px);}
-  60% {opacity: 0; transform: translateX(20px);}
-  100% {opacity: 1; transform: translateX(0px);}
+.htu-container img{
+  pointer-events: none;
 }
 
-@keyframes about-title-fadein{
-  0% {opacity: 0; transform: translateY(-50px);}
-  50% {opacity: 0; transform: translateY(-20px);}
-  100% {opacity: 1; transform: translateY(0px);}
+.htu-image-container {
+  width: 50%;
+  min-height: 280px;
+  max-height: 416px;
+  padding: 16px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: row;
+  background-color: #F1F1F1;
+  margin: 0 8px;
+  border-radius: 32px;
 }
 
-.divider-bottom{
-  margin: 0px 300px 0px 300px;
+.htu-image {
+  width: 75%;
+}
+
+.htu-text {
+  width: 50%;
+  margin: auto 8px;
+}
+
+
+.separator {
+  margin: 50px 0;
+}
+
+.how-to-use{
+  display: flex;
+  flex-direction: row;
+  animation: about-text-fadein 2.3s;
+}
+
+.htu-text-con{
+  text-align: justify;
+  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+  font-weight: bolder;
+  font-size: 1.5em;
+  animation: about-text-fadein 2.3s;
+}
+
+.arrow {
+  pointer-events: none;
+  width: 50px;
+  height: 50px;
+  align-self: center;
+}
+
+.down {
+  transform: rotate(90deg);
+}
+
+.features-container{
+  margin: 40px 70px 40px;
+}
+
+.features-list li{
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  font-size: large;
+  font-weight: 500;
+  background: url('images/tick1.png') no-repeat left top;
+  list-style: none;
+  padding: 20px 70px 50px;
 }
 
 /* ABOUT MOBILE PAGE */
