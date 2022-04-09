@@ -233,7 +233,7 @@ function AddClaimPage() {
                 <p>Claim Title</p>
                     <input id="title" className="inputbox"  type="text" placeholder="Enter claim title " name="name" required />
                 <p>Select Currency</p>
-                    <select className="inputbox" name="card_type" id="card_number" onChange={() => { currencyConverter(document.getElementById('amount').value)}} >
+                    <select className="inputbox" name="card_type" id="currency" onChange={() => { currencyConverter(document.getElementById('amount').value)}} >
                         <option value="">--Select a Currency</option>
                         <option value={"pound"}>GBP</option>
                         <option value={"euro"}>Euro</option>
