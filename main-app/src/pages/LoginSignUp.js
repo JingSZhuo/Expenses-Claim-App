@@ -9,7 +9,7 @@ import { async } from '@firebase/util';
 import { collection, doc, setDoc } from 'firebase/firestore';
 import { FontAwesomeIcon} from '@fortawesome/react-fontawesome'
 import { faCaretDown} from '@fortawesome/free-solid-svg-icons';
-
+import BackgroundParticles from './BackgroundParticles.js';
 
 
 function Login_Signup() {
@@ -96,6 +96,7 @@ function Login_Signup() {
         <div className ="form-body">
             <div className="form-holder"> 
                 <div className="form-content">
+                
                     <div className="form-items">
                         <h3>Reinvent your expense reporting.</h3> 
                         <p>Never leave your expense reports to your desk.</p>
@@ -127,6 +128,7 @@ function Login_Signup() {
                             <div className="form-button">
                             <button className="ibtn" type="button" onClick={() => {register();}} value={"Signup"} >Sign Up</button>
                             </div>
+                            <BackgroundParticles />
                         </form>
         
                         <div className='LS'>

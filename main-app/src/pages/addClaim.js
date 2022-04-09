@@ -8,6 +8,7 @@ import { useState, useEffect } from "react";
 import { FontAwesomeIcon} from '@fortawesome/react-fontawesome'
 import { faCaretDown} from '@fortawesome/free-solid-svg-icons';
 import LoginSignup from "./LoginSignUp";
+import BackgroundParticles from "./BackgroundParticles";
 
 
 function AddClaimPage() {
@@ -219,35 +220,39 @@ function AddClaimPage() {
                 <Link className='loginsignupbutton' to="/LoginSignup" onClick={logout} >Logout</Link> 
             </nav>
 
-            <div>
+            <div className="mainscreen">
+                <BackgroundParticles/>
+            <div className="card">
+                <div className="leftside">
+                    <h1>Claim Form</h1>
+                </div>
+            <div className="rightside">
+            <form>
                 <h1>Add Claim</h1>
-            </div>
-
-            <form className="claimform">
-                <div className="formbox">
-                    <h3>Claim title</h3>
-                    <input id="title" type="text" placeholder="Enter claim title " ></input>
-
-                    <h3>Select Currency</h3>
-                    <select name="currency" id="currency" onChange={() => { currencyConverter(document.getElementById('amount').value)}} >
+                <h2>Claim information</h2>
+                <p>Claim Title</p>
+                    <input className="inputbox"  type="text" placeholder="Enter claim title " name="name" required />
+                <p>Select Currency</p>
+                    <select className="inputbox" name="card_type" id="card_number" onChange={() => { currencyConverter(document.getElementById('amount').value)}} >
+                        <option value="">--Select a Currency</option>
                         <option value={"pound"}>GBP</option>
                         <option value={"euro"}>Euro</option>
                         <option value={"dollar"}>USD</option>
                     </select>
 
-                    <h3>Enter Amount</h3>
-                    <input id="amount" type="number" onchange="setTwoNumberDecimal" min="0.00" max="100000.00" step="0.01" placeholder="Enter Amount " onChange={() => { currencyConverter(document.getElementById('amount').value)}} ></input>
+                    <p>Enter Amount</p>
+                    <input className="inputbox" name="name" type="number" onchange="setTwoNumberDecimal" min="0.00" max="100000.00" step="0.01" placeholder="Enter Amount " onChange={() => { currencyConverter(document.getElementById('amount').value)}} ></input>
 
                     <h4>GBP: £{currency} </h4>
 
-                    <h3>Place of purchase</h3>
-                    <input id="description" type="text" placeholder="Enter claim description" ></input>
+                    <p>Place of purchase</p>
+                    <input className="inputbox"  type="text" placeholder="Enter claim description" ></input>
 
-                    <h3>Sort Code</h3>
-                    <input id="sortcode" type="number" placeholder="Enter Sort Code" ></input>
+                    <p>Sort Code</p>
+                    <input className="inputbox"  type="number" placeholder="Enter Sort Code" ></input>
 
-                    <h3>Account Number</h3>
-                    <input id="accountnumber" type="number" placeholder="Enter Account Number" ></input>
+                    <p>Account Number</p>
+                    <input className="inputbox"  type="number" placeholder="Enter Account Number" ></input>
 
                     <br></br>
                     <h3>Upload</h3>
@@ -267,12 +272,17 @@ function AddClaimPage() {
                             }}>
                         </input>
                     <br></br>
-                    <input id="uploadfilesbutton" type="button" onClick={() => {  UploadFile(); EnableOnUpload(); }} value={"upload Image"}></input>
+                    <input class="button" id="uploadfilesbutton" type="button" onClick={() => {  UploadFile(); EnableOnUpload(); }} value={"upload Image"}></input>
                     <br></br>       
                     <br></br>  
-                    <input id="submitbutton" type="button" onClick={() => {  SubmitFileCheck(); }} value={"Submit"}></input>
-                </div>
+                    <input class="button" id="submitbutton" type="button" onClick={() => {  SubmitFileCheck(); }} value={"Submit"}></input>
+                
+              
+
             </form>
+            </div>
+            </div>
+            </div>
         </>
     )
 }
