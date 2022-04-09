@@ -21,19 +21,19 @@ const PasswordResetPage = () => {
         <>
 
         <body>
-        <BackgroundParticles />
+            <BackgroundParticles />
 
-        <div class="form-container">
-            <form action="#" method="POST" class="form-wrap">
-            <h2>Forgot Password</h2>
-            <div class="form-box">
-            <input type="text" placeholder="Enter Email" />
-        </div>
-        <div class="form-submit">
-            <button className="" type="button" value="Send" onClick={resetPassword}> Send </button> 
-        </div>
-    </form>
-</div>
+            <div class="form-container">
+                <form class="form-wrap">
+                    <h2>Forgot Password</h2>
+                        <div class="form-box">
+                            <input id='emailpasswordreset' type="text" placeholder="Enter Email" />
+                        </div>
+                    <div class="form-submit">
+                        <button className="" type="button" value="Send" onClick={resetPassword}> Send </button> 
+                    </div>
+                </form>
+            </div>
         </body>
         
         </>
