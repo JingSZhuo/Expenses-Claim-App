@@ -45,6 +45,7 @@ function AddClaimPage() {
             alert('Please fill in all the fields and upload evidence!')
         } 
         else {document.getElementById('submitbutton').disabled = false;
+            alert("Files Submitted, please submit the claim")
         }
     }
 
@@ -112,11 +113,13 @@ function AddClaimPage() {
         setdocID(generatedId)
         setDocIDAdmin(generatedIdForAdmin)
 
-
-        const dateNow = Date.now()
+        const timeUnix = Date.now()
+        const d = new Date()
+        const dateNow = d.toUTCString()
 
         await setDoc(generateID, {                      //individual database
             ID: dateNow,
+            ID2: timeUnix ,
             ClaimId: generatedId,
             Claim: document.getElementById("title").value,
             Amount: `${currencySign}` + document.getElementById("amount").value,
@@ -131,7 +134,9 @@ function AddClaimPage() {
         }) 
         await setDoc(generateEmail, {                   //Employee database
             ID: dateNow,
+            ID2: timeUnix,
             ClaimId: generatedId ,
+            ClaimIdAdmin: generatedIdForAdmin ,
             Claim: document.getElementById("title").value,
             Amount: document.getElementById("amount").value,
             Description: document.getElementById("description").value,
@@ -161,6 +166,8 @@ function AddClaimPage() {
             console.log(arrayOfUrls[i])    
         }
         setUrls(arrayOfUrls)
+
+        alert("Claim submitted")
     }
 
     //Currency converter function

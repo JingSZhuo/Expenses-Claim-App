@@ -55,7 +55,7 @@ function Login_Signup() {
         try{
             await signInWithEmailAndPassword(auth, loginEmail, loginPassword).then(() => {
                 if (auth.currentUser.email === "linemanager@gmail.com" ){
-                    navigate('/admin')
+                    navigate('/pendingClaim')
                 } else { navigate('/viewClaim'); }
             })
             } catch (error) { 
@@ -105,7 +105,7 @@ function Login_Signup() {
                         </div>
 
                         <form>
-                            <h3>Employee/Staff Login</h3>
+                            <h3>Employee | Staff Login</h3>
                             <input placeholder='Email...' onChange={(event) => {setLoginEmail(event.target.value)}}/>
                             <input type ="password" placeholder='Password...' onChange={(event) => {setLoginrPassword(event.target.value)}}/>
                             <div className="form-button">
