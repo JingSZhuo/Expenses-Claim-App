@@ -276,9 +276,6 @@ function AddClaimPage() {
                     <br></br>       
                     <br></br>  
                     <input class="button" id="submitbutton" type="button" onClick={() => {  SubmitFileCheck(); }} value={"Submit"}></input>
-                
-              
-
             </form>
             </div>
             </div>
