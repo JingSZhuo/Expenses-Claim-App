@@ -231,7 +231,7 @@ function AddClaimPage() {
                 <h1>Add Claim</h1>
                 <h2>Claim information</h2>
                 <p>Claim Title</p>
-                    <input className="inputbox"  type="text" placeholder="Enter claim title " name="name" required />
+                    <input id="title" className="inputbox"  type="text" placeholder="Enter claim title " name="name" required />
                 <p>Select Currency</p>
                     <select className="inputbox" name="card_type" id="card_number" onChange={() => { currencyConverter(document.getElementById('amount').value)}} >
                         <option value="">--Select a Currency</option>
@@ -241,18 +241,18 @@ function AddClaimPage() {
                     </select>
 
                     <p>Enter Amount</p>
-                    <input className="inputbox" name="name" type="number" onchange="setTwoNumberDecimal" min="0.00" max="100000.00" step="0.01" placeholder="Enter Amount " onChange={() => { currencyConverter(document.getElementById('amount').value)}} ></input>
+                    <input id="amount" className="inputbox" name="name" type="number" onchange="setTwoNumberDecimal" min="0.00" max="100000.00" step="0.01" placeholder="Enter Amount " onChange={() => { currencyConverter(document.getElementById('amount').value)}} ></input>
 
                     <h4>GBP: £{currency} </h4>
 
                     <p>Place of purchase</p>
-                    <input className="inputbox"  type="text" placeholder="Enter claim description" ></input>
+                    <input id="description" className="inputbox"  type="text" placeholder="Enter claim description" ></input>
 
                     <p>Sort Code</p>
-                    <input className="inputbox"  type="number" placeholder="Enter Sort Code" ></input>
+                    <input id="sortcode" className="inputbox"  type="number" placeholder="Enter Sort Code" ></input>
 
                     <p>Account Number</p>
-                    <input className="inputbox"  type="number" placeholder="Enter Account Number" ></input>
+                    <input id="accountnumber" className="inputbox"  type="number" placeholder="Enter Account Number" ></input>
 
                     <br></br>
                     <h3>Upload</h3>
