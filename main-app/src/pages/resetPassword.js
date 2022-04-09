@@ -1,4 +1,5 @@
 import { getAuth, sendPasswordResetEmail } from 'firebase/auth';
+import BackgroundParticles from './BackgroundParticles';
 
 const PasswordResetPage = () => {
 
@@ -17,15 +18,25 @@ const PasswordResetPage = () => {
     } 
 
     return ( 
+        <>
+
         <body>
-            <form>
-                <h1>Password Reset</h1>
-                <br></br>
-                <input type="" id='emailpasswordreset' placeholder='Reset Email...' ></input>
-                <br></br>
-                <button type='button' onClick={resetPassword}>Send</button>
-            </form>
+        <BackgroundParticles />
+
+        <div class="form-container">
+            <form action="#" method="POST" class="form-wrap">
+            <h2>Forgot Password</h2>
+            <div class="form-box">
+            <input type="text" placeholder="Enter Email" />
+        </div>
+        <div class="form-submit">
+            <button className="" type="button" value="Send" onClick={resetPassword}> Send </button> 
+        </div>
+    </form>
+</div>
         </body>
+        
+        </>
      );
 }
  
