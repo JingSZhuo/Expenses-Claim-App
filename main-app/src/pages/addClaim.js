@@ -45,6 +45,7 @@ function AddClaimPage() {
             alert('Please fill in all the fields and upload evidence!')
         } 
         else {document.getElementById('submitbutton').disabled = false;
+            alert("Files Submitted, please submit the claim")
         }
     }
 

@@ -43,8 +43,6 @@ function ViewClaim(){
             <a class="view-button" href={`${arrayOfURLS[i]}`}><FontAwesomeIcon icon={faExpand}></FontAwesomeIcon></a>
         </div>);
     }
-
-    const { getCollapseProps, getToggleProps, isExpanded } = useCollapse();
     
     return(
     <body class="viewClaim-body">
@@ -123,7 +121,7 @@ function Collapsible(props){
               <br></br>
               <p>Sort code: {props.sortCode}</p>
               <br></br>
-              <p>Time:  {props.datetime}</p>
+              <p>Time Submitted:  {props.datetime}</p>
               </div>
           </div>
       </div>
