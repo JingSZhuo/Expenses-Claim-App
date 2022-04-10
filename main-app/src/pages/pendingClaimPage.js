@@ -6,6 +6,7 @@ import { onAuthStateChanged, getAuth, signOut} from "firebase/auth";
 import { FontAwesomeIcon} from '@fortawesome/react-fontawesome'
 import { faCaretDown, faExpand, faPlus, faAngleDown, faAngleUp} from '@fortawesome/free-solid-svg-icons';
 import { async } from '@firebase/util';
+import useCollapse from 'react-collapsed';
 
 const PendingClaimPage = () => {
 
@@ -66,44 +67,83 @@ const PendingClaimPage = () => {
                 <Link className='navbuttons active-page' to="/pendingClaim" >Admin</Link>
                 <Link className='loginsignupbutton' to="/LoginSignup" onClick={logout} >Logout</Link> 
             </nav>
-            <h1>CLAIMS TO APPROVE</h1>
+            <h1 className="ClaimApprove">CLAIMS TO APPROVE</h1>
 
             {data.map((data) => {
                 return(
                   <div className="ManagerClaim">
-                      <div>
-                          <a> Time Submitted: {data.ID} </a>,
-                          <a> Claim: {data.Claim}</a>,
-                          <a> Claim Description: {data.Description}</a>
-                          <a> Amount: £{data.Amount}</a>,
-                          <a> Sort Code: {data.SortCode}</a>,
-                          <a> Account No: {data.AccountNumber}</a>,
-                          <a> Email: {data.email}</a>,
-                          <a> ClaimID: {data.id}</a>,
+                      <div className="MainClaim2">
+                          <div className="filescontainer1">{showFiles(data.NoFiles, data.URLS)}</div>
+
+                            <a className = "claim-name1"> Claim: {data.Claim}</a>
+  
+                            <a className = "claim-amount1"> Amount: £{data.Amount}</a>
+
+                        
+    
                           {/* <a> Status: {data.Approve}</a> */}
                           <br></br>
-                          <a> No. of Files: {data.NoFiles}</a>
+      
                           <br></br>
                           <br></br>
-                          <div className="filescontainer">{showFiles(data.NoFiles, data.URLS)}</div>
-                          <br></br>
-                          <br></br>
-                          <br></br>
+                          
                           <br></br>
                           <br></br>
                           <br></br>
                           <br></br>
+                          <br></br>
+                          <br></br>
+                          <br></br>
+                          <Collapsible accountNumber={`${data.AccountNumber}`} sortCode={`${data.SortCode}`} datetime={`${data.ID}`} Description={`${data.Description}`} ClaimID={`${data.id}`} Email={`${data.email}`} NoOfFiles={`${data.NoFiles}`}/>
                       </div>
-                      <ApproveRejectButton email={`${data.email}`} ClaimId={`${data.ClaimId}`} ClaimIdAdmin={`${data.ClaimIdAdmin}`} />
+
+
+
+
+                      <ApproveRejectButton className="ApproveReject" email={`${data.email}`} ClaimId={`${data.ClaimId}`} ClaimIdAdmin={`${data.ClaimIdAdmin}`} />
                       {/* <button id='approve' className='finalchoice' onClick={() => {Approve(data.email, data.ClaimId, data.ClaimIdAdmin); }}  value="Approve" >Approve</button>
                       <button id='reject' className='finalchoice' onClick={() => {Reject(data.email, data.ClaimId, data.ClaimIdAdmin); }}  value="Reject" >Reject</button> */}
                   </div>
+
+                  
                 )
             })}
         </div>
      );
 }
 
+//For the collapse button
+function Collapsible(props){
+
+  const { getCollapseProps, getToggleProps, isExpanded } = useCollapse();
+
+    return (
+
+      <div className="collapsible">
+          <div className="collapse-btn1" {...getToggleProps()}>
+              {isExpanded ? <FontAwesomeIcon  icon={faAngleUp}></FontAwesomeIcon> : <FontAwesomeIcon  icon={faAngleDown}></FontAwesomeIcon>}
+          </div>
+          <div {...getCollapseProps()}>
+              <div className="content">
+              <br></br>
+              <p>Account number: {props.accountNumber}</p>
+              <br></br>
+              <p>Sort code: {props.sortCode}</p>
+              <br></br>
+              <p>Time Submitted:  {props.datetime}</p>
+              <br></br>
+              <p>Claim Description: {props.Description}</p>
+              <br></br>
+              <p>Claim ID: {props.ClaimID}</p>
+              <br></br>
+              <p>Email: {props.Email}</p>
+              <br></br>
+              <p>No. of Files: {props.NoOfFiles}</p>
+              </div>
+          </div>
+      </div>
+      );
+}
 //Approve/reject function buttons
 
 function OnPressChoice(x, y) {
@@ -118,9 +158,9 @@ function OnPressChoiceTwo(x, y) {
 
 function ApproveRejectButton (props) {
   return(
-    <div>
-        <button id={`${props.ClaimId}`} className='finalchoice' onClick={() => {Approve(props.email, props.ClaimId, props.ClaimIdAdmin); OnPressChoice(props.ClaimId, props.ClaimIdAdmin) }}  >Approve</button>
-        <button id={`${props.ClaimIdAdmin}`} className='finalchoice' onClick={() => {Reject(props.email, props.ClaimId, props.ClaimIdAdmin); OnPressChoiceTwo(props.ClaimIdAdmin, props.ClaimId) }}  >Reject</button>
+    <div class="MainClaim2">
+        <button id={`${props.ClaimId}`} className='finalchoiceApprove' onClick={() => {Approve(props.email, props.ClaimId, props.ClaimIdAdmin); OnPressChoice(props.ClaimId, props.ClaimIdAdmin) }}  >Approve</button>
+        <button id={`${props.ClaimIdAdmin}`} className='finalchoiceReject' onClick={() => {Reject(props.email, props.ClaimId, props.ClaimIdAdmin); OnPressChoiceTwo(props.ClaimIdAdmin, props.ClaimId) }}  >Reject</button>
     </div>
   )
 }
