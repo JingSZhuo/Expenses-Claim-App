@@ -228,8 +228,8 @@ function AddClaimPage() {
                 </div>
             <div className="rightside">
             <form>
-                <h1>Add Claim</h1>
                 <h2>Claim information</h2>
+                <br></br>
                 <p>Claim Title</p>
                     <input id="title" className="inputbox"  type="text" placeholder="Enter claim title " name="name" required />
                 <p>Select Currency</p>
@@ -272,10 +272,10 @@ function AddClaimPage() {
                             }}>
                         </input>
                     <br></br>
-                    <input class="button" id="uploadfilesbutton" type="button" onClick={() => {  UploadFile(); EnableOnUpload(); }} value={"upload Image"}></input>
+                    <input class="button" id="uploadfilesbutton" type="button" onClick={() => {  UploadFile(); EnableOnUpload(); }} value={"Upload Files"}></input>
                     <br></br>       
                     <br></br>  
-                    <input class="button" id="submitbutton" type="button" onClick={() => {  SubmitFileCheck(); }} value={"Submit"}></input>
+                    <input class="button" id="submitbutton" type="button" onClick={() => {  SubmitFileCheck(); }} value={"Submit Claim"}></input>
             </form>
             </div>
             </div>
