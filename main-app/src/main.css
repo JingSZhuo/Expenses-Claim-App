@@ -968,6 +968,19 @@ p{
   width: 100%;
 }
 
+.form-content {
+  position: relative;
+  background-color: #31a8ff;
+}
+
+.form-body{
+  margin-right:28.9%;
+  background-repeat: no-repeat;
+  background-image:url("/src/images/img1.jpg");
+  
+}
+
+
 .form-holder .form-content {
   position: relative;
   text-align: center;
@@ -1019,11 +1032,6 @@ p{
 
 .form-control :-ms-input-placeholder {
   color: #526489;
-}
-
-.form-content {
-  position: relative;
-  background-color: #0093FF;
 }
 
 .form-content .form-group {
@@ -1447,18 +1455,10 @@ p{
   margin-bottom: 30px;
 }
 
-
-
-.form-body{
-  margin-right:26%;
-  background-image:url("/src/images/img1.jpg");
-  
-}
-
 /* reset page */
 
 .form-container {
-  background-color: #0093FF;
+  background-color: #31a8ff;
   display: flex;
   height: 100vh;
   width: 100%;
@@ -1487,7 +1487,7 @@ p{
   padding: 5px 8px;
   border-radius: 3px;
   border: 1px solid #353535;
-  width: 100%;
+  width: 95%;
 }
 
 .form-container .form-wrap .form-submit {
