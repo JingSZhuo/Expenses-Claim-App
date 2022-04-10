@@ -712,8 +712,8 @@ embed {
   align-items: center;
   flex-direction: row;
   background-color: #F1F1F1;
-  margin: 0 8px;
   border-radius: 32px;
+  border: 3px solid black;
 }
 
 .htu-image {
@@ -734,6 +734,7 @@ embed {
   display: flex;
   flex-direction: row;
   animation: about-text-fadein 2.3s;
+  border-radius: 32px; 
 }
 
 .htu-text-con{
@@ -742,6 +743,7 @@ embed {
   font-weight: bolder;
   font-size: 1.5em;
   animation: about-text-fadein 2.3s;
+  margin: auto 30px;
 }
 
 .arrow {
@@ -767,6 +769,16 @@ embed {
   list-style: none;
   padding: 20px 70px 50px;
 }
+
+.shade {
+  background-color:rgb(186, 215, 225);
+}
+.shade h1{
+  color: black;
+}
+.shade-img{
+  background-color: white;
+} 
 
 /* ABOUT MOBILE PAGE */
 
