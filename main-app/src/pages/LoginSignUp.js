@@ -9,7 +9,7 @@ import { async } from '@firebase/util';
 import { collection, doc, setDoc } from 'firebase/firestore';
 import { FontAwesomeIcon} from '@fortawesome/react-fontawesome'
 import { faCaretDown} from '@fortawesome/free-solid-svg-icons';
-import BackgroundParticles from './BackgroundParticles.js';
+
 
 
 function Login_Signup() {
@@ -70,7 +70,7 @@ function Login_Signup() {
 
     return (  
         <>
-       
+       <body class="login-body">
         <nav className="navbar">
             <Link className='navbuttons' to="/" >Home</Link>
             <Link className='navbuttons' to="/about" >About</Link>
@@ -92,17 +92,16 @@ function Login_Signup() {
     <meta name="viewport" content="width=device-width, initial-scale=1.0"></meta>
     <title>ClaimIT</title>
    
-    <body>
+    
         <div className ="form-body">
             <div className="form-holder"> 
                 <div className="form-content">
-                
                     <div className="form-items">
                         <h3>Reinvent your expense reporting.</h3> 
                         <p>Never leave your expense reports to your desk.</p>
                         
                         <div class="page-links">
-                                        <a href="" class="active">Login</a>
+                                        <a class="active">Login</a>
                         </div>
 
                         <form>
@@ -117,7 +116,7 @@ function Login_Signup() {
                         </form>
 
                         <div class="page-links">
-                                        <a href="" class="active">Register</a>
+                                        <a class="active">Register</a>
                         </div>
 
                         <form>
@@ -128,7 +127,6 @@ function Login_Signup() {
                             <div className="form-button">
                             <button className="ibtn" type="button" onClick={() => {register();}} value={"Signup"} >Sign Up</button>
                             </div>
-                            <BackgroundParticles />
                         </form>
         
                         <div className='LS'>

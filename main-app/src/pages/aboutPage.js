@@ -4,6 +4,7 @@ import { useEffect, useState } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCaretDown } from "@fortawesome/free-solid-svg-icons";
 
+
 function AboutPage() {
   const [loginStatus, setLoginStatus] = useState(false);
 
@@ -38,7 +39,7 @@ function AboutPage() {
           <Link className="navbuttons" to="/">
             Home
           </Link>
-          <Link className="navbuttons" to="/about">
+          <Link className="navbuttons active-page" to="/about">
             About
           </Link>
           <div class="dropdown">
@@ -81,16 +82,14 @@ function AboutPage() {
             </Link>
           )}
         </nav>
-        <div class="divider"></div>
 
         <div class="about-page">
           <div class="divider"></div>
-          <div class="about-border">
+          <h1 class="about-title">About</h1>
             <p class="about-text">
-              ClaimIt is a web application to simplify the process of managing
+              ClaimIT is a web application to simplify the process of managing
               expense claims for managers and employees
             </p>
-          </div>
           <div class="about-border-2">
             <div class="about-border-2-text">
               <p>
@@ -150,8 +149,8 @@ function AboutPage() {
               <li>Do expenses when you travel</li>
             </ul>
           </div>
+          <div class="divider"></div>
         </div>
-        <div class="divider"></div>
       </body>
     </html>
   );

@@ -27,6 +27,7 @@ const BackgroundParticles = () => {
 
           },
         },
+
         particles: {
           color: {
             value: "#ffffff",
@@ -64,6 +65,7 @@ const BackgroundParticles = () => {
             random: true,
             value: 5,
           },
+
         },
 
       }} />
