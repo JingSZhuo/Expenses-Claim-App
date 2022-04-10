@@ -128,7 +128,7 @@ function AddClaimPage() {
             Description: document.getElementById("description").value,
             SortCode: document.getElementById("sortcode").value,
             AccountNumber: document.getElementById("accountnumber").value,
-            Approve: "Not Yet Approved",
+            Approve: "Pending",
             email: user.email,
             URLS: "" ,
             NoFiles: length

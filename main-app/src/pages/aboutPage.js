@@ -81,7 +81,6 @@ function AboutPage() {
             </Link>
           )}
         </nav>
-        <div class="divider"></div>
 
         <div class="about-page">
           <div class="divider"></div>
