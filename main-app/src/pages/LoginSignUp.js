@@ -128,11 +128,10 @@ function Login_Signup() {
                             <div className="form-button">
                             <button className="ibtn" type="button" onClick={() => {register();}} value={"Signup"} >Sign Up</button>
                             </div>
-                            <BackgroundParticles />
                         </form>
-        
                         <div className='LS'>
                            {/* <button onClick={logout}>Logout</button> */}
+                           <BackgroundParticles />
                         </div>
                         <br/>
                         <br/>

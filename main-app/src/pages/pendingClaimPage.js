@@ -3,6 +3,8 @@ import { useEffect, useState, } from "react";
 import { Link } from 'react-router-dom';
 import db from "../firebase";
 import { onAuthStateChanged, getAuth, signOut} from "firebase/auth";
+import { FontAwesomeIcon} from '@fortawesome/react-fontawesome'
+import { faCaretDown, faExpand, faPlus, faAngleDown, faAngleUp} from '@fortawesome/free-solid-svg-icons';
 import { async } from '@firebase/util';
 
 const PendingClaimPage = () => {
@@ -52,6 +54,7 @@ const PendingClaimPage = () => {
     return [...Array(numberOfFiles)].map((e, i) => 
       <div key={i}>
           <embed className="files"  src={`${arrayOfURLS[i]}`}/>
+          <a class="view-button" href={`${arrayOfURLS[i]}`}><FontAwesomeIcon icon={faExpand}></FontAwesomeIcon></a>
       </div>);
   }
  
