@@ -67,7 +67,7 @@ const PendingClaimPage = () => {
 
             {data.map((data) => {
                 return(
-                  <div>
+                  <div className="ManagerClaim">
                       <div>
                           <a> Time Submitted: {data.ID} </a>,
                           <a> Claim: {data.Claim}</a>,
