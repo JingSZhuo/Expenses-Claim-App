@@ -8,7 +8,9 @@ import { useState, useEffect } from "react";
 import { FontAwesomeIcon} from '@fortawesome/react-fontawesome'
 import { faCaretDown} from '@fortawesome/free-solid-svg-icons';
 import LoginSignup from "./LoginSignUp";
-import BackgroundParticles from "./BackgroundParticles";
+import BackgroundParticles from 'react-tsparticles';
+
+
 
 
 function AddClaimPage() {
@@ -205,6 +207,7 @@ function AddClaimPage() {
     return( 
 
         <>
+        <body class="addClaim-body">
             <nav className="navbar">
                 <Link className='navbuttons' to="/" >Home</Link>
                 <Link className='navbuttons' to="/about" >About</Link>
@@ -219,16 +222,16 @@ function AddClaimPage() {
                 </div>
                 <Link className='loginsignupbutton' to="/LoginSignup" onClick={logout} >Logout</Link> 
             </nav>
-
+            
             <div className="mainscreen">
-                <BackgroundParticles/>
+            
             <div className="card">
                 <div className="leftside">
-                    <h1>Claim Form</h1>
+                    <h1>Claim Form</h1> 
+                    <p class="leftside-secondary">Please fill in all the information.</p>
                 </div>
             <div className="rightside">
             <form>
-                <h2>Claim information</h2>
                 <br></br>
                 <p>Claim Title</p>
                     <input id="title" className="inputbox"  type="text" placeholder="Enter claim title " name="name" required />
@@ -272,14 +275,17 @@ function AddClaimPage() {
                             }}>
                         </input>
                     <br></br>
-                    <input class="button" id="uploadfilesbutton" type="button" onClick={() => {  UploadFile(); EnableOnUpload(); }} value={"Upload Files"}></input>
+                    <input class="addClaim-button" id="uploadfilesbutton" type="button" onClick={() => {  UploadFile(); EnableOnUpload(); }} value={"Upload Files"}></input>
                     <br></br>       
                     <br></br>  
-                    <input class="button" id="submitbutton" type="button" onClick={() => {  SubmitFileCheck(); }} value={"Submit Claim"}></input>
+                    <input class="addClaim-button" id="submitbutton" type="button" onClick={() => {  SubmitFileCheck(); }} value={"Submit Claim"}></input>
             </form>
+
             </div>
             </div>
             </div>
+            </body>
+
         </>
     )
 }
