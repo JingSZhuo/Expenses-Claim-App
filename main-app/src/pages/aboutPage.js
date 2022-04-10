@@ -104,33 +104,33 @@ function AboutPage() {
           </div>
           <h1 class="about-title">How to use</h1>
           <div class="htu-container">
-            <div class="how-to-use">
-              <div class="htu-image-container">
+            <div class="how-to-use shade">
+              <div class="htu-image-container shade-img">
                 <img class="htu-image" src={require("../images/step1.png")} />
               </div>
               <h1 class="htu-text htu-text-con">Sign up and get your ClaimIt account</h1>
             </div>
             <img class="arrow down separator" src={require("../images/arrow.png")} />
-            <div class="how-to-use">
+            <div class="how-to-use shade">
               <h1 class="htu-text htu-text-con"> Hover over the "Claims" button on the navigation bar and choose the "Add New Claim" button</h1>
-              <div class="htu-image-container">
+              <div class="htu-image-container shade-img">
                 <img class="htu-image" src={require("../images/step2.png")} />
               </div>
             </div>
             <img class="arrow down separator" src={require("../images/arrow.png")} />
-            <div class="how-to-use">
-              <div class="htu-image-container">
+            <div class="how-to-use shade">
+              <div class="htu-image-container shade-img">
                 <img class="htu-image" src={require("../images/step3.png")} />
               </div>
               <h1 class="htu-text htu-text-con">Fill out the details of the claim you propose to submit</h1>
             </div>
             <img class="arrow down separator" src={require("../images/arrow.png")} />
-            <div class="how-to-use">
+            <div class="how-to-use shade">
               <h1 class="htu-text htu-text-con">
                 View your submitted claim status on the "Pending Claim"
                 page
               </h1>
-              <div class="htu-image-container">
+              <div class="htu-image-container shade-img">
                 <img class="htu-image" src={require("../images/step4.png")} />
               </div>
             </div>
