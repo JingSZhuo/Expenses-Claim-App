@@ -38,12 +38,10 @@ function App() {
   const auth = getAuth();
 
   return (
-      
-
       <div className="App">
 
           <nav className="navbar">
-              <Link className='navbuttons' to="/" >Home</Link>
+              <Link className='navbuttons active-page' to="/" >Home</Link>
               <Link className='navbuttons' to="/about" >About</Link>
                 <div class="dropdown">
                     <button class="dropbtn">Claims  <FontAwesomeIcon icon={faCaretDown}></FontAwesomeIcon>
@@ -70,7 +68,6 @@ function App() {
             <div class="flip-card">
               <div class="flip-card-inner">
                 <div class="flip-card-front">
-                <div class="divider"></div>
                   <div class="card-text">
                     <FontAwesomeIcon icon={faPlaneArrival} class="icon-img"/>
                     <h1 class="card-title">Travel</h1>
@@ -90,7 +87,6 @@ function App() {
             <div class="flip-card">
               <div class="flip-card-inner">
                 <div class="flip-card-front">
-                <div class="divider"></div>
                   <div class="card-text">
                     <FontAwesomeIcon icon={faFileShield} class="FileShield"/>
                     <h1 class="card-title">Paperless</h1>
@@ -112,7 +108,6 @@ function App() {
             <div class="flip-card">
               <div class="flip-card-inner">
                 <div class="flip-card-front">
-                <div class="divider"></div>
                   <div class="card-text">
                     <FontAwesomeIcon icon={faMoneyBillTransfer} class="icon-img"/>
                     <h1 class="card-title">Expense</h1>
@@ -128,19 +123,9 @@ function App() {
                 </div>
               </div>
             </div>
-
-            
-
           </div>
-
-
           <div class="footer"><h1>footer</h1></div>
-
-            <Outlet/>
-
-
-            
-
+          <Outlet/>
       </div>
 
   );

@@ -6,7 +6,7 @@ import { auth } from '../firebase.js'
 import db, { storage } from "../firebase";
 import "../main.css";
 import { async } from '@firebase/util';
-import { collection } from 'firebase/firestore';
+import { collection, doc, setDoc } from 'firebase/firestore';
 import { FontAwesomeIcon} from '@fortawesome/react-fontawesome'
 import { faCaretDown} from '@fortawesome/free-solid-svg-icons';
 
@@ -16,22 +16,6 @@ function Login_Signup() {
 
     //Hook states
     let navigate = useNavigate();
-    const [user, setUser] = useState({})
-    const  [loginStatus, setLoginStatus] = useState(false)
-
-    useEffect(() => {
-  
-        const auth = getAuth();
-        onAuthStateChanged(auth, (user) => {          //Check if user is logged in
-            setUser(user)
-            if (user.email === "linemanager@gmail.com") {
-                setLoginStatus(true); 
-            } else {
-                setLoginStatus(false); 
-            }
-        })
-        //GetStatus()
-    }, [])
 
 
     //Register + Login states
@@ -39,51 +23,58 @@ function Login_Signup() {
     const [registerPassword, setRegisterPassword]  = useState("");
     const [loginEmail, setLoginEmail]  = useState("");
     const [loginPassword, setLoginrPassword]  = useState("");
-
-    async function AddToProfile() {
-
-        const authorize = getAuth()
-        const getCurrentUser = authorize.currentUser
-    
-        //Collection state
-        const createCollection = collection(db, getCurrentUser.email)  //User getElementById of email field
-    }
     
     /*Register and Login Functions*/ 
 
     const register = async () => {
         try{
             await createUserWithEmailAndPassword(auth, registerEmail, registerPassword).then(() => {
+                //CreateDetails()
                 navigate('/')
             })
             } catch (error) { 
                 console.log(error.message) 
             }
     };
+    const CreateDetails = async () => {
+        const createCollectionProfile = collection(db, registerEmail)
+
+        const createProfileDoc = doc(createCollectionProfile, "Profile")
+        const dateNow = Date.now()
+
+        await setDoc(createProfileDoc, {
+            UserName: "",
+            Email: registerEmail ,
+            Address: "", 
+            Joined: dateNow, 
+            Status: "Active"
+        })
+    }
+
     const login = async () => {
         try{
             await signInWithEmailAndPassword(auth, loginEmail, loginPassword).then(() => {
                 if (auth.currentUser.email === "linemanager@gmail.com" ){
-                    navigate('/admin')
-                } else { navigate('/viewClaim') }
+                    navigate('/pendingClaim')
+                } else { navigate('/viewClaim'); }
             })
             } catch (error) { 
                 console.log(error.message) 
+                alert('Incorrect Email/Password')
             }
     };
 
-    const logout = async () => {
-        await signOut(auth)
-    };
-    
+    const navigateToReset = () => {
+        navigate('/reset')
+    }
 
-     return (  
+    return (  
         <>
-       
+       <body class="login-body">
         <nav className="navbar">
             <Link className='navbuttons' to="/" >Home</Link>
             <Link className='navbuttons' to="/about" >About</Link>
-              <div class="dropdown">
+              {/* <div class="dropdown">
                   <button class="dropbtn">Claims <FontAwesomeIcon icon={faCaretDown}></FontAwesomeIcon>
                    <i class="fa fa-caret-down"></i>
                   </button>
@@ -91,9 +82,9 @@ function Login_Signup() {
                       <Link className='navbuttons' to="/viewClaim" >View Claims</Link>
                       <Link className='navbuttons' to="/addClaim">Add New Claim</Link>
                   </div>
-            </div> 
-            <Link className='loginsignupbutton' to="/LoginSignup">Login and Sign-Up</Link>
-          </nav>
+            </div>  */}
+            <Link className='loginsignupbutton active-page' to="/LoginSignup">Login and Sign-Up</Link>
+        </nav>
 
           
           <link rel="stylesheet" type="text/css" href="src/bootstrap.min.css"></link>
@@ -101,7 +92,7 @@ function Login_Signup() {
     <meta name="viewport" content="width=device-width, initial-scale=1.0"></meta>
     <title>ClaimIT</title>
    
-    <body>
+    
         <div className ="form-body">
             <div className="form-holder"> 
                 <div className="form-content">
@@ -110,44 +101,39 @@ function Login_Signup() {
                         <p>Never leave your expense reports to your desk.</p>
                         
                         <div class="page-links">
-                                        <a href="" class="active">Login</a>
+                                        <a class="active">Login</a>
                         </div>
 
-                       
-
-
                         <form>
-                            <h3>Employee/Staff Login</h3>
+                            <h3>Employee | Staff Login</h3>
                             <input placeholder='Email...' onChange={(event) => {setLoginEmail(event.target.value)}}/>
-                            <input placeholder='Password...' onChange={(event) => {setLoginrPassword(event.target.value)}}/>
+                            <input type ="password" placeholder='Password...' onChange={(event) => {setLoginrPassword(event.target.value)}}/>
                             <div className="form-button">
                             
-                            <button type ="button" id="submit" onClick={login} className="ibtn" value={"Login"}>Login</button>
+                            <button type ="button"  onClick={login} className="ibtn" value={"Login"}>Login</button>
+                            <button type ="button"  onClick={ navigateToReset } className="ibtn">Forgotten Password</button>
                             </div>
                         </form>
 
                         <div class="page-links">
-                                        <a href="" class="active">Register</a>
+                                        <a class="active">Register</a>
                         </div>
 
                         <form>
                             <h3>Signup</h3>
                             <input className ="form-control" type="email" placeholder='Email...' onChange={(event) => {setRegisterEmail(event.target.value)}} required/>
-                            <input className ="form-control" placeholder='Password...' onChange={(event) => {setRegisterPassword(event.target.value)}} required/>
-                            <input className ="form-control" placeholder='Confirm password...' required/>
+                            <input type="password" className ="form-control" placeholder='Password...' onChange={(event) => {setRegisterPassword(event.target.value)}} required/>
+                            <input type="password" className ="form-control" placeholder='Confirm password...' required/>
                             <div className="form-button">
-                            <button id="submit" className="ibtn" type="button" onClick={register} value={"Signup"} >Sign Up</button>
+                            <button className="ibtn" type="button" onClick={() => {register();}} value={"Signup"} >Sign Up</button>
                             </div>
                         </form>
-        
                         <div className='LS'>
-                            <h3>User - logged in</h3>
-
-
-                            {/* <button onClick={logout}>Logout</button> */}
+                           {/* <button onClick={logout}>Logout</button> */}
+                           <BackgroundParticles />
                         </div>
                         <br/>
-                            Logged in as:  {user?.email}
+                        <br/>
                         <br/>
                     </div>
                 </div>

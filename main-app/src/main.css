@@ -1,10 +1,10 @@
 /*General settings*/
 
 [class*="col-"] {
-  width: 100%;
+  width: 101%;
 }
 
-
+/*some changes...*/
 body {
   font-family: '-apple-system', 'BlinkMacSystemFont', 'Segoe UI', 'Roboto', 'Oxygen',
     'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue';
@@ -13,63 +13,71 @@ body {
 /******************************************************************************** navigation bar ******************************************************************************** */
 
 .navbuttons {
-  padding-left: 2rem;
+  padding-left: 20rem;
   display: block;
   float: left;
   text-decoration: none;
+
 }
 
 .loginsignupbutton {
   display: block;
   float: right;
-  margin-right: 1.25px;
+  margin-right: 10px;
   text-decoration: none;
 }
 
 
 .navbar {
   overflow: hidden;
-  background-color: #92e1fd;
-  padding: 0.8rem;
+  background-color: #1a67af;
+  padding: 0.8rem 0.8rem 0 0.8rem;
+  box-shadow: 2px 2px 3px rgb(102, 102, 102);
+
 
 }
 
 .navbar a {
   font-size: 1rem;
-  color: rgb(0, 0, 0);
+  color: rgb(255, 255, 255);
   text-align: center;
-  padding: 0.875rem 1rem;
+  padding: 0.875rem 1rem 1rem;
   text-decoration: none;
+  font-weight: 600;
+  transition: 0.6s;
+  
 }
 
 
 .dropdown {
   float: left;
   overflow: hidden;
-  
+
 }
+
+
 
 .dropdown .dropbtn {
   font-size: 16px;  
   border: none;
   outline: none;
-  color: rgb(0, 0, 0);
-  padding: 14px 16px;
+  color: rgb(255, 255, 255);
+  padding: 0.875rem 1rem 1rem 1rem;
   background-color: inherit;
   font-family: inherit;
   margin: 0;
+  font-weight: 600;
+  transition: 0.6s;
 }
 
 .navbar a:hover {
-  background-color: #2cc7f2;
-  box-shadow: inset 2px 2px 3px rgb(102, 102, 102);
-  transition: 1s;
+  transition: 0.6s;
+  background-color: #224a6e9f;
+
 }
 
 .dropdown:hover .dropbtn{
-  background-color: #2cc7f2;
-  box-shadow: inset 2px 3px rgb(102, 102, 102);
-  transition: 1s;
+  background-color: #224a6e9f;
 }
 
 .dropdown-content {
@@ -84,7 +92,7 @@ body {
 .dropdown-content a {
   float: none;
   color: #17252A;
-  padding: 12px 16px;
+  padding: 12px 14px;
   text-decoration: none;
   display: block;
   text-align: left;
@@ -104,19 +112,105 @@ body {
   box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
 }
 
+.active-page{
+  border-bottom: 5px solid #2cc7f2;
 
+}
 
 /******************************************************************************** view claims page ******************************************************************************** */
+
+.viewClaim-body{
+  background-color: #e5e2e2c4;
+}
+
+.no-new-claims{
+  font-size: 50px;
+  font-weight: 700;
+  color: #3a3b3b;
+  box-shadow: inset 0px 1px 5px 0px rgba(0,0,0,0.2);
+  z-index: 20;
+  width: 20%;
+  margin: 0px 0px 0px 40%;
+  position: relative;
+  text-align: center;
+  
+}
+
+.view-claim-header{
+  padding: 30px;
+  background-color: #fafafa;
+  box-shadow: 0px 1px 5px 0px rgba(0,0,0,0.2);
+  animation: header-collapse 0.4s;
+}
+
+@keyframes header-collapse {
+  0% { box-shadow: 0px 0px 0px 0px rgba(0,0,0,0.2);}
+  100% {}
+}
+
+.main-claim-container{
+  padding: 100px 100px 800px 100px;
+  animation: content-fadein 0.7s;  
+}
+
+
+
+.new-claim{
+  text-decoration: none;
+  float: right;
+  box-shadow: 0px 1px 5px 2px rgba(0,0,0,0.2);
+  margin: -45px 50px 0px 0px;
+  background-color: #5cb85c;
+  padding: 10px;
+  border-radius: 5px;
+  color: #ffffff;
+  font-weight: 500;
+  transition: 0.3s ease-out;
+}
+
+.new-claim:hover{
+  background-color: #4b9e4b;
+  transition: 0.3s ease-out;
+}
+
+.claim-plus{
+  width: 15px;
+  padding: 0px 5px 0px 0px;
+  margin: 0px 0px -3px 0px;
+}
 
 .filescontainer {
   display: inline-flex;
   flex-direction: row;
+  float: left;
+  padding: 0px 0px 4px 0px;
+  box-sizing: border-box;
+  width: 170px;
+  overflow-x: auto;
+  white-space: nowrap;
+}
+
+.filescontainer::-webkit-scrollbar{
+  background: rgba(117, 178, 228, 0.527);
+  border-radius: 8px;
+  border: 5px solid transparent;
+  background-clip: content-box;
+}
+
+.filescontainer::-webkit-scrollbar-thumb{
+  background: #727272ad;
+  border-radius: 8px;
+  background-clip: content-box;
+  -webkit-box-shadow: inset 0 0 3px rgba(0,0,0,
+  0.5); 
+  border: 5px solid transparent;
+  
 }
 
 .files {
-  width: 200px;
-  height: 200px;
-  padding: 10px;
+  width: 70px;
+  height: 70px;
+  padding: 30px 0px 0px 50px;
 }
 
 embed {
@@ -126,7 +220,134 @@ embed {
   height: auto;
 }
 
+.claim-container{
+  border-style: solid;
+  border-width: 1px;
+  border-color: #41424260;
+  margin: 0px 100px 0px 100px;
+  padding: 10px 0px 60px 0px;
+  background-color: #ffffff;
+  box-shadow: 0px 1px 5px 0px rgba(0,0,0,0.2);
+}
+
+
+.collapse-btn{
+  float: right;
+  padding: 10px 14px 10px 15px;
+  margin: -100px 15px 0px 0px;
+  border: none;
+  background-color: #ffffff;
+  transition: 0.2s;
+}
+
+.collapse-btn:hover{
+  background-color: #6e727525;
+  border-radius: 25px;
+  transition: 0.2s;
+}
+
+.content{
+  margin: 0px 0px 0px 50px;
+  padding: 80px 0px 0px 0px;
+  animation: content-fadein 0.5s;
+
+}
+
+@keyframes content-fadein{
+  0% {opacity:0;}
+  50% {opacity: 0;}
+  100% {opacity: 1;}
+}
+
+.claim-text{
+  padding: 0px 0px 0px 0px;
+  margin: 30px 0px 0px 100px;
+}
+
+.claim-name{
+  color: #17252A;
+  font-size: 30px;
+  padding-bottom: 5px;
+}
+
+.claim-amount{
+  float: right;
+  padding: 0px 40px 0px 0px;
+  margin: -25px 40px 0px 0px;
+  font-weight: 600;
+  font-size: 30px;
+  color: #17252A;
+
+}
+
+.view-button{
+  margin: 0px 50px 0px 67px;
+  padding: 3px 10px 3px 10px;
+  position: relative;
+  display: flex;
+  justify-content: center;
+  text-decoration: none;
+  background-color: #1a67afd8;
+  border-radius: 5px;
+  color: #f0f0f0;
+  transition: 0.3s;
+}
+
+.view-button:hover{
+  background-color: #032a5094;
+}
+
+.claim-status-pending{
+  background-color: rgba(255, 136, 0, 0.137);
+  border-style: solid;
+  border-color: rgb(255, 136, 0);
+  border-width: 0.5px;
+  border-radius: 5px;
+  padding: 4px;
+  font-size: 12px;
+  color: rgb(255, 136, 0);
+}
+
+.claim-status-rejected{
+  padding: 4px;
+  background-color: rgba(255, 0, 0, 0.137);
+  border-style: solid;
+  border-color: rgb(255, 0, 0);
+  border-width: 0.5px;
+  border-radius: 5px;
+  font-size: 12px;
+  color: rgb(255, 0, 0);
+}
+
+.claim-status-Approved{
+  background-color: rgba(92, 184, 92, 0.178);
+  border-style: solid;
+  border-color: rgb(92, 184, 92);
+  border-width: 0.5px;
+  border-radius: 5px;
+  padding: 4px;
+  font-size: 12px;
+  color: rgb(92, 184, 92);
+}
+
+.claim-purchaseplace{
+  padding: 10px 0px 10px 10px;
+  font-size: 20px;
+  margin: -27px 7px 0px 0px;
+  float: right;
+  color: #3a3b3bc2;
+}
+
 /*Claim form*/
+
+.addClaim-body{
+  background-image:  url("/src/images/homepage-background.jpg");
+}
+
+.add-claim{
+  margin:2%;
+}
+
 
 .claimform {
   background-color: rgba(92, 92, 92, 0.467) ;
@@ -144,6 +365,168 @@ embed {
   background-color: rgba(38, 37, 37, 0.576);
 }
 
+.amount {
+  border-radius:6px;
+  height:5%;
+}
+.mainscreen
+{
+	min-height: 100vh;
+	width: 100%;
+	display: flex;
+    flex-direction: column;
+    color:black;
+}
+
+.card {
+  border-radius: 5px;
+	width: 60rem;
+    margin: auto;
+    background: white;
+    position:center;
+    align-self: center;
+    top: 50rem;
+    border-radius: 1.5rem;
+    box-shadow: 4px 3px 20px #3535358c;
+    display:flex;
+    flex-direction: row;
+    animation: pop-up 1s;
+    
+}
+
+@keyframes pop-up{
+  0%{transform: translateY(200%)}
+  100%{transform: translateY(0%)}
+}
+
+.leftside {
+  color: white;
+  font-size: 400%;
+	background: linear-gradient(
+      135deg
+      , #22d7e4 0%, #0093FF 100%);
+	width: 25rem;
+	display: inline-flex;
+    align-items: center;
+    justify-content: center;
+	border-top-left-radius: 1.5rem;
+    border-bottom-left-radius: 1.5rem;
+}
+
+.leftside-secondary{
+  font-size: 20px;
+  position: absolute;
+  margin: 100px 0px 0px 0px;
+  opacity: 80%;
+}
+
+.product {
+    object-fit: cover;
+	width: 20em;
+    height: 20em;
+    
+}
+
+.rightside {
+    background-color: #ffffff;
+	width: 35rem;
+	border-bottom-right-radius: 1.5rem;
+    border-top-right-radius: 1.5rem;
+    padding: 1rem 2rem 3rem 3rem;
+}
+
+p{
+    display:block;
+    font-size: 1.1rem;
+    font-weight: 400;
+    margin: .8rem 0;
+}
+
+.inputbox
+{
+    color:#030303;
+	width: 100%;
+    padding: 0.5rem;
+    border: none;
+    border-bottom: 1.5px solid #ccc;
+    margin-bottom: 1rem;
+    border-radius: 0.3rem;
+    font-family: 'Roboto', sans-serif;
+    color: #615a5a;
+    font-size: 1.1rem;
+    font-weight: 500;
+  outline:none;
+}
+
+.expcvv {
+    display:flex;
+    justify-content: space-between;
+    padding-top: 0.6rem;
+}
+
+.expcvv_text{
+    padding-right: 1rem;
+}
+.expcvv_text2{
+    padding:0 1rem;
+}
+
+.addClaim-button{
+  background-color: #1a67af;
+    padding: 10px;
+    border: none;
+    border-radius: 10px;
+    color: white;
+    font-weight: 400;
+    font-size: 1.2rem;
+    margin-top: 10px;
+    width:50%;
+    outline:none;
+    box-shadow: 3px 3px 6px #38373785;
+    transition: 1s;
+}
+
+.addClaim-button:disabled{
+  background-color: #0c2d4b3f;
+  box-shadow: 0px 0px 0px #38373785;
+}
+
+.addClaim-button:disabled:hover{
+  background-color: #0c2d4b3f;
+  box-shadow: 0px 0px 0px #38373785;
+}
+
+.addClaim-button:hover
+{
+	background-color: #0c2d4b;
+    
+}
+
+@media only screen and (max-width: 1000px) {
+    .card{
+        flex-direction: column;
+        width: auto;
+      
+    }
+
+    .leftside{
+        width: 100%;
+        border-top-right-radius: 0;
+        border-bottom-left-radius: 0;
+      border-top-right-radius:0;
+      border-radius:0;
+    }
+
+    .rightside{
+        width:auto;
+        border-bottom-left-radius: 1.5rem;
+        padding:0.5rem 3rem 3rem 2rem;
+      border-radius:0;
+    }
+}
+
+/* add claim page */
+
 /******************************************************************************** Home page ******************************************************************************** */
 
 /* Flip Cards */
@@ -158,7 +541,7 @@ embed {
   width: 30%;
   height: 300px;
   perspective: 1000px; 
-  transform: translate(4%, 0%);
+  transform: translate(4%, -5%);
 }
 
 
@@ -414,57 +797,145 @@ embed {
 /******************************************************************************** About page ******************************************************************************** */
 
 .about-page{
-  padding: 0px 0px 0px 0px;
-  height: 845px;
-  margin: 70px 300px 0px 300px;
+  margin: 7% 13% 7%;
   box-shadow: 0px 10px 10px 10px rgba(0,0,0,0.2);
   background-color: white;
   animation: about-page-transform 1s;
 }
 
 @keyframes about-page-transform{
-  0% {height: 0px; margin-top:1000px;}
-  60% {height: 0px;}
-  100% {height: 845px; margin-top:70px}
+  0% {margin-top:1000px;}
+  100% {margin-top:150px}
 }
 
 .about-title{
   color: #17252A;
   padding: 70px 70px 30px 70px;
   font-size: 50px;
-  animation: about-title-fadein 2.3s;
+  animation: about-title-fadein 3s;
 }
 
 .about-body{
   background-image: url("/src/images/homepage-background.jpg");
-  height: 1200px;
+  height: 5000px;
+}
+
+.about-border{
+  margin: 10%;
+  border: darkcyan;
+  border-left: 1em;
+  border-right: 1em;
+  border-style: dashed;
+}
+
+.about-border-2{
+  justify-content: center;
+  margin: 80px 150px 80px;
+  display: flex;
+  flex-direction: row;
+}
+
+.about-border-2-text{
+  margin: 12% 5% 0 0;
+  font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+  font-style: italic;
+  font-weight: bolder;
+  font-size: 1.5em;
+  text-align: center;
+}
+
+.about-border-2 img{
+  width: 350px;
 }
 
 .about-text{
+  margin: 5% 0 5% 0;
+  font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+  font-style: italic;
+  font-weight: bolder;
+  font-size: 2em;
+  text-align: center;
   padding: 0px 70px;
   color: #17252A;
   animation: about-text-fadein 2.3s;
 }
 
-@keyframes about-transform {
-  from {margin-top: 1000px; opacity: 0;}
-  to {margin-top: 70px; opacity: 1;}
+.htu-container{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin: 7% 7% 0% 7%;
 }
 
-@keyframes about-text-fadein{
-  0% {opacity: 0; transform: translateX(50px);}
-  60% {opacity: 0; transform: translateX(20px);}
-  100% {opacity: 1; transform: translateX(0px);}
+.htu-container img{
+  pointer-events: none;
 }
 
-@keyframes about-title-fadein{
-  0% {opacity: 0; transform: translateY(-50px);}
-  50% {opacity: 0; transform: translateY(-20px);}
-  100% {opacity: 1; transform: translateY(0px);}
+.htu-image-container {
+  width: 50%;
+  min-height: 280px;
+  max-height: 416px;
+  padding: 16px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: row;
+  background-color: #F1F1F1;
+  margin: 0 8px;
+  border-radius: 32px;
 }
 
-.divider-bottom{
-  margin: 0px 300px 0px 300px;
+.htu-image {
+  width: 75%;
+}
+
+.htu-text {
+  width: 50%;
+  margin: auto 8px;
+}
+
+
+.separator {
+  margin: 50px 0;
+}
+
+.how-to-use{
+  display: flex;
+  flex-direction: row;
+  animation: about-text-fadein 2.3s;
+}
+
+.htu-text-con{
+  text-align: justify;
+  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+  font-weight: bolder;
+  font-size: 1.5em;
+  animation: about-text-fadein 2.3s;
+}
+
+.arrow {
+  pointer-events: none;
+  width: 50px;
+  height: 50px;
+  align-self: center;
+}
+
+.down {
+  transform: rotate(90deg);
+}
+
+.features-container{
+  margin: 40px 70px 40px;
+}
+
+.features-list li{
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  font-size: large;
+  font-weight: 500;
+  background: url('images/tick1.png') no-repeat left top;
+  list-style: none;
+  padding: 20px 70px 50px;
 }
 
 /* ABOUT MOBILE PAGE */
@@ -513,10 +984,34 @@ embed {
 }
 
 /* login page */
-.form-holder {
-  margin-left: 550px;
-  width: 100%;
+
+.login-body{
+  background-image: url("/src/images/homepage-background.jpg");
+  height: 1300px;
 }
+
+.form-holder {
+  margin: 0px 0px 0px 500px;
+  
+}
+
+.form-content {
+  position: relative;
+	background: linear-gradient(
+      135deg
+      , #22d7e4 0%, #0093FF 100%);
+  border-top-right-radius: 25px;
+  border-bottom-right-radius: 25px;
+}
+
+.form-body{
+  background-repeat: no-repeat;
+  background-image:url("/src/images/img1.jpg");
+  margin: 100px 500px 500px 500px;
+  border-radius: 25px;
+  animation: pop-up 1s;
+}
+
 
 .form-holder .form-content {
   position: relative;
@@ -569,11 +1064,6 @@ embed {
 
 .form-control :-ms-input-placeholder {
   color: #526489;
-}
-
-.form-content {
-  position: relative;
-  background-color: #6ed5fe;
 }
 
 .form-content .form-group {
@@ -989,8 +1479,7 @@ embed {
 }
 
 .form-content .form-button .ibtn:hover, .form-content .form-button .ibtn:focus {
-  -webkit-box-shadow: 0 5px 6px rgba(0, 0, 0, 0.16);
-  box-shadow: 0 5px 6px rgba(0, 0, 0, 0.16);
+  background-color: rgba(255, 255, 255, 0.685);
 }
 
 .form-content form {
@@ -999,8 +1488,63 @@ embed {
 
 
 
+<<<<<<< HEAD
 .form-body{
   
   background-image:url("/src/images/img1.jpg");
+=======
+/* reset page */
+
+.form-container {
+  background-color: #31a8ff;
+  display: flex;
+  height: 100vh;
+  width: 100%;
+  justify-content: center;
+  align-items: center;
 }
+
+.form-container .form-wrap {
+  background: #fff;
+  width: 20%;
+  padding: 15px 20px;
+  border-radius: 10px;
+}
+
+.form-container .form-wrap h2 {
+  text-align: center;
+  margin: 0px 0px 20px;
+  font-size: 19px;
+}
+
+.form-container .form-wrap .form-box {
+  margin: 0px 0px 15px;
+}
+
+.form-container .form-wrap .form-box input[type="text"]{
+  padding: 5px 8px;
+  border-radius: 3px;
+  border: 1px solid #353535;
+  width: 95%;
+}
+
+.form-container .form-wrap .form-submit {
+  display: flex;
+  justify-content: center;
+>>>>>>> ace927df9c6a3acf0686472f68542390d9965baf
+}
+
+
+.form-container .form-wrap .form-submit input[type="submit"] {
+  padding: 4px 10px;
+  border: none;
+  border-radius: 5px;
+  background: #353535;
+  color: #fff;
+  font-weight: 800;
+  cursor: pointer;
+  font-size: 16px;
+}
+
+/* end reset page */
 

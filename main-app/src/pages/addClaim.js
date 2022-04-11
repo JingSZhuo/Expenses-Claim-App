@@ -8,6 +8,9 @@ import { useState, useEffect } from "react";
 import { FontAwesomeIcon} from '@fortawesome/react-fontawesome'
 import { faCaretDown} from '@fortawesome/free-solid-svg-icons';
 import LoginSignup from "./LoginSignUp";
+import BackgroundParticles from 'react-tsparticles';
+
+
 
 
 function AddClaimPage() {
@@ -19,6 +22,8 @@ function AddClaimPage() {
     const [urls, setUrls] = useState([])
     const [docID, setdocID] = useState()
     const [docIDAdmin, setDocIDAdmin] = useState()
+    const [currency, setCurrency] = useState()
+    const [currencySign, setCurrencySign] = useState()
 
     //Auth 
     const auth = getAuth()
@@ -43,6 +48,7 @@ function AddClaimPage() {
             alert('Please fill in all the fields and upload evidence!')
         } 
         else {document.getElementById('submitbutton').disabled = false;
+            alert("Files Submitted, please submit the claim")
         }
     }
 
@@ -88,15 +94,8 @@ function AddClaimPage() {
             const metadata = {
                 contentType: `${multipleimageTypes[i]}`,
             }
-        
             uploadBytes(storageRef, multipleImages[i], metadata)
-
-            // await getDownloadURL(storageRef).then((url) => { 
-            //     arrayOfUrls[i] = url
-            // })
-            // console.log(arrayOfUrls[i])    
         }
-        // setUrls(arrayOfUrls)
         console.log("URLS: ", urls)
     }
 
@@ -117,24 +116,30 @@ function AddClaimPage() {
         setdocID(generatedId)
         setDocIDAdmin(generatedIdForAdmin)
 
-
-        const dateNow = Date.now()
+        const timeUnix = Date.now()
+        const d = new Date()
+        const dateNow = d.toUTCString()
 
         await setDoc(generateID, {                      //individual database
             ID: dateNow,
+            ID2: timeUnix ,
             ClaimId: generatedId,
             Claim: document.getElementById("title").value,
-            Amount: document.getElementById("amount").value,
+            Amount: `${currencySign}` + document.getElementById("amount").value,
+            AmountInGBP: "£"+`${currency}` ,
             Description: document.getElementById("description").value,
             SortCode: document.getElementById("sortcode").value,
             AccountNumber: document.getElementById("accountnumber").value,
-            Approve: "Not Yet Approved",
+            Approve: "Pending",
+            email: user.email,
             URLS: "" ,
             NoFiles: length
         }) 
         await setDoc(generateEmail, {                   //Employee database
             ID: dateNow,
+            ID2: timeUnix,
             ClaimId: generatedId ,
+            ClaimIdAdmin: generatedIdForAdmin ,
             Claim: document.getElementById("title").value,
             Amount: document.getElementById("amount").value,
             Description: document.getElementById("description").value,
@@ -157,11 +162,6 @@ function AddClaimPage() {
         const arrayOfUrls = []
         for (let i = 0; i < length; i++ ) {
             const storageRef = ref(storage, `${getUser.email}/`+`${multipleImageNames[i]}` )      //If storage file/directory doesnt exist..create one
-            // const metadata = {
-            //     contentType: `${multipleimageTypes[i]}`,
-            // }
-        
-            //uploadBytes(storageRef, multipleImages[i], metadata)
     
             await getDownloadURL(storageRef).then((url) => { 
                 arrayOfUrls[i] = url
@@ -169,7 +169,31 @@ function AddClaimPage() {
             console.log(arrayOfUrls[i])    
         }
         setUrls(arrayOfUrls)
-        //console.log("URLS: ", urls)
+
+        alert("Claim submitted")
+    }
+
+    //Currency converter function
+
+    function currencyConverter (x) {
+        const currency = document.getElementById('currency').value 
+        if (currency === "pound") {
+            setCurrency(x); //console.log("GBP: ", x)
+            setCurrencySign("£")
+            return x
+        }
+        else if (currency === "euro") {
+            const euroToGBP = x * 0.8
+            setCurrency(euroToGBP.toFixed(2)); //console.log("EURO -> GBP: ", euroToGBP)
+            setCurrencySign("€")
+            return euroToGBP
+        }
+        else if (currency === "dollar") {
+            const USDtoGBP = x * .75
+            setCurrency(USDtoGBP.toFixed(2)); //console.log("USD -> GBP: ", USDtoGBP)
+            setCurrencySign("$")
+            return USDtoGBP
+        }
     }
 
     //_____________________________________________________________________________________________________________________________
@@ -183,10 +207,11 @@ function AddClaimPage() {
     return( 
 
         <>
+        <body class="addClaim-body">
             <nav className="navbar">
                 <Link className='navbuttons' to="/" >Home</Link>
                 <Link className='navbuttons' to="/about" >About</Link>
-                <div class="dropdown">
+                <div class="dropdown active-page">
                     <button class="dropbtn">Claims <FontAwesomeIcon icon={faCaretDown}></FontAwesomeIcon>
                     <i class="fa fa-caret-down"></i>
                     </button>
@@ -197,27 +222,40 @@ function AddClaimPage() {
                 </div>
                 <Link className='loginsignupbutton' to="/LoginSignup" onClick={logout} >Logout</Link> 
             </nav>
+            
+            <div className="mainscreen">
+            
+            <div className="card">
+                <div className="leftside">
+                    <h1>Claim Form</h1> 
+                    <p class="leftside-secondary">Please fill in all the information.</p>
+                </div>
+            <div className="rightside">
+            <form>
+                <br></br>
+                <p>Claim Title</p>
+                    <input id="title" className="inputbox"  type="text" placeholder="Enter claim title " name="name" required />
+                <p>Select Currency</p>
+                    <select className="inputbox" name="card_type" id="currency" onChange={() => { currencyConverter(document.getElementById('amount').value)}} >
+                        <option value="">--Select a Currency</option>
+                        <option value={"pound"}>GBP</option>
+                        <option value={"euro"}>Euro</option>
+                        <option value={"dollar"}>USD</option>
+                    </select>
 
-            <div>
-                <h1>Add Claim</h1>
-            </div>
+                    <p>Enter Amount</p>
+                    <input id="amount" className="inputbox" name="name" type="number" onchange="setTwoNumberDecimal" min="0.00" max="100000.00" step="0.01" placeholder="Enter Amount " onChange={() => { currencyConverter(document.getElementById('amount').value)}} ></input>
 
-            <form className="claimform">
-                <div className="formbox">
-                    <h3>Claim title</h3>
-                    <input id="title" type="text" placeholder="Enter claim title " ></input>
+                    <h4>GBP: £{currency} </h4>
 
-                    <h3>Enter Amount</h3>
-                    <input id="amount" type="number" placeholder="Enter Amount " ></input>
+                    <p>Place of purchase</p>
+                    <input id="description" className="inputbox"  type="text" placeholder="Enter claim description" ></input>
 
-                    <h3>Description</h3>
-                    <input id="description" type="text" placeholder="Enter claim description" ></input>
+                    <p>Sort Code</p>
+                    <input id="sortcode" className="inputbox"  type="number" placeholder="Enter Sort Code" ></input>
 
-                    <h3>Sort Code</h3>
-                    <input id="sortcode" type="number" placeholder="Enter Sort Code" ></input>
-
-                    <h3>Account Number</h3>
-                    <input id="accountnumber" type="number" placeholder="Enter Account Number" ></input>
+                    <p>Account Number</p>
+                    <input id="accountnumber" className="inputbox"  type="number" placeholder="Enter Account Number" ></input>
 
                     <br></br>
                     <h3>Upload</h3>
@@ -237,16 +275,22 @@ function AddClaimPage() {
                             }}>
                         </input>
                     <br></br>
-                    <input id="uploadfilesbutton" type="button" onClick={() => {  UploadFile(); EnableOnUpload(); }} value={"upload Image"}></input>
+                    <input class="addClaim-button" id="uploadfilesbutton" type="button" onClick={() => {  UploadFile(); EnableOnUpload(); }} value={"Upload Files"}></input>
                     <br></br>       
                     <br></br>  
-                    <input id="submitbutton" type="button" onClick={() => {  SubmitFileCheck(); }} value={"Submit"}></input>
-                </div>
+                    <input class="addClaim-button" id="submitbutton" type="button" onClick={() => {  SubmitFileCheck(); }} value={"Submit Claim"}></input>
             </form>
+
+            </div>
+            </div>
+            </div>
+            </body>
+
         </>
     )
 }
  
+
 function Status() {                         //Checks if user is logged in and renders based on login status
     const  [loginStatus, setLoginStatus] = useState(false)
   
