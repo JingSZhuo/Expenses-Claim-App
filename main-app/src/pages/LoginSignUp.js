@@ -7,6 +7,7 @@ import db, { storage } from "../firebase";
 import "../main.css";
 import { async } from '@firebase/util';
 import { collection, doc, setDoc } from 'firebase/firestore';
+import BackgroundParticles from './BackgroundParticles'
 import { FontAwesomeIcon} from '@fortawesome/react-fontawesome'
 import { faCaretDown} from '@fortawesome/free-solid-svg-icons';
 

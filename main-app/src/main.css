@@ -1488,11 +1488,11 @@ p{
 
 
 
-<<<<<<< HEAD
-.form-body{
+/* .form-body{
   
   background-image:url("/src/images/img1.jpg");
-=======
+} */
+
 /* reset page */
 
 .form-container {
@@ -1531,7 +1531,6 @@ p{
 .form-container .form-wrap .form-submit {
   display: flex;
   justify-content: center;
->>>>>>> ace927df9c6a3acf0686472f68542390d9965baf
 }
 
 
