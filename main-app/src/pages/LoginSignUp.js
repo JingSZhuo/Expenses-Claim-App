@@ -102,7 +102,7 @@ function Login_Signup() {
                         <p>Never leave your expense reports to your desk.</p>
                         
                         <div class="page-links">
-                                        <a class="active">Login</a>
+                            <a class="active">Login</a>
                         </div>
 
                         <form>
@@ -117,7 +117,7 @@ function Login_Signup() {
                         </form>
 
                         <div class="page-links">
-                                        <a class="active">Register</a>
+                            <a class="active">Register</a>
                         </div>
 
                         <form>
