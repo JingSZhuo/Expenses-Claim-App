@@ -1632,13 +1632,13 @@ p{
 }
 
 .collapsible2{
-  margin: -80px 0px 0px 0px;
+  margin: -60px 0px 20px 0px;
 }
 
 .collapse-btn2{
   float: right;
   padding: 10px 14px 10px 15px;
-  margin: -150px 15px 0px 0px;
+  margin: -160px 15px 0px 0px;
   border: none;
   background-color: #ffffff;
   transition: 0.2s;
