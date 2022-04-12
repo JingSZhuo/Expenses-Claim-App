@@ -996,14 +996,14 @@ p{
 }
 
 .form-holder {
-  margin: 0px 0px 0px 700px;
+  margin: 0px 0px 0px 30%;
   animation: form-holder-transform 1s;
 }
 
 @keyframes form-holder-transform {
   0%{margin-left: 0px;}
   0% {margin-left:0px}
-  100%{margin-left: 700px;}
+  100%{margin-left: 30%;}
 }
 
 @keyframes form-items-fadein{
