@@ -78,7 +78,7 @@ const PendingClaimPage = () => {
 
                             <a className = "claim-name1"> Claim: {data.Claim}</a>
   
-                            <a className = "claim-amount1"> Amount: £{data.Amount}</a>
+                            <a className = "claim-amount1"> £{data.Amount}</a>
                           <br></br>
                           <br></br>
                           <br></br>
@@ -127,7 +127,7 @@ function Collapsible(props){
               <br></br>
               <p>Time Submitted:  {props.datetime}</p>
               <br></br>
-              <p>Claim Description: {props.Description}</p>
+              <p>Place of purchase: {props.Description}</p>
               <br></br>
               <p>Claim ID: {props.ClaimID}</p>
               <br></br>

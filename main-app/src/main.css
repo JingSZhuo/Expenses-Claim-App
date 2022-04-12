@@ -254,15 +254,10 @@ embed {
 .content{
   margin: 0px 0px 0px 50px;
   padding: 0px 0px 0px 0px;
-  animation: content-fadein 0.5s;
 
 }
 
-@keyframes content-fadein{
-  0% {opacity:0;}
-  50% {opacity: 0;}
-  100% {opacity: 1;}
-}
+
 
 .claim-text{
   padding: 0px 0px 0px 0px;
@@ -593,23 +588,21 @@ p{
 
 .card-text{
   margin: 25px;
-  font-size: 20px;
+  font-size: 100%;
 
-  
 }
 
 .icon-img{
+  align-items: center;
   width: 112px;
-  text-align: right;
-  float: center;
-  padding-left: 170px;
-  margin-bottom: 10px;
+
+  margin: 0px 0px 0px 37%;
 
 }
 
 .FileShield{
   width: 112px;
-  padding-left: 170px;
+  margin: 0px 0px 0px 37%;
   float: center;
 
 }
@@ -617,7 +610,7 @@ p{
 .card-title{
   text-align: center;
   margin-top: 40px;
-  font-size: 50px;
+  font-size: 230%;
 }
 
 .card-text-back{
@@ -1639,13 +1632,13 @@ p{
 }
 
 .collapsible2{
-  margin: -80px 0px 0px 0px;
+  margin: -60px 0px 20px 0px;
 }
 
 .collapse-btn2{
   float: right;
   padding: 10px 14px 10px 15px;
-  margin: -150px 15px 0px 0px;
+  margin: -160px 15px 0px 0px;
   border: none;
   background-color: #ffffff;
   transition: 0.2s;
