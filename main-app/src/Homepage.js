@@ -124,7 +124,7 @@ function App() {
               </div>
             </div>
           </div>
-          <div class="footer"><h1>footer</h1></div>
+          <div class="footer"><h1></h1></div>
           <Outlet/>
       </div>
 

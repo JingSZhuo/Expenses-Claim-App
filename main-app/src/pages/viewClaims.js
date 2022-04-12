@@ -90,17 +90,6 @@ function ViewClaim(){
           })} 
         </div>
     </body>
-              /*<a> Time: {data.ID}</a>,
-                <a> Claim: {data.Claim}</a>,
-                <a> Claim Description: {data.Description}</a>
-                <a> Amount: {data.Amount}</a>,
-                <a> Amount (GBP): {data.AmountInGBP}</a>,
-                <a> Sort Code: {data.SortCode}</a>,
-                <a> Account No: {data.AccountNumber}</a>,
-                <a> ClaimID: {data.id}</a>,
-                <a> Email: {data.email}</a>,
-                <a> Status: {data.Approve}</a>
-                 */
     )
 }
 
