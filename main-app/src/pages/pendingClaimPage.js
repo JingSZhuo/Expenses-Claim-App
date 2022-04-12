@@ -78,15 +78,10 @@ const PendingClaimPage = () => {
                             <a className = "claim-name1"> Claim: {data.Claim}</a>
   
                             <a className = "claim-amount1"> Amount: £{data.Amount}</a>
-
-                        
-    
-                          {/* <a> Status: {data.Approve}</a> */}
-                          <br></br>
-      
                           <br></br>
                           <br></br>
-                          
+                          <br></br>
+                          <br></br>
                           <br></br>
                           <br></br>
                           <br></br>
@@ -96,16 +91,11 @@ const PendingClaimPage = () => {
                           <br></br>
                           <Collapsible accountNumber={`${data.AccountNumber}`} sortCode={`${data.SortCode}`} datetime={`${data.ID}`} Description={`${data.Description}`} ClaimID={`${data.id}`} Email={`${data.email}`} NoOfFiles={`${data.NoFiles}`}/>
                       </div>
-
-
-
-
+                      
                       <ApproveRejectButton className="ApproveReject" email={`${data.email}`} ClaimId={`${data.ClaimId}`} ClaimIdAdmin={`${data.ClaimIdAdmin}`} />
                       {/* <button id='approve' className='finalchoice' onClick={() => {Approve(data.email, data.ClaimId, data.ClaimIdAdmin); }}  value="Approve" >Approve</button>
                       <button id='reject' className='finalchoice' onClick={() => {Reject(data.email, data.ClaimId, data.ClaimIdAdmin); }}  value="Reject" >Reject</button> */}
                   </div>
-
-                  
                 )
             })}
         </div>

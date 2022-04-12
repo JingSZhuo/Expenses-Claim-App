@@ -80,7 +80,7 @@ function ViewClaim(){
                 <div class="claim-text">
                 <h1 class="claim-name">{data.Claim}</h1>
                 <a class="claim-amount"> {data.Amount}</a>
-                <a class={(data.Approve == 'Not Yet Approved') ? "claim-status-pending" : data.Approve == 'Rejected' ?"claim-status-rejected" : "claim-status-Approved"}>{data.Approve}</a>
+                <a class={(data.Approve == 'Pending') ? "claim-status-pending" : data.Approve == 'Rejected' ?"claim-status-rejected" : "claim-status-Approved"}>{data.Approve}</a>
                 <a class="claim-purchaseplace">Spent at {data.Description} - </a>
                 </div>
 
