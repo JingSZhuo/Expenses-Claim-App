@@ -60,6 +60,7 @@ const PendingClaimPage = () => {
   }
  
     return ( 
+      <body class="pendingClaim-body">
         <div>
             <nav className="navbar">
                 {/* <Link className='navbuttons' to="/" >Home</Link>
@@ -67,8 +68,8 @@ const PendingClaimPage = () => {
                 <Link className='navbuttons active-page' to="/pendingClaim" >Admin</Link>
                 <Link className='loginsignupbutton' to="/LoginSignup" onClick={logout} >Logout</Link> 
             </nav>
-            <h1 className="ClaimApprove">CLAIMS TO APPROVE</h1>
-
+            <h1 className="ClaimApprove">Pending Claims</h1>
+            <div className="main-Pendingclaim-container">
             {data.map((data) => {
                 return(
                   <div className="ManagerClaim">
@@ -96,9 +97,13 @@ const PendingClaimPage = () => {
                       {/* <button id='approve' className='finalchoice' onClick={() => {Approve(data.email, data.ClaimId, data.ClaimIdAdmin); }}  value="Approve" >Approve</button>
                       <button id='reject' className='finalchoice' onClick={() => {Reject(data.email, data.ClaimId, data.ClaimIdAdmin); }}  value="Reject" >Reject</button> */}
                   </div>
+                  
                 )
             })}
+            </div>
         </div>
+        
+        </body>
      );
 }
 
@@ -109,12 +114,12 @@ function Collapsible(props){
 
     return (
 
-      <div className="collapsible">
-          <div className="collapse-btn1" {...getToggleProps()}>
+      <div className="collapsible2">
+          <div className="collapse-btn2" {...getToggleProps()}>
               {isExpanded ? <FontAwesomeIcon  icon={faAngleUp}></FontAwesomeIcon> : <FontAwesomeIcon  icon={faAngleDown}></FontAwesomeIcon>}
           </div>
           <div {...getCollapseProps()}>
-              <div className="content">
+              <div className="content2">
               <br></br>
               <p>Account number: {props.accountNumber}</p>
               <br></br>
@@ -198,7 +203,7 @@ catch (e) {
 
 
 function StatusOut() {
-  return(<h2>Not Admin!!!</h2>)
+  return(<h2></h2>)
 }
 
 function Status() {                         //Checks if user is logged in and renders based on login status

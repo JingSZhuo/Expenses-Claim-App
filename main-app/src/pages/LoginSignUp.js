@@ -131,7 +131,6 @@ function Login_Signup() {
                         </form>
                         <div className='LS'>
                            {/* <button onClick={logout}>Logout</button> */}
-                           <BackgroundParticles />
                         </div>
                         <br/>
                         <br/>

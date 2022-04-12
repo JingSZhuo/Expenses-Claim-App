@@ -136,6 +136,7 @@ body {
   
 }
 
+
 .view-claim-header{
   padding: 30px;
   background-color: #fafafa;
@@ -234,10 +235,14 @@ embed {
 .collapse-btn{
   float: right;
   padding: 10px 14px 10px 15px;
-  margin: -100px 15px 0px 0px;
+  margin: -150px 15px 0px 0px;
   border: none;
   background-color: #ffffff;
   transition: 0.2s;
+}
+
+.collapsible{
+  margin: 60px 0px 0px 0px;
 }
 
 .collapse-btn:hover{
@@ -248,7 +253,7 @@ embed {
 
 .content{
   margin: 0px 0px 0px 50px;
-  padding: 80px 0px 0px 0px;
+  padding: 0px 0px 0px 0px;
   animation: content-fadein 0.5s;
 
 }
@@ -987,34 +992,44 @@ p{
 
 .login-body{
   background-image: url("/src/images/homepage-background.jpg");
-  height: 1300px;
+
 }
 
 .form-holder {
-  margin: 0px 0px 0px 500px;
-  
+  margin: 0px 0px 0px 700px;
+  animation: form-holder-transform 1s;
+}
+
+@keyframes form-holder-transform {
+  0%{margin-left: 0px;}
+  0% {margin-left:0px}
+  100%{margin-left: 700px;}
+}
+
+@keyframes form-items-fadein{
+  0% {opacity: 0;}
+  50% {opacity: 0;}
+  100% {opacity: 1;}
+}
+
+.form-items{
+  animation: form-items-fadein 1.2s;
 }
 
 .form-content {
-  position: relative;
 	background: linear-gradient(
       135deg
       , #22d7e4 0%, #0093FF 100%);
-  border-top-right-radius: 25px;
-  border-bottom-right-radius: 25px;
 }
 
 .form-body{
   background-repeat: no-repeat;
   background-image:url("/src/images/img1.jpg");
-  margin: 100px 500px 500px 500px;
-  border-radius: 25px;
-  animation: pop-up 1s;
+
 }
 
 
 .form-holder .form-content {
-  position: relative;
   text-align: center;
   display: -webkit-box;
   display: -moz-box;
@@ -1549,6 +1564,10 @@ p{
 
 /*manager view claims page*/
 
+.pendingClaim-body{
+  background-color: #e5e2e2c4;
+}
+
 .ManagerClaim{
   background-color : #e5e2e2c4;
   animation: content-fadein 0.7s;  
@@ -1561,12 +1580,17 @@ p{
   box-shadow: 0px 1px 5px 0px rgba(0,0,0,0.2);
 }
 
+.main-Pendingclaim-container{
+  padding: 100px 100px 800px 100px;
+}
+
 .ClaimApprove{
   padding: 30px;
   background-color: #fafafa;
   /*box-shadow: 0px 1px 5px 0px rgba(0,0,0,0.2);*/
   font-size: 20px;
   font-weight: 500;
+  box-shadow: 0px 1px 5px 0px rgba(0,0,0,0.2);
 }
 
 .MainClaim2{
@@ -1614,39 +1638,52 @@ p{
   
 }
 
-.collapse-btn1{
+.collapsible2{
+  margin: -80px 0px 0px 0px;
+}
+
+.collapse-btn2{
   float: right;
-  /*padding: 10px 14px 10px 15px;
-  /*padding-top: 0px;*/
-  /*margin: -100px 15px 0px 0px;*/
-  margin-top: -210px;
-  margin-right: 10px;
+  padding: 10px 14px 10px 15px;
+  margin: -150px 15px 0px 0px;
   border: none;
   background-color: #ffffff;
   transition: 0.2s;
 }
 
-.collapse-btn1:hover{
+.collapse-btn2:hover{
   background-color: #6e727525;
   border-radius: 25px;
   transition: 0.2s;
 }
 
+.content2{
+  margin: 0px 0px 0px 50px;
+  padding: 0px 0px 0px 0px;
+  animation: content-fadein 0.5s;
+
+}
+
 .finalchoiceApprove{
   margin-left: 40%;
   margin-right: 5px;
-  margin-top: 0px;  background-color: rgba(92, 184, 92, 0.178);
+  margin-top: 0px; 
+  padding: 20px 40px 20px 40px;
+  background-color: rgba(92, 184, 92, 0.178);
   border-style: solid;
   border-color: rgb(92, 184, 92);
   border-width: 0.5px;
   border-radius: 5px;
-  font-size: 12px;
+  font-size: 20px;
   color: rgb(92, 184, 92);
-  width: 100px;
+  width: 150px;
   margin-bottom: 7px;
   cursor: pointer;
+  transition: 0.3s;
   
 }
+
+
 
 .finalchoiceReject{
   background-color: rgba(255, 0, 0, 0.137);
@@ -1654,12 +1691,23 @@ p{
   border-color: rgb(255, 0, 0);
   border-width: 0.5px;
   border-radius: 5px;
-  font-size: 12px;
+  font-size: 20px;
   color: rgb(255, 0, 0);
   width: 100px;
   cursor: pointer;
+  padding: 20px 20px 20px 20px;
+  transition: 0.3s;
 }
 
+.finalchoiceReject:hover{
+  background-color: rgba(255, 0, 0, 0.486);
+  color: white;
+}
+
+.finalchoiceApprove:hover{
+  background-color: rgba(92, 184, 92, 0.548);
+  color: white;
+}
 
 .MainClaim1{
   /*padding: 100px 100px 800px 100px;*/
